@@ -1,0 +1,36 @@
+#menu-push {
+    width: 200px;
+}
+
+#menu-container {
+    height: calc(100vh - 60px);
+    background: #1E3190;
+    width: 160px;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    position: fixed;
+}
+
+#menu-logo {
+    height: 71px;
+}
+
+@media(max-width: 1000px) {
+    #menu-container {
+        height: 50px;
+        padding: 20px;
+        width: calc(100% - 40px);
+        position: relative;
+        justify-content: space-between;
+    }
+
+    #menu-logo {
+        height: 50px;
+    }
+
+    #menu-push {
+        display: none;
+    }
+}
