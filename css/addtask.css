@@ -82,7 +82,7 @@ form{
 
 select{
     border: none;
-    width: 250px;
+    
     height: 50px;
     min-width: 100%;
 }
@@ -99,12 +99,12 @@ label{
     
 }
 input{
-    border: none;
-    width: 250px;
+    border: none;  
+    
     height: 50px;
     min-width: 100%;
     font-size: 20px;
-    padding: 8px;
+   /* padding: 8px; */
 
     outline: none;
     transition: all 0.3s ease-out;
@@ -140,6 +140,25 @@ input:focus{
 }
 
 
+button{
+    height: 50px;
+    width: 150px;
+    padding: 8px;
+    font-size: 20px;
+    color: white;
+    background-color: blue;
+    border-radius: 20px;
+    border: none;
+}
 
+
+.buttonContainer{
+    position: absolute;
+    bottom: 0.5rem;
+    right: auto;
+    display: flex;
+    justify-content: space-between;
+    min-width: 40%;
+}
 
 
