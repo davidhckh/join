@@ -11,6 +11,7 @@
     justify-content: center;
     align-items: space-between;
     position: fixed;
+    box-shadow: #EDEDED 10px 0 10px;
 }
 
 #menu-logo {
@@ -24,6 +25,7 @@
         width: calc(100% - 40px);
         position: relative;
         justify-content: space-between;
+        box-shadow: #EDEDED 0 10px 10px;
     }
 
     #menu-logo {
