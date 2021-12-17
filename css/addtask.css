@@ -3,8 +3,19 @@ body{
     font-family: 'PT Sans', sans-serif;
     
 }
+/*
+ * body of my content ** content-wrap
+*/
+#contentAddTask{
+    
+    width: 100vw;
+    height: 100vh;
+    position: relative;
 
-
+}
+/*
+ * header and titel section
+*/
 header{
     display: flex;
     align-items: flex-start;
@@ -14,24 +25,30 @@ header{
 
 .title{
     margin-bottom: 0;
-    padding-left: 10%;
+    padding-left: 4.5vw;
     padding-top: 5%;
 }
 
 .subtitle{
     margin-top: 8px;
-    padding-left:10%;
+    padding-left: 4.5vw;
     color: blue;
 
 }
+/*
+ * the form is the "card" on website, placed absolute to the content-wrap.
+ * has two columns with (inputContainers -> inputs) in it
+*/
 
 form{
-    background: linear-gradient(to right bottom, #dd9fc4, #ff8ed7bf);
+    background: rgba(239 ,222, 238,0.6);
     width: 80vw;
     height: 60vh;
     position: absolute;
-    right: 10vw;
+    left: 3vw;
     bottom: 20vh;
+    border-radius: 2rem;
+    box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
     
 
     display: flex;
@@ -39,10 +56,88 @@ form{
 
 }
 
+/*
+ * columns of the form
+*/
 
 .formCol{
+    min-width: 40%;
     display: flex;
     flex-direction:column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
+
+/*
+ * input Container + inputElemens+ labels
+*/
+
+.inputContainer{
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+select{
+    border: none;
+    width: 250px;
+    height: 50px;
+    min-width: 100%;
+}
+
+
+
+
+label{
+    font-size: 25px;
+    color: blue;
+    padding-bottom: 8px;
+    border-bottom:2px solid transparent;
+    transition: all 0.3s linear;
+    
+}
+input{
+    border: none;
+    width: 250px;
+    height: 50px;
+    min-width: 100%;
+    font-size: 20px;
+    padding: 8px;
+
+    outline: none;
+    transition: all 0.3s ease-out;
+}
+
+/*
+ * hover and focus interactions
+*/
+
+label:hover{
+    border-bottom:2px solid blue;
+}
+input::placeholder{
+    color: rgba(0 ,0, 0,0.8);
+    transition: color 0.3s ease-in-out;
+    
+}
+
+input:focus::placeholder{
+    color: transparent;
+    
+}
+
+input:hover{
+    cursor:pointer;
+}
+
+input:focus{
+    border: 2px solid blue !important;
+    border-radius: 2rem;
+    box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
+    cursor: pointer;
+}
+
+
+
+
+
