@@ -19,6 +19,7 @@
     <script src="js/includeHTML.js"></script>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
+    <script src="js/addtask.js"></script>
 </head>
 
 <body onload="includeHTML()">
@@ -32,7 +33,7 @@
             <h4 class="subtitle">Learning Magnemant System Project</h4>
         </header>
 
-        <form action="" method="post">
+        <form action="" method="get">
             <div class="formCol">
 
                 <div class="inputContainer">
@@ -81,6 +82,8 @@
                     <label for="taskDescription">Description</label>
                     <input id="taskDescription" type="textarea" value="" placeholder="Add a description">
                 </div>
+
+                <button onclick="addNewTask()" type="button">Create</button>
             </div>
         </form>
 
