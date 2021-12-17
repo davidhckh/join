@@ -5,20 +5,24 @@ let tasks=[];
  */
 
 function addNewTask() {
-    let title=document.getElementById('taskTitle').value;
+    let title=document.getElementById('taskTitle');
     console.log('i test the title',title);
-    let category=document.getElementById('taskCategory').value;
-    let urgency=document.getElementById('taskUrgency').value;
-    let description=document.getElementById('taskDescription').value;
-    let dueDate=document.getElementById('taskDate').value;
-    tasks.push(new Task(title,category,urgency,description,dueDate));
+    let category=document.getElementById('taskCategory');
+    let urgency=document.getElementById('taskUrgency');
+    let description=document.getElementById('taskDescription');
+    let dueDate=document.getElementById('taskDate');
+    tasks.push(new Task(title.value,category.value,urgency.value,description.value,dueDate.value));
+    clearInputFields();
+ 
+}
 
-    title="";
-    category="";
-    urgency="";
-    description="";
-    dueDate="";
 
+function clearInputFields() {
+    document.getElementById('taskTitle').value="";
+    document.getElementById('taskCategory').value="";
+    document.getElementById('taskUrgency').value="";
+    document.getElementById('taskDescription').value="";
+    document.getElementById('taskDate').value="";
 }
 
 
