@@ -9,6 +9,11 @@ body {
     background-color: #F6F8FC;
 }
 
+/** Hide */
+.hide {
+    display: none !important;
+}
+
 /**Flex*/
 .center {
     display: flex;
