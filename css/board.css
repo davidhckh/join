@@ -1,0 +1,5 @@
+/** Makes Menu Selected Bar Visible (don't remove)*/
+#board-menu-point .menu-point-pre-bar{
+    display: unset !important;
+    opacity: 1 !important;
+}

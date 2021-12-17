@@ -1,3 +1,9 @@
+/** Makes Menu Selected Bar Visible (don't remove)*/
+#backlog-menu-point .menu-point-pre-bar{
+    display: unset !important;
+    opacity: 1 !important;
+}
+
 * {
     margin: 0
 }

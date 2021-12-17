@@ -36,7 +36,8 @@ a {
 }
 
 .menu-point-container:hover .menu-point-pre-bar{
-    display: flex !important;
+    display: unset !important;
+    opacity: 0.3
 }
 
 .menu-point-container span {
