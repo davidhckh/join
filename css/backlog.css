@@ -1,0 +1,20 @@
+/** Makes Menu Selected Bar Visible (don't remove)*/
+#backlog-menu-point .menu-point-pre-bar{
+    display: unset !important;
+    opacity: 1 !important;
+}
+
+* {
+    margin: 0
+}
+
+#main-container {
+    height: 100%;
+    width: 100%;
+    padding: 50px;
+}
+
+.box {
+    margin: 20px 0;
+    padding: 20px;
+}

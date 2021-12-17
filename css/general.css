@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*Body*/
 body {
     margin: 0;
     display: flex;
     flex-direction: row;
+    font-family: 'PT Sans', sans-serif; 
+    background-color: #F6F8FC;
 }
 
+/** Hide */
+.hide {
+    display: none !important;
+}
+
+/**Flex*/
 .center {
     display: flex;
     align-items: center;
@@ -20,6 +31,19 @@ body {
     flex-direction: column;
 }
 
+/*Main-Box*/
+.box {
+    background: white;
+    border-radius: 20px;
+    box-shadow: #EDEDED 0 10px 10px;
+}
+
+/**Headings*/
+h5 {
+    color: #102389;
+}
+
+/**Responsive*/
 @media(max-width: 1000px) {
     body {
         flex-direction: column;

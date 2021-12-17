@@ -5,32 +5,109 @@
 #menu-container {
     height: calc(100vh - 60px);
     background: #1E3190;
-    width: 160px;
-    padding: 30px 20px;
+    width: 200px;
+    padding: 30px 0;
     display: flex;
-    justify-content: center;
-    align-items: space-between;
+    align-items: center;
+    flex-direction: column;
     position: fixed;
+    box-shadow: #EDEDED 10px 0 10px;
 }
 
+a {
+    color: white;
+}
+
+/*Menu Logo*/
 #menu-logo {
     height: 71px;
+    margin-bottom: 50px;
+}
+
+/*Menu Points*/
+#menu-points-container {
+    width: 100%;
+    height: 100%;    
+}
+
+.menu-point-container {
+    height: 40px;
+    margin: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.menu-point-container:hover .menu-point-pre-bar{
+    display: unset !important;
+    opacity: 0.3
+}
+
+.menu-point-container span {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.menu-point-pre-bar {
+    width: 7px;
+    height: 100%;
+    background: white;
+    display: none;
+}
+
+/**Profile Picture*/
+#profile-picture {
+    border-radius: 50%;
+    height: 60px;
+    border: 4px solid white;
+}
+
+/**Responsive*/
+
+/**Menu Icon*/
+#reponsive-menu-icon {
+    height: 45px;
+    cursor: pointer;
+    display: none
+}
+
+#reponsive-menu-icon:hover {
+    opacity: 0.5
 }
 
 @media(max-width: 1000px) {
     #menu-container {
-        height: 50px;
+        height: 45px;
         padding: 20px;
         width: calc(100% - 40px);
         position: relative;
-        justify-content: space-between;
+        align-items: center;
+        box-shadow: #EDEDED 0 10px 10px;
+        flex-direction: row;
     }
 
     #menu-logo {
-        height: 50px;
+        height: 40px;
+        margin: auto 0;
+        margin-right: auto;
     }
 
     #menu-push {
         display: none;
+    }
+
+    #menu-points-container {
+        display: none;
+    }
+
+    #profile-picture {
+        height: 40px;
+        margin-right: 20px;
+    }
+
+    #reponsive-menu-icon {
+        display: unset
     }
 }
