@@ -8,14 +8,19 @@
     width: 160px;
     padding: 30px 20px;
     display: flex;
-    justify-content: center;
-    align-items: space-between;
+    align-items: center;
+    flex-direction: column;
     position: fixed;
     box-shadow: #EDEDED 10px 0 10px;
 }
 
+a {
+    color: white;
+}
+
 #menu-logo {
     height: 71px;
+    margin-bottom: 50px;
 }
 
 @media(max-width: 1000px) {
