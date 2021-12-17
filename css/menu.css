@@ -5,8 +5,8 @@
 #menu-container {
     height: calc(100vh - 60px);
     background: #1E3190;
-    width: 160px;
-    padding: 30px 20px;
+    width: 200px;
+    padding: 30px 0;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -18,9 +18,37 @@ a {
     color: white;
 }
 
+/*Menu Logo*/
 #menu-logo {
     height: 71px;
     margin-bottom: 50px;
+}
+
+/*Menu Points*/
+.menu-point-container {
+    height: 40px;
+    margin: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.menu-point-container:hover .menu-point-pre-bar{
+    display: flex !important;
+}
+
+.menu-point-container span {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.menu-point-pre-bar {
+    width: 7px;
+    height: 100%;
+    background: white;
+    display: none;
 }
 
 @media(max-width: 1000px) {
