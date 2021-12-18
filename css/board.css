@@ -27,7 +27,7 @@
 }
 
 .dragAreaHighlight {
-    background-color: #dadada81;
+    background-color: #dadada81 !important;
 }
 
 @media (max-width:700px) {
