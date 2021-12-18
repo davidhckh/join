@@ -7,6 +7,7 @@
 
 .boardContainer {
     padding-top: 5vh;
+    padding-bottom: 2vh;
     width: 100vw;
     max-height: 100vh;
     display: flex;
@@ -22,13 +23,21 @@
 .dragItem {
     margin: 1em;
     padding: 1em;
-    background-color: #a2abff81 !important;
     word-wrap: break-word;
+    cursor: pointer;
+    border: 2px solid #dadada2f !important;
+    background-color: #f8f8f8;
+    transition: border 225ms ease-in-out;
+}
+
+.dragItem:hover {
+    filter: brightness(0.95);
+    border: 2px solid blue !important;
+    transition: all 225ms ease-in-out;
 }
 
 .dragAreaHighlight {
-    background-color: #dadada81 !important;
-    background: #dadada81 !important;
+    background: #dadada2f !important;
 }
 
 @media (max-width:700px) {
