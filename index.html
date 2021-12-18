@@ -6,17 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/includeHTML.js"></script>
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/board.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/board.css">
+    <script src="js/board.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
     <title>Board - Join</title>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); boardInit()">
 
     <!--Menu-->
     <div w3-include-html="./templates/menu.html"></div>
-    
+
+
+    <div class="boardContainer">
+        <div class="boardColumn center column">
+            <h3>TO DO</h3>
+            <div id="BlockToDo" class="boardStatusBlock column box" ondrop="moveTo('toDo')" ondragover="allowDrop(event); addHighlight('BlockToDo')" ondragleave="removeHighlight()">
+            </div>
+        </div>
+        <div class="boardColumn center column">
+            <h3>IN PROGRESS</h3>
+            <div id="BlockInProgress" class="boardStatusBlock column box " ondrop="moveTo('inProgress')" ondragover="allowDrop(event); addHighlight('BlockInProgress')" ondragleave="removeHighlight()">
+            </div>
+        </div>
+        <div class="boardColumn center column">
+            <h3>TESTING</h3>
+            <div id="BlockTesting" class="boardStatusBlock column box " ondrop="moveTo('testing')" ondragover="allowDrop(event); addHighlight('BlockTesting')" ondragleave="removeHighlight()">
+            </div>
+        </div>
+        <div class="boardColumn center column">
+            <h3>DONE</h3>
+            <div id="BlockDone" class="boardStatusBlock column box " ondrop="moveTo('done')" ondragover="allowDrop(event); addHighlight('BlockDone')" ondragleave="removeHighlight()">
+            </div>
+        </div>
+
+
+
+    </div>
+
+
 </body>
 
 </html>

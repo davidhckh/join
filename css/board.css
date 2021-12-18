@@ -1,5 +1,56 @@
 /** Makes Menu Selected Bar Visible (don't remove)*/
-#board-menu-point .menu-point-pre-bar{
+
+#board-menu-point .menu-point-pre-bar {
     display: unset !important;
     opacity: 1 !important;
+}
+
+.boardContainer {
+    padding-top: 5vh;
+    width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.boardStatusBlock {
+    width: 15vw;
+    height: 75vh;
+}
+
+.dragItem {
+    margin: 1em;
+    padding: 1em;
+    background-color: #a2abff81 !important;
+    word-wrap: break-word;
+}
+
+.dragAreaHighlight {
+    background-color: #dadada81;
+}
+
+@media (max-width:700px) {
+    .boardContainer {
+        padding-top: 120px;
+        width: 95vw;
+        height: 80vh;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+    }
+    .boardStatusBlock {
+        width: 75vw;
+        height: 20vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    .dragItem {
+        width: 15%;
+        margin: 0.2em;
+    }
 }
