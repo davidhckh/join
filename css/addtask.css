@@ -50,7 +50,7 @@ input{
     border: none;  
     
     height: 69px;
-   
+    font-family: 'PT Sans', sans-serif;
     font-size: 20px;
    /* padding: 8px; */
 
@@ -99,6 +99,7 @@ select {
     height: 69px;
     font-size:20px;
     transition: all 0.3s ease-out;
+    font-family: 'PT Sans', sans-serif;
     
    
     min-width: 100%;
@@ -172,6 +173,7 @@ textarea{
     border: none;  
     font-size: 20px;
     transition: all 0.3s linear;
+    font-family: 'PT Sans', sans-serif;
 }
 
 
@@ -199,4 +201,42 @@ textarea:focus::placeholder{
 
 textarea:hover{
     cursor:pointer;
+}
+
+@media(max-width: 1100px) {
+    .buttonContainer{
+        min-width: 50%;
+    }
+}
+
+@media(max-width: 720px) {
+    .buttonContainer{
+        min-width: 50%;
+    }
+
+    form{
+        width: 100%;
+        margin-left: 2.5%;
+        top: -60px;
+    }
+
+    #contentAddTask{
+        width: 95vw;
+    }
+}
+
+@media(max-width: 550px) {
+    
+   .mediaCol{
+       flex-direction:column !important;
+   }
+
+   .inputContainer{
+       min-width: 90%;
+   }
+
+   form{
+       height: 115vh !important;
+       top: 100px;
+   }
 }
