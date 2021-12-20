@@ -1,50 +1,85 @@
 
 'use strict';
 
-let tasks=[];
+let tasks = [];
 
 /**
  * function reads the values of input and than pushes a new Task in tasks.
  */
 
 function addNewTask() {
-    let title=document.getElementById('taskTitle');
-    console.log('i test the title',title);
-    let category=document.getElementById('taskCategory');
-    let urgency=document.getElementById('taskUrgency');
-    let description=document.getElementById('taskDescription');
-    let dueDate=document.getElementById('taskDate');
-    tasks.push(new Task(title.value,category.value,urgency.value,description.value,dueDate.value));
+    let title = document.getElementById('taskTitle');
+    let category = document.getElementById('taskCategory');
+    let urgency = document.getElementById('taskUrgency');
+    let description = document.getElementById('taskDescription');
+    let dueDate = document.getElementById('taskDate');
+    tasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value));
     clearInputFields();
- 
+
 }
 
+/**
+ * function clears the input fields
+ */
 
 function clearInputFields() {
-    document.getElementById('taskTitle').value="";
-    document.getElementById('taskCategory').value="";
-    document.getElementById('taskUrgency').value="";
-    document.getElementById('taskDescription').value="";
-    document.getElementById('taskDate').value="";
+    document.getElementById('taskTitle').value = "";
+    document.getElementById('taskCategory').value = "";
+    document.getElementById('taskUrgency').value = "";
+    document.getElementById('taskDescription').value = "";
+    document.getElementById('taskDate').value = "";
 }
 
 
-class Task{
+class Task {
     title;
     category;
     description;
     dueDate;
     urgency;
-    backlogPosition=true;
-    boardPosition=false;
+    backlogPosition = true;
+    boardPosition = false;
+    timeOfCreation;
 
-    constructor(title,category,description,dueDate,urgency){
-        this.title=title;
-        this.category=category;
-        this.description=description;
-        this.dueDate=dueDate;
-        this.urgency=urgency;
+    constructor(title, category, description, dueDate, urgency) {
+        this.title = title;
+        this.category = category;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.urgency = urgency;
+        this.timeStamp();
     }
+
+
+    setTitle(newTitle) {
+        this.title = newTitle;
+    }
+
+    setCategory(newCategory) {
+        this.Category = newCategory;
+    }
+
+    setDescription(newDescription) {
+        this.description = newDescription;
+    }
+
+    setDueDate(newDueDate) {
+        this.dueDate = newDueDate;
+    }
+
+    setUrgency(newUrgency) {
+        this.urgency = newUrgency;
+    }
+
+    /**
+     * the object should memorize when it was created
+     */
+
+    timeStamp() {
+        this.timeOfCreation = new Date();
+    }
+
+
 }
 
 /**
@@ -53,20 +88,19 @@ class Task{
  * @param {int} frequenz - amount of checks per 1000 seconds
  */
 
-function isFilledOut(frequenz){
+function isFilledOut(frequenz) {
     setInterval(() => {
-        let buttonContainer=document.getElementById('buttonContainer');
-        let buttonCreate=document.getElementById('buttonCreate');
-        let buttonCancel=document.getElementById('buttonCancel')
+        let buttonContainer = document.getElementById('buttonContainer');
+        let buttonCreate = document.getElementById('buttonCreate');
+        let buttonCancel = document.getElementById('buttonCancel')
 
-        let title=document.getElementById('taskTitle').value;
-        let category=document.getElementById('taskCategory').value;
-        let urgency=document.getElementById('taskUrgency').value;
-        let description=document.getElementById('taskDescription').value;
-        let dueDate=document.getElementById('taskDate').value;
+        let title = document.getElementById('taskTitle').value;
+        let category = document.getElementById('taskCategory').value;
+        let urgency = document.getElementById('taskUrgency').value;
+        let description = document.getElementById('taskDescription').value;
+        let dueDate = document.getElementById('taskDate').value;
 
-        if(title && category && urgency && description && dueDate)
-        {
+        if (title && category && urgency && description && dueDate) {
             buttonContainer.classList.remove("hide");
             buttonCreate.classList.remove("hide");
             buttonCancel.classList.remove("hide");
@@ -79,12 +113,12 @@ function isFilledOut(frequenz){
         }
 
 
-    },frequenz);
+    }, frequenz);
 }
 
 
-function init(){
-    let checkFrequenz=50;
+function init() {
+    let checkFrequenz = 50;
     includeHTML();
     isFilledOut(checkFrequenz);
 }

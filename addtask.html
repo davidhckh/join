@@ -11,7 +11,7 @@
     <title>Add Task - Join</title>
 
 
-    <link rel="stylesheet" href="css/addTask.css">
+    <link rel="stylesheet" href="css/addtask.css">
     <script src="js/includeHTML.js"></script>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
@@ -24,23 +24,28 @@
     <!--Menu-->
     <div w3-include-html="./templates/menu.html"></div>
 
+
+     <!-- content-wrap -->
+
     <div id="contentAddTask" class="center">
 
+        <header>
+            <h3>Add Task</h3>
+            <h5>Learning Managment System Project</h5>
+        </header>
+
         <form action="get" class="box">
-
             <!-- first row -->
-            <div class="row spaceBetween mediaCol">
 
+            <div class="row spaceBetween mediaCol">
                 <div class="inputContainer">
                     <label for="taskTitle">Title</label>
                     <input class="box" id="taskTitle" type="text" value="" placeholder="Define a title">
                 </div>
-
                 <div class="inputContainer">
                     <label for="taskDate">Due Date</label>
                     <input class="box" id="taskDate" type="date" value="" placeholder="Define a title">
                 </div>
-
             </div>
 
             <!-- second row -->
@@ -65,6 +70,7 @@
                 </div>
             </div>
 
+             <!-- third row -->
             <div class="row spaceBetween mediaCol">
                 <div class="inputContainer">
                     <label for="taskDescription">Description</label>

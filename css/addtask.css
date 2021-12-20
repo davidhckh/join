@@ -1,3 +1,11 @@
+
+
+/*=================================================================*/
+
+/*
+    * generel container and content-wrap style
+*/
+
 #contentAddTask{
     height: 100vh;
     width: 100vw;
@@ -6,6 +14,18 @@
     flex-direction: row;
     font-family: 'PT Sans', sans-serif; 
     background-color: #F6F8FC;
+    position: relative;
+}
+
+header{
+    position: absolute;
+    left: 7.5%;
+    top: 2rem;
+    font-size: 20px;
+}
+
+header>h5{
+    margin-top: -1.5rem;
 }
 
 .inputContainer{
@@ -52,7 +72,7 @@ input{
     height: 69px;
     font-family: 'PT Sans', sans-serif;
     font-size: 20px;
-   /* padding: 8px; */
+    padding: 8px; 
 
     outline: none;
     transition: all 0.3s ease-out;
@@ -90,16 +110,19 @@ input::-webkit-calendar-picker-indicator{
     border-left:1px solid rgba(0 ,0, 0,0.8);
 }
 
+/*=================================================================*/
+
 /*
- * selcect styles
+    * selcect styles
 */
 
 select {
-    border: none;
+    border: transparent;
     height: 69px;
     font-size:20px;
     transition: all 0.3s ease-out;
     font-family: 'PT Sans', sans-serif;
+    padding: 8px;
     
    
     min-width: 100%;
@@ -137,8 +160,10 @@ select:hover{
     cursor:pointer;
 }
 
+/*=================================================================*/
+
 /*
-    button styles
+    * button styles
 */
 button{
     height: 50px;
@@ -162,15 +187,16 @@ button{
     min-width: 40%;
 }
 
+/*=================================================================*/
 
 /*
-    textarea style
+    * textarea style
 */
 
 
 textarea{
-
-    border: none;  
+    padding:8px;
+    border: transparent;  
     font-size: 20px;
     transition: all 0.3s linear;
     font-family: 'PT Sans', sans-serif;
@@ -203,13 +229,33 @@ textarea:hover{
     cursor:pointer;
 }
 
+
+/*=================================================================*/
+/*=================================================================*/
+/*=================================================================*/
+
+/*
+    * MEDIA QUERIES
+*/
+
+
+
 @media(max-width: 1100px) {
     .buttonContainer{
         min-width: 50%;
     }
+    #contentAddTask{
+        width: 95vw;
+    }
 }
 
+
 @media(max-width: 720px) {
+
+    header {
+        top:0;
+    }
+
     .buttonContainer{
         min-width: 50%;
     }
