@@ -1,7 +1,6 @@
-export default class Helper {
+class Helper {
 
     allItems = []
-    test = 'hi'
 
     constructor() {
         this.downloadFromServer()
