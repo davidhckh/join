@@ -1,94 +1,42 @@
-/** Makes Menu Selected Bar Visible (don't remove)*/
-#addtask-menu-point .menu-point-pre-bar{
-    display: unset !important;
-    opacity: 1 !important;
-}
-
-
-/*
- * body of my content ** content-wrap
-*/
 #contentAddTask{
-    
-    width: 100vw;
     height: 100vh;
-    position: relative;
-
-}
-/*
- * header and titel section
-*/
-header{
+    width: 100vw;
+    margin: 0;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    font-family: 'PT Sans', sans-serif; 
+    background-color: #F6F8FC;
 }
-
-.title{
-    margin-bottom: 0;
-    padding-left: 4.5vw;
-    padding-top: 5%;
-}
-
-.subtitle{
-    margin-top: 8px;
-    padding-left: 4.5vw;
-    color: blue;
-
-}
-/*
- * the form is the "card" on website, placed absolute to the content-wrap.
- * has two columns with (inputContainers -> inputs) in it
-*/
-
-form{
-    background: rgba(239 ,222, 238,0.6);
-    width: 80vw;
-    height: 60vh;
-    position: absolute;
-    left: 3vw;
-    bottom: 20vh;
-    border-radius: 2rem;
-    box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
-    
-
-    display: flex;
-    justify-content: space-around;
-
-}
-
-/*
- * columns of the form
-*/
-
-.formCol{
-    min-width: 40%;
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-/*
- * input Container + inputElemens+ labels
-*/
 
 .inputContainer{
-    min-width: 100%;
     display: flex;
     flex-direction: column;
+    min-width: 40%;
+    height: 150px;
+    padding: 15px;
 }
 
-select{
-    border: none;
-    
-    height: 50px;
-    min-width: 100%;
+form{
+    position: relative;
+    width: 85%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: rgba(239 ,222, 238,0.6) !important;
+}
+
+.spaceBetween{
+    justify-content: space-between;
+    align-items: center;
 }
 
 
+/*=================================================================*/
 
+/*
+ * input and labels styles
+*/
 
 label{
     font-size: 25px;
@@ -101,8 +49,8 @@ label{
 input{
     border: none;  
     
-    height: 50px;
-    min-width: 100%;
+    height: 69px;
+   
     font-size: 20px;
    /* padding: 8px; */
 
@@ -110,9 +58,7 @@ input{
     transition: all 0.3s ease-out;
 }
 
-/*
- * hover and focus interactions
-*/
+
 
 label:hover{
     border-bottom:2px solid blue;
@@ -138,8 +84,61 @@ input:focus{
     box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
     cursor: pointer;
 }
+input::-webkit-calendar-picker-indicator{
+    height: 50px;
+    width: 50px;
+    border-left:1px solid rgba(0 ,0, 0,0.8);
+}
+
+/*
+ * selcect styles
+*/
+
+select {
+    border: none;
+    height: 69px;
+    font-size:20px;
+    transition: all 0.3s ease-out;
+    
+   
+    min-width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Some browsers will not display the caret when using calc, so we put the fallback first */ 
+    background: url("../assets/chevron .png") white no-repeat 98.5% !important; /* !important used for overriding all other customisations */
+    background: url("../assets/chevron .png") white no-repeat calc(100% - 10px) !important; /* Better placement regardless of input width */
+  }
+  /*For IE*/
+  select::-ms-expand { display: none; }
+
+  select:focus{
+    border: 2px solid blue !important;
+    border-radius: 2rem;
+    box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
+    cursor: pointer;
+}
 
 
+
+select::placeholder{
+    color: rgba(0 ,0, 0,0.8);
+    transition: color 0.3s ease-in-out;
+    
+}
+
+select:focus::placeholder{
+    color: transparent;
+    
+}
+
+select:hover{
+    cursor:pointer;
+}
+
+/*
+    button styles
+*/
 button{
     height: 50px;
     width: 150px;
@@ -154,11 +153,50 @@ button{
 
 .buttonContainer{
     position: absolute;
-    bottom: 0.5rem;
+    bottom: -3.5rem;
     right: auto;
+    left: 25%;
     display: flex;
     justify-content: space-between;
     min-width: 40%;
 }
 
 
+/*
+    textarea style
+*/
+
+
+textarea{
+
+    border: none;  
+    font-size: 20px;
+    transition: all 0.3s linear;
+}
+
+
+
+
+textarea:focus{
+    border: 2px solid blue !important;
+    border-radius: 2rem;
+    box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
+    cursor: pointer;
+}
+
+
+
+textarea::placeholder{
+    color: rgba(0 ,0, 0,0.8);
+    transition: color 0.3s ease-in-out;
+    
+}
+
+textarea:focus::placeholder{
+    color: transparent;
+    
+}
+
+textarea:hover{
+    cursor:pointer;
+}

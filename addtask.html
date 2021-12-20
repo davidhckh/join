@@ -10,12 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task - Join</title>
 
-    <link rel="stylesheet" href="css/addtask.css">
+
+    <link rel="stylesheet" href="css/addTask.css">
     <script src="js/includeHTML.js"></script>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
     <script src="js/addtask.js"></script>
-    
+
 </head>
 
 <body onload="init()">
@@ -23,14 +24,12 @@
     <!--Menu-->
     <div w3-include-html="./templates/menu.html"></div>
 
-    <div id="contentAddTask">
-        <header>
-            <h1 class="title">Add Task</h1>
-            <h5 class="subtitle">Learning Managment System Project</h5>
-        </header>
+    <div id="contentAddTask" class="center">
 
-        <form action="" method="get">
-            <div class="formCol">
+        <form action="get" class="box">
+
+            <!-- first row -->
+            <div class="row spaceBetween">
 
                 <div class="inputContainer">
                     <label for="taskTitle">Title</label>
@@ -38,31 +37,22 @@
                 </div>
 
                 <div class="inputContainer">
+                    <label for="taskDate">Due Date</label>
+                    <input class="box" id="taskDate" type="date" value="" placeholder="Define a title">
+                </div>
+
+            </div>
+
+            <!-- second row -->
+
+            <div class="row spaceBetween">
+                <div class="inputContainer">
                     <label for="taskCategory">Category</label>
-                    <select class="box" id="taskCategory" type="text" value="">
+                    <select class="box" id="taskCategory" type="text" value="" placeholder="choose a category">
                         <option value="mangement">mangement</option>
                         <option value="development">development</option>
                         <option value="design">design</option>
                     </select>
-                </div>
-
-                <div class="inputContainer">
-                    <label for="taskDescription">Description</label>
-                    <input class="box" id="taskDescription" type="textarea" value="" placeholder="Add a description">
-                </div>
-            </div>
-
-
-
-
-
-
-
-            <div class="formCol">
-
-                <div class="inputContainer">
-                    <label for="taskDate">Due Date</label>
-                    <input class="box" id="taskDate" type="date" value="" placeholder="Define a title">
                 </div>
 
                 <div class="inputContainer">
@@ -73,12 +63,19 @@
                         <option value="design">niedrig</option>
                     </select>
                 </div>
+            </div>
+
+            <div class="row spaceBetween">
+                <div class="inputContainer">
+                    <label for="taskDescription">Description</label>
+                    <textarea name="description" id="taskDescription" cols="30" rows="10" class="box"
+                        placeholder="Add a description"></textarea>
+                </div>
 
                 <div class="inputContainer">
                     <label for="taskDescription">Description</label>
                     <input class="box" id="taskDescription" type="textarea" value="" placeholder="Add a description">
                 </div>
-                          
             </div>
             <div id="buttonContainer" class="buttonContainer" class="hide">
                 
@@ -86,7 +83,6 @@
                 <button id="buttonCreate" class="hide"  onclick="addNewTask()" type="button">Create Task</button>
             </div>   
         </form>
-
 
     </div>
 
