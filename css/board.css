@@ -42,6 +42,12 @@
     background: #dadada2f !important;
 }
 
+@media (max-width: 1000px) {
+    .boardStatusBlock {
+        width: 20vw;
+    }
+}
+
 @media (max-width:700px) {
     .boardContainer {
         padding-top: 120px;
