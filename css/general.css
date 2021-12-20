@@ -39,6 +39,10 @@ body {
 }
 
 /**Headings*/
+h3 {
+    color: #00127F
+} 
+
 h5 {
     color: #102389;
 }

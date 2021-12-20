@@ -96,6 +96,7 @@ a {
 
     #menu-push {
         display: none;
+        width: 0;
     }
 
     #menu-points-container {
