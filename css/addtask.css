@@ -21,29 +21,27 @@ header{
     position: absolute;
     left: 7.5%;
     top: 2rem;
-    font-size: 20px;
 }
 
-header>h5{
-    margin-top: -1.5rem;
+h1, h5 {
+    margin: 0
 }
 
 .inputContainer{
     display: flex;
     flex-direction: column;
     min-width: 40%;
-    height: 150px;
-    padding: 15px;
+    height: 100px;
+    margin: 0 10px;
+    margin-bottom: 20px;
 }
 
 form{
     position: relative;
     width: 85%;
-    height: 70vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    background: rgba(239 ,222, 238,0.6) !important;
+    padding: 20px;
 }
 
 .spaceBetween{
@@ -56,6 +54,7 @@ form{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    box-shadow: none !important;
 }
 
 .taskImgCon>img{
@@ -70,30 +69,28 @@ form{
 */
 
 label{
-    font-size: 25px;
-    color: blue;
-    padding-bottom: 8px;
-    border-bottom:2px solid transparent;
-    transition: all 0.3s linear;
-    
+    font-weight: bold;
+    color: #102389;
+    margin-bottom: 5px;
 }
+
+
 input{
     border: none;  
-    
-    height: 69px;
+
     font-family: 'PT Sans', sans-serif;
-    font-size: 20px;
-    padding: 8px; 
+    font-size: 18px;
+    padding: 0 20px; 
 
     outline: none;
-    transition: all 0.3s ease-out;
+    transition: all 0.1s ease-out;
+
+    box-shadow: unset !important;
+    border: 2px solid #ebebeb !important;
+    height: 50px;
 }
 
 
-
-label:hover{
-    border-bottom:2px solid blue;
-}
 input::placeholder{
     color: rgba(0 ,0, 0,0.8);
     transition: color 0.3s ease-in-out;
@@ -102,22 +99,18 @@ input::placeholder{
 
 input:focus::placeholder{
     color: transparent;
-    
-}
-
-input:hover{
-    cursor:pointer;
 }
 
 input:focus{
-    border: 2px solid blue !important;
+    border: 2px solid #102389 !important;
     border-radius: 2rem;
     box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
-    cursor: pointer;
 }
+
 input::-webkit-calendar-picker-indicator{
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
 }
 
 /*=================================================================*/
@@ -128,12 +121,14 @@ input::-webkit-calendar-picker-indicator{
 
 select {
     border: transparent;
-    height: 69px;
-    font-size:20px;
-    transition: all 0.3s ease-out;
+    font-size: 18px;
+    transition: all 0.1s ease-out;
     font-family: 'PT Sans', sans-serif;
-    padding: 8px;
+    padding: 0 20px; 
     outline: none;
+    height: 50px;
+    box-shadow: unset !important;
+    border: 2px solid #ebebeb !important;
     
    
     min-width: 100%;
@@ -142,16 +137,19 @@ select {
     appearance: none;
     /* Some browsers will not display the caret when using calc, so we put the fallback first */ 
     background: url("../assets/chevron .png") white no-repeat 98.5% !important; /* !important used for overriding all other customisations */
-    background: url("../assets/chevron .png") white no-repeat calc(100% - 10px) !important; /* Better placement regardless of input width */
+    background: url("../assets/chevron .png") white no-repeat calc(100% - 5px) !important; /* Better placement regardless of input width */
   }
+  
   /*For IE*/
   select::-ms-expand { display: none; }
 
   select:focus{
-    border: 2px solid blue !important;
+    border: 2px solid #102389 !important;
     border-radius: 2rem;
     box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
     cursor: pointer;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 
@@ -182,7 +180,7 @@ button{
     padding: 8px;
     font-size: 20px;
     color: white;
-    background-color: blue;
+    background-color: #102389;
     border-radius: 20px;
     border: none;
 }
@@ -206,22 +204,25 @@ button{
 
 
 textarea{
-    padding:8px;
+    padding: 0 20px; 
     border: transparent;  
-    font-size: 20px;
+    font-size: 18px;
     transition: all 0.3s linear;
     font-family: 'PT Sans', sans-serif;
     outline: none;
+    resize:none;
+    box-shadow: none !important;
+    padding: 13px 17px; 
+    border: 2px solid #ebebeb !important;
 }
 
 
 
 
 textarea:focus{
-    border: 2px solid blue !important;
+    border: 2px solid #102389 !important;
     border-radius: 2rem;
     box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
-    cursor: pointer;
 }
 
 
@@ -235,10 +236,6 @@ textarea::placeholder{
 textarea:focus::placeholder{
     color: transparent;
     
-}
-
-textarea:hover{
-    cursor:pointer;
 }
 
 

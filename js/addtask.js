@@ -79,8 +79,6 @@ class Task {
     timeStamp() {
         this.timeOfCreation = new Date();
     }
-
-
 }
 
 /**

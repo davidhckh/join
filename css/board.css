@@ -21,18 +21,20 @@
 }
 
 .dragItem {
-    margin: 1em;
+    margin: 0 10px;
+    margin-top: 10px;
     padding: 1em;
     word-wrap: break-word;
     cursor: pointer;
-    border: 2px solid #dadada2f !important;
-    background-color: #f8f8f8;
+    border: 2px solid #ebebeb !important;
+    background-color: #f6f6f6 !important;
     transition: border 225ms ease-in-out;
+    box-shadow: unset !important
 }
 
 .dragItem:hover {
     filter: brightness(0.95);
-    border: 2px solid blue !important;
+    border: 2px solid #00127F !important;
     transition: all 225ms ease-in-out;
 }
 

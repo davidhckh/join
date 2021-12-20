@@ -9,6 +9,37 @@ body {
     background-color: #F6F8FC;
 }
 
+/**Priorities*/
+.priority-high {
+    background: orange
+}
+
+.priority-medium {
+    background: purple
+}
+
+.priority-low {
+    background: green
+}
+
+.category-color-blue {
+    background: lightblue
+}
+
+/**Category Colors*/
+.category-color-design {
+    background: lightgreen
+}
+
+.category-color-development {
+    background: lightcoral
+}
+
+.category-color-managment {
+    background: lightblue
+}
+
+
 /** Hide */
 .hide {
     display: none !important;

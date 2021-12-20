@@ -55,6 +55,8 @@ a {
     height: 100%;
     background: white;
     display: none;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
 }
 
 /**Profile Picture*/
@@ -96,7 +98,6 @@ a {
 
     #menu-push {
         display: none;
-        width: 0;
     }
 
     #menu-points-container {
