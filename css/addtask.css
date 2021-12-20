@@ -51,6 +51,17 @@ form{
     align-items: center;
 }
 
+.taskImgCon{
+    height:69px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.taskImgCon>img{
+    padding: 8px;
+}
+
 
 /*=================================================================*/
 
@@ -107,7 +118,6 @@ input:focus{
 input::-webkit-calendar-picker-indicator{
     height: 50px;
     width: 50px;
-    border-left:1px solid rgba(0 ,0, 0,0.8);
 }
 
 /*=================================================================*/
@@ -230,6 +240,9 @@ textarea:focus::placeholder{
 textarea:hover{
     cursor:pointer;
 }
+
+
+
 
 
 /*=================================================================*/

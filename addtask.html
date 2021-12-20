@@ -25,7 +25,7 @@
     <div w3-include-html="./templates/menu.html"></div>
 
 
-     <!-- content-wrap -->
+    <!-- content-wrap -->
 
     <div id="contentAddTask" class="center">
 
@@ -63,14 +63,14 @@
                 <div class="inputContainer">
                     <label for="taskUrgency">Urgency</label>
                     <select class="box" id="taskUrgency" type="text" value="">
-                        <option value="mangement">hoch</option>
-                        <option value="development">mittel</option>
-                        <option value="design">niedrig</option>
+                        <option value="hoch">hoch</option>
+                        <option value="mittel">mittel</option>
+                        <option value="niedrig">niedrig</option>
                     </select>
                 </div>
             </div>
 
-             <!-- third row -->
+            <!-- third row -->
             <div class="row spaceBetween mediaCol">
                 <div class="inputContainer">
                     <label for="taskDescription">Description</label>
@@ -79,15 +79,19 @@
                 </div>
 
                 <div class="inputContainer">
-                    <label for="taskDescription">Description</label>
-                    <input class="box" id="taskDescription" type="textarea" value="" placeholder="Add a description">
+                    <label for="taskAssigned">Assigned to</label>
+                    <div id="taskAssigned" class="box taskImgCon">
+                        <img src="assets/icon plus.png" alt="" srcset="">
+                        <img src="assets/icon plus.png" alt="" srcset="">
+                    </div>
                 </div>
             </div>
             <div id="buttonContainer" class="buttonContainer" class="hide">
-                
-                <button id="buttonCancel" class="buttonCancel hide"  onclick="clearInputFields()" type="button">Cancel</button>
-                <button id="buttonCreate" class="hide"  onclick="addNewTask()" type="button">Create Task</button>
-            </div>   
+
+                <button id="buttonCancel" class="buttonCancel hide" onclick="clearInputFields()"
+                    type="button">Cancel</button>
+                <button id="buttonCreate" class="hide" onclick="addNewTask()" type="button">Create Task</button>
+            </div>
         </form>
 
     </div>

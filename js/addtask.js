@@ -13,6 +13,7 @@ function addNewTask() {
     let urgency = document.getElementById('taskUrgency');
     let description = document.getElementById('taskDescription');
     let dueDate = document.getElementById('taskDate');
+  //  let assigned = document.getElementById('taskAssigned');  not working yet
     tasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value));
     clearInputFields();
 
@@ -41,7 +42,7 @@ class Task {
     boardPosition = false;
     timeOfCreation;
 
-    constructor(title, category, description, dueDate, urgency) {
+    constructor(title, category, urgency, description, dueDate) {
         this.title = title;
         this.category = category;
         this.description = description;
