@@ -13,6 +13,7 @@ class Task {
         this.description = description;
         this.dueDate = dueDate;
         this.urgency = urgency;
+        this.setState();
         this.timeStamp();
     }
 
@@ -35,6 +36,10 @@ class Task {
 
     setUrgency(newUrgency) {
         this.urgency = newUrgency;
+    }
+
+    setState() {
+        this.state = 'backlog';
     }
 
     /**
