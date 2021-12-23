@@ -9,21 +9,17 @@ body {
     background-color: #F6F8FC;
 }
 
-/**Priorities*/
-.priority-high {
+/**Urgencies*/
+.urgency-high {
     background: orange
 }
 
-.priority-medium {
+.urgency-middle {
     background: purple
 }
 
-.priority-low {
+.urgency-low {
     background: green
-}
-
-.category-color-blue {
-    background: lightblue
 }
 
 /**Category Colors*/
@@ -37,6 +33,10 @@ body {
 
 .category-color-managment {
     background: lightblue
+}
+
+.category-color-none {
+    background: white
 }
 
 
