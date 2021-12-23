@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/includeHTML.js"></script>
+    <script src="js/helper.class.js"></script>
+    <script src="js/mini_backend.js"></script>
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/board.css">
     <script src="js/board.js"></script>
@@ -22,7 +24,7 @@
     <div class="boardContainer">
         <div class="boardColumn center column">
             <h3>TO DO</h3>
-            <div id="BlockToDo" class="boardStatusBlock column box" ondrop="moveTo('toDo')" ondragover="allowDrop(event); addHighlight('BlockToDo')" ondragleave="removeHighlight()">
+            <div id="BlockToDo" class="boardStatusBlock column box" ondrop="moveTo('to-do')" ondragover="allowDrop(event); addHighlight('BlockToDo')" ondragleave="removeHighlight()">
             </div>
         </div>
         <div class="boardColumn center column">

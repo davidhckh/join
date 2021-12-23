@@ -8,7 +8,7 @@
 .boardContainer {
     padding-top: 5vh;
     padding-bottom: 2vh;
-    width: 100vw;
+    width: 96vw;
     max-height: 100vh;
     display: flex;
     justify-content: space-evenly;
