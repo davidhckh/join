@@ -200,6 +200,11 @@ button{
     min-width: 40%;
 }
 
+button:disabled{
+    background-color: grey;
+    color:blue;
+}
+
 /*=================================================================*/
 
 /*

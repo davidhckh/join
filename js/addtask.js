@@ -48,7 +48,6 @@ function clearInputFields() {
 
 function isFilledOut(frequenz) {
     setInterval(() => {
-        let buttonContainer = document.getElementById('buttonContainer');
         let buttonCreate = document.getElementById('buttonCreate');
         let buttonCancel = document.getElementById('buttonCancel')
 
@@ -59,15 +58,12 @@ function isFilledOut(frequenz) {
         let dueDate = document.getElementById('taskDate').value;
 
         if (title && category && urgency && description && dueDate) {
-            buttonContainer.classList.remove("hide");
-            buttonCreate.classList.remove("hide");
-            buttonCancel.classList.remove("hide");
+            buttonCreate.removeAttribute('disabled');
+            buttonCancel.removeAttribute('disabled');
         }
-
         else {
-            buttonContainer.classList.add("hide");
-            buttonCreate.classList.add("hide");
-            buttonCancel.classList.add("hide");
+           buttonCreate.setAttribute('disabled','disabled');
+            buttonCancel.setAttribute('disabled','disabled');
         }
 
 
