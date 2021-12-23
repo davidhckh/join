@@ -1,66 +1,75 @@
 let loadedTasks = [{
         'id': 0,
+        'name': 'Tina',
         'title': 'Putzen',
-        'category': 'toDo',
+        'category': 'design',
         'description': 'description Text',
         'dueDate': '17.01.2022',
-        'urgency': 'high',
+        'urgency': 'middle',
         'backlogPosition': true,
-        'boardPosition': false
+        'boardPosition': 'inProgress'
     },
     {
         'id': 1,
+        'name': 'Margreth',
         'title': 'Backen',
-        'category': 'inProgress',
+        'category': 'development',
         'description': 'description Text',
         'dueDate': '17.01.2022',
-        'urgency': 'high',
+        'urgency': 'low',
         'backlogPosition': true,
-        'boardPosition': false
+        'boardPosition': 'testing'
     },
     {
         'id': 2,
+        'name': 'Marvin',
         'title': 'Waschen',
-        'category': 'toDo',
+        'category': 'management',
         'description': 'description Text',
         'dueDate': '17.01.2022',
         'urgency': 'high',
         'backlogPosition': true,
-        'boardPosition': false
+        'boardPosition': 'toDo'
     },
     {
         'id': 3,
+        'name': 'Günther',
         'title': 'Einkaufen',
-        'category': 'toDo',
+        'category': 'none',
         'description': 'description Text',
         'dueDate': '17.01.2022',
-        'urgency': 'high',
+        'urgency': 'middle',
         'backlogPosition': true,
-        'boardPosition': false
+        'boardPosition': 'inProgress'
     },
     {
         'id': 4,
+        'name': 'Hans',
         'title': 'Müll rausbringen',
-        'category': 'toDo',
+        'category': 'design',
         'description': 'description Text',
         'dueDate': '17.01.2022',
-        'urgency': 'high',
+        'urgency': 'low',
         'backlogPosition': true,
-        'boardPosition': false
+        'boardPosition': 'toDo'
     },
     {
         'id': 5,
+        'name': 'Peter',
         'title': 'Staubsaugen',
-        'category': 'toDo',
+        'category': 'management',
         'description': 'description Text',
         'dueDate': '17.01.2022',
         'urgency': 'high',
         'backlogPosition': true,
-        'boardPosition': false
+        'boardPosition': 'toDo'
     }
 ];
 
 let currentDraggedElement;
+let currentTaskUrgencyColor;
+let currentTaskCategoryColor;
+
 
 /**
  * function which is loaded at first and starts other functions
@@ -93,7 +102,7 @@ function startDragging(id) {
  * @param {string} targetCategory - 
  */
 function moveTo(targetCategory) {
-    loadedTasks[currentDraggedElement]['category'] = targetCategory;
+    loadedTasks[currentDraggedElement]['boardPosition'] = targetCategory;
     boardInit();
 }
 
@@ -123,7 +132,27 @@ function removeHighlight() {
  * @returns a html element as string
  */
 function generateBoardTask(task) {
-    return `<div draggable="true" ondragstart="startDragging(${task['id']})" ondragend="removeHighlight()" class="dragItem box">${task['title']}</div> `
+    return `
+    <div draggable="true" ondragstart="startDragging(${task['id']})" ondragend="removeHighlight()" class="dragItem box category-color-${task['category']}">
+                    <div class="boardUrgency urgency-${task['urgency']}">
+                    </div>
+                    <div class="boardImg">
+                    </div>
+                    <div class="boardText">
+                        <div class="textName">${task['name']} </div>
+                        <div class="textTitle">${task['title']}</div>
+                    </div>
+                </div>
+    `
+}
+
+
+/**
+ * function to clear a specific block
+ * @param {string} blockName - name of the block which will be cleared
+ */
+function clearBoard(blockName) {
+    document.getElementById(blockName).innerHTML = '';
 }
 
 /**
@@ -131,8 +160,8 @@ function generateBoardTask(task) {
  * deletes the content of the blockToDo and energizes new content from the results of the filtering
  */
 function loadTodos() {
-    let tasks = loadedTasks.filter(t => t['category'] == 'toDo');
-    document.getElementById('BlockToDo').innerHTML = '';
+    let tasks = loadedTasks.filter(t => t['boardPosition'] == 'toDo');
+    clearBoard('BlockToDo');
     tasks.forEach(function(task) {
         document.getElementById('BlockToDo').innerHTML += generateBoardTask(task);
     });
@@ -143,8 +172,8 @@ function loadTodos() {
  * deletes the content of the blockInProgress and energizes new content from the results of the filtering
  */
 function loadInProgress() {
-    let tasks = loadedTasks.filter(t => t['category'] == 'inProgress');
-    document.getElementById('BlockInProgress').innerHTML = '';
+    let tasks = loadedTasks.filter(t => t['boardPosition'] == 'inProgress');
+    clearBoard('BlockInProgress');
     tasks.forEach(function(task) {
         document.getElementById('BlockInProgress').innerHTML += generateBoardTask(task);
     });
@@ -155,8 +184,8 @@ function loadInProgress() {
  * deletes the content of the blockTesting and energizes new content from the results of the filtering
  */
 function loadTesting() {
-    let tasks = loadedTasks.filter(t => t['category'] == 'testing');
-    document.getElementById('BlockTesting').innerHTML = '';
+    let tasks = loadedTasks.filter(t => t['boardPosition'] == 'testing');
+    clearBoard('BlockTesting');
     tasks.forEach(function(task) {
         document.getElementById('BlockTesting').innerHTML += generateBoardTask(task);
     });
@@ -167,8 +196,8 @@ function loadTesting() {
  * deletes the content of the blockDone and energizes new content from the results of the filtering
  */
 function loadDone() {
-    let tasks = loadedTasks.filter(t => t['category'] == 'done');
-    document.getElementById('BlockDone').innerHTML = '';
+    let tasks = loadedTasks.filter(t => t['boardPosition'] == 'done');
+    clearBoard('BlockDone');
     tasks.forEach(function(task) {
         document.getElementById('BlockDone').innerHTML += generateBoardTask(task);
     });

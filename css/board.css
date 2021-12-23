@@ -18,24 +18,7 @@
 .boardStatusBlock {
     width: 15vw;
     height: 75vh;
-}
-
-.dragItem {
-    margin: 0 10px;
-    margin-top: 10px;
-    padding: 1em;
-    word-wrap: break-word;
-    cursor: pointer;
-    border: 2px solid #ebebeb !important;
-    background-color: #f6f6f6 !important;
-    transition: border 225ms ease-in-out;
-    box-shadow: unset !important
-}
-
-.dragItem:hover {
-    filter: brightness(0.95);
-    border: 2px solid #00127F !important;
-    transition: all 225ms ease-in-out;
+    padding-bottom: 1em;
 }
 
 .dragAreaHighlight {
@@ -48,19 +31,18 @@
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .boardContainer {
-        padding-top: 120px;
-        width: 95vw;
-        height: 80vh;
+        width: 92vw;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: column;
     }
     .boardStatusBlock {
         width: 75vw;
-        height: 20vh;
+        min-height: 20vh;
+        height: auto;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
@@ -68,7 +50,78 @@
         flex-wrap: wrap;
     }
     .dragItem {
-        width: 15%;
         margin: 0.2em;
     }
+    .boardImg {
+        background: url(../assets/draggable-vertical.png) !important;
+        background-size: contain !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+    .boardUrgency {
+        min-height: 100%;
+        height: auto !important;
+        min-width: 15px;
+    }
+    .boardText {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-all;
+        padding-right: 1em;
+    }
+}
+
+.boardUrgency {
+    min-width: 15px;
+    height: 100%;
+}
+
+.dragItem {
+    margin: 0 10px;
+    margin-top: 10px;
+    word-wrap: break-word;
+    cursor: pointer;
+    border: 2px solid #ebebeb !important;
+    transition: border 225ms ease-in-out;
+    box-shadow: unset !important;
+    display: flex;
+    padding: 0;
+    overflow: auto;
+}
+
+.dragItem:hover {
+    filter: brightness(0.95);
+    border: 2px solid #00127F !important;
+    transition: all 225ms ease-in-out;
+}
+
+.boardImg {
+    min-width: 40px;
+    height: auto;
+    background: url(../assets/draggable.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0.3em;
+}
+
+.boardText {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    padding-right: 1em;
+}
+
+.textName {
+    font-size: large;
+    margin-bottom: 0.1em;
+}
+
+.textTitle {
+    font-size: medium;
 }
