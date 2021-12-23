@@ -1,7 +1,10 @@
 
 'use strict';
 
-let tasks = [];
+
+setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
+
+let helper=new Helper();
 
 /**
  * function reads the values of input and than pushes a new Task in tasks.
@@ -14,7 +17,10 @@ function addNewTask() {
     let description = document.getElementById('taskDescription');
     let dueDate = document.getElementById('taskDate');
   //  let assigned = document.getElementById('taskAssigned');  not working yet
-    tasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value));
+    
+    helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value));
+    helper.uploadToServer();
+    console.log(helper.allTasks);
     clearInputFields();
 
 }
@@ -32,54 +38,7 @@ function clearInputFields() {
 }
 
 
-class Task {
-    title;
-    category;
-    description;
-    dueDate;
-    urgency;
-    backlogPosition = true;
-    boardPosition = false;
-    timeOfCreation;
 
-    constructor(title, category, urgency, description, dueDate) {
-        this.title = title;
-        this.category = category;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.urgency = urgency;
-        this.timeStamp();
-    }
-
-
-    setTitle(newTitle) {
-        this.title = newTitle;
-    }
-
-    setCategory(newCategory) {
-        this.Category = newCategory;
-    }
-
-    setDescription(newDescription) {
-        this.description = newDescription;
-    }
-
-    setDueDate(newDueDate) {
-        this.dueDate = newDueDate;
-    }
-
-    setUrgency(newUrgency) {
-        this.urgency = newUrgency;
-    }
-
-    /**
-     * the object should memorize when it was created
-     */
-
-    timeStamp() {
-        this.timeOfCreation = new Date();
-    }
-}
 
 /**
  * functions checks every frequenz miliseconds if the form was filled out (!!!!NO VALIDATION YET!!!!)
