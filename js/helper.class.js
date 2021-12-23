@@ -3,20 +3,19 @@ class Helper {
     allTasks = [];
 
     constructor() {
-        this.getDataFromServer();
+
     }
 
-     async getDataFromServer(){
+    async getDataFromServer() {
         await downloadFromServer();
-       this.allTasks=backend.getItem('allTasks') || [];
+        this.allTasks = backend.getItem('allTasks') || [];
     }
 
-    
     /**
      * uploads the current version of array allTasks to the backend. they key is allTasks.
      */
     uploadToServer() {
-        backend.setItem('allTasks',this.allTasks);
+        backend.setItem('allTasks', this.allTasks);
     }
 
     /**
@@ -26,7 +25,7 @@ class Helper {
      * @returns the task with the given id
      */
 
-    filterIDs (array,id) {
+    filterIDs(array, id) {
         return array.filter(task => task.timeOfCreation == id);
     }
 
@@ -37,28 +36,28 @@ class Helper {
      * @param {string} manipulation ur editation to the task at the taskSection
      */
 
-    updateStatus(taskID,taskSection,manipulation) {
-      let index = this.allTasks.findIndex(task => task.timeOfCreation == taskID);
-      this.allTasks[index][taskSection] = manipulation;
-      this.uploadToServer();
-    } 
+    updateStatus(taskID, taskSection, manipulation) {
+        let index = this.allTasks.findIndex(task => task.timeOfCreation == taskID);
+        this.allTasks[index][taskSection] = manipulation;
+        this.uploadToServer();
+    }
 
     /**
      * the function delets the task with the task id selected
      * @param {int} taskID timeOfCreatioon of the task u want to deleteOneTask
      */
 
-    deleteOneTask(taskID){
+    deleteOneTask(taskID) {
         let index = this.allTasks.findIndex(task => task.timeOfCreation == taskID);
-        this.allTasks.splice(index,1);
+        this.allTasks.splice(index, 1);
     }
 
     /**
      * delets all tasks stored in the key allTasks
      */
 
-    deleteAllTasks(){
+    deleteAllTasks() {
         backend.deleteItem('allTasks');
-        this.allTasks=[];
+        this.allTasks = [];
     }
 }

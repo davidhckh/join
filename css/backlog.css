@@ -74,6 +74,7 @@ h5 {
 .assigned-to-details {
     word-break: break-all;
     justify-content: center;
+    margin-right: 10px;
 }
 
 .assigned-to-name {
