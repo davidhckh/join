@@ -1,16 +1,6 @@
 let jsonFromServer = {};
 let BASE_SERVER_URL;
 
-/**
- * Set BASE_SERVER_URL
- */
-if(window.location.origin.includes('https://join-iota.vercel.app/')) {
-    BASE_SERVER_URL = 'https://join-iota.vercel.app/smallest_backend_ever'
-} else {
-    BASE_SERVER_URL = 'http://gruppe-142.developerakademie.net/smallest_backend_ever';
-}
-
-
 const backend = {
     setItem: function(key, item) {
         jsonFromServer[key] = item;
@@ -35,7 +25,10 @@ async function downloadFromServer() {
     let result = await loadJSONFromServer();
     jsonFromServer = JSON.parse(result);
     console.log('Loaded', result);
-    
+}
+
+function setURL(url) {
+    BASE_SERVER_URL = url;
 }
 
 /**

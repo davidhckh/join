@@ -1,9 +1,6 @@
 
 'use strict';
 
-
-setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
-
 let helper=new Helper();
 
 /**
