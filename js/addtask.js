@@ -4,20 +4,21 @@
 
 setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
 
-let helper=new Helper();
+let helper = new Helper();
 
 /**
  * function reads the values of input and than pushes a new Task in tasks.
  */
 
-function addNewTask() {
+async function addNewTask() {
     let title = document.getElementById('taskTitle');
     let category = document.getElementById('taskCategory');
     let urgency = document.getElementById('taskUrgency');
     let description = document.getElementById('taskDescription');
     let dueDate = document.getElementById('taskDate');
-  //  let assigned = document.getElementById('taskAssigned');  not working yet
-    
+    //  let assigned = document.getElementById('taskAssigned');  not working yet
+
+    await helper.getDataFromServer()
     helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value));
     helper.uploadToServer();
     console.log(helper.allTasks);
@@ -62,8 +63,8 @@ function isFilledOut(frequenz) {
             buttonCancel.removeAttribute('disabled');
         }
         else {
-           buttonCreate.setAttribute('disabled','disabled');
-            buttonCancel.setAttribute('disabled','disabled');
+            buttonCreate.setAttribute('disabled', 'disabled');
+            buttonCancel.setAttribute('disabled', 'disabled');
         }
 
 
