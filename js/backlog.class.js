@@ -1,6 +1,11 @@
+let backlog;
+
+/**
+ * Setup Backlog on load
+ */
 window.addEventListener('load', function () {
-    let backlog = new Backlog();
-})
+    backlog = new Backlog();
+});
 
 class Backlog {
     renderContainer = document.getElementById('render-container');
@@ -15,19 +20,21 @@ class Backlog {
         this.setup();
     }
 
+    /**
+     * Render after load
+     */
     async setup() {
         await this.helper.getDataFromServer();
 
         this.render();
-    }
-
+    };
 
     render() {
         this.renderContainer.innerHTML = '';
-        
         this.helper.allTasks.forEach((task) => {
-            this.renderContainer.insertAdjacentHTML('beforeend',
-                `<div class="entry-container box row">
+            if(task.state === 'backlog') {
+                this.renderContainer.insertAdjacentHTML('beforeend',
+                `<div class="entry-container box row" onclick="backlog.addToBoard(${task.timeOfCreation})">
                     <div class="urgency-color urgency-${task.urgency}"></div>
                     <span class="responsive-header">Assigned to:</span>
                     <div class="assigned-to-container row">
@@ -41,16 +48,34 @@ class Backlog {
                     <div class="category-container">
                         <span>${this.capitalizeFirstLetter(task.category)}</span>
                     </div>
-                    <span class="responsive-header">Details:</span>
+                    <span class="responsive-header">Title:</span>
                     <div class="details-container">
-                        <span>${this.capitalizeFirstLetter(task.description)}</span>
+                        <span>${this.capitalizeFirstLetter(task.title)}</span>
                     </div>
+                    <div class="add-to-board-container">+</div>
                 </div>`
             );
+            };
         });
-    }
+    };
 
+    /**
+     * Add Item to board and upload to server + render after
+     */
+    addToBoard(timeOfCreation) {
+        const item = this.helper.filterIDs(this.helper.allTasks, timeOfCreation)[0];
+        const itemIndex = this.helper.allTasks.indexOf(item);
+
+        this.helper.allTasks[itemIndex].state = 'to-do';
+
+        this.render();
+        this.helper.uploadToServer();
+    };
+
+    /**
+     * Capitalize first letter to display from JSON
+     */
     capitalizeFirstLetter(str) {
         return str[0].toUpperCase() + str.slice(1);
-    }
-}
+    };
+};
