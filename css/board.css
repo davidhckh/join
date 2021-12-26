@@ -48,12 +48,6 @@
         margin: 0.2em 0 !important;
         width: 90%;
     }
-    .boardImg {
-        background: url(../assets/draggable-vertical.png) !important;
-        background-size: contain !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-    }
     .boardUrgency {
         min-height: 100%;
         height: auto !important;
@@ -96,13 +90,14 @@
 }
 
 .boardImg {
-    min-width: 40px;
+    min-width: 30px;
     height: auto;
     background: url(../assets/draggable.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     margin: 0.3em;
+    opacity: 0.1;
 }
 
 .boardText {
