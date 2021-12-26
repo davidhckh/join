@@ -40,7 +40,18 @@
         <div class="boardColumn center column">
             <h3>DONE</h3>
             <div id="BlockDone" class="boardStatusBlock column box " ondrop="moveTo('done')" ondragover="allowDrop(event); addHighlight('BlockDone')" ondragleave="removeHighlight()">
-
+                <div draggable="true" ondragstart="startDragging(1)" ondragend="removeHighlight()" class="dragItem box category-color-management">
+                    <div class="boardUrgency urgency-high">
+                    </div>
+                    <div class="boardImg">
+                    </div>
+                    <div class="boardText">
+                        <div class="textName">text Name </div>
+                        <div class="textTitle">text Title</div>
+                    </div>
+                    <button class="taskDeleteBtn">
+                    </button>
+                </div>
             </div>
         </div>
 

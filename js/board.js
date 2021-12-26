@@ -23,7 +23,7 @@ function allowDrop(ev) {
 /**
  * called when an element starts dragging
  * saves the timeOfCreation of the actual moved task into a local variable
- * @param {number} timeOfCreation - the time of creation from the todo which has startet with dragging 
+ * @param {number} timeOfCreation - the time of creation, which is used as id, from the task which has startet with dragging 
  */
 function startDragging(timeOfCreation) {
     currentDraggedElement = timeOfCreation;
@@ -37,10 +37,23 @@ function startDragging(timeOfCreation) {
  */
 async function moveTo(targetCategory) {
     helper.updateStatus(currentDraggedElement, 'state', targetCategory);
-    //let draggedTask = loadedTasks.find(el => el.timeOfCreation === currentDraggedElement);
-    //draggedTask.state = targetCategory;
     sleep(300);
     boardInit();
+}
+
+/**
+ * when a task is in category 'done' you are able to delete it with this
+ * function
+ * @param {number} timeOfCreation - the time of creation, which is used as id, from the task which will be deleted
+ */
+async function deleteTask(timeOfCreation) {
+    helper.deleteOneTask(timeOfCreation);
+    sleep(300);
+    boardInit();
+}
+
+function reloadSite() {
+
 }
 
 /**
@@ -81,18 +94,26 @@ function removeHighlight() {
  * @returns a html element as string
  */
 function generateBoardTask(task) {
-    return `
+    let finishDate = reformatDate(task['dueDate']);
+    let returnString = `
     <div draggable="true" ondragstart="startDragging(${task['timeOfCreation']})" ondragend="removeHighlight()" class="dragItem box category-color-${task['category']}">
-                    <div class="boardUrgency urgency-${task['urgency']}">
+                    <div class="fl-start">
+    <div class="boardUrgency urgency-${task['urgency']}">
                     </div>
                     <div class="boardImg">
                     </div>
                     <div class="boardText">
                         <div class="textName">${task['name']} </div>
                         <div class="textTitle">${task['title']}</div>
+                        <div class="textTitle">${finishDate}</div>
                     </div>
-                </div>
-    `
+                    </div>
+                    `;
+    if (task.state == 'done') {
+        returnString += `<button onclick="deleteTask(${task['timeOfCreation']})" class="taskDeleteBtn"></button>`;
+    }
+    returnString += `</div>`;
+    return returnString;
 }
 
 
@@ -163,5 +184,15 @@ async function loadServerData() {
     helper.allTasks.forEach(task => {
         loadedTasks.push(task);
     });
+}
 
+/**
+ * function to change dateformat
+ * @param {string} dateStr - datestring in Format yyyy-mm-dd
+ * @returns datestring in format dd.mm.yy
+ */
+function reformatDate(dateStr) {
+    let dArr = dateStr.split("-");
+
+    return dArr[2] + "." + dArr[1] + "." + dArr[0].substring(2);
 }

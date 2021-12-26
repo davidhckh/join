@@ -1,4 +1,3 @@
-
 'use strict';
 
 
@@ -61,8 +60,7 @@ function isFilledOut(frequenz) {
         if (title && category && urgency && description && dueDate) {
             buttonCreate.removeAttribute('disabled');
             buttonCancel.removeAttribute('disabled');
-        }
-        else {
+        } else {
             buttonCreate.setAttribute('disabled', 'disabled');
             buttonCancel.setAttribute('disabled', 'disabled');
         }

@@ -50,6 +50,7 @@ class Helper {
     deleteOneTask(taskID) {
         let index = this.allTasks.findIndex(task => task.timeOfCreation == taskID);
         this.allTasks.splice(index, 1);
+        this.uploadToServer();
     }
 
     /**

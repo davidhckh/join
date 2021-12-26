@@ -14,15 +14,15 @@ body {
 /**Urgencies*/
 
 .urgency-high {
-    background: orange !important;
+    background: rgb(255, 0, 0) !important;
 }
 
 .urgency-middle {
-    background: purple !important;
+    background: rgb(255, 238, 1) !important;
 }
 
 .urgency-low {
-    background: green !important;
+    background: rgb(1, 250, 1) !important;
 }
 
 
