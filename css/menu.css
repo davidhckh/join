@@ -12,6 +12,7 @@
     flex-direction: column;
     position: fixed;
     box-shadow: #EDEDED 10px 0 10px;
+    z-index: 2;
 }
 
 a {
@@ -67,37 +68,84 @@ a {
 }
 
 /**Responsive*/
-
-/**Menu Icon*/
-#reponsive-menu-icon {
-    height: 45px;
-    cursor: pointer;
-    display: none
+#responsive-menu {
+    display: flex;
+    height: calc(100vh - 75px);
+    width: 100%;
+    background: #1E3190;
+    z-index: 2;
+    position: fixed;
+    display: none;
+    bottom: 0;
 }
 
-#reponsive-menu-icon:hover {
-    opacity: 0.5
+#responsive-menu a {
+    margin: 20px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/**Menu Icon*/
+#open-menu-button {
+    display: none;
+    border-radius: 50%;
+}
+
+#open-menu-button img {
+    height: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#close-menu-button {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: -75px;
+    background: #1E3190
+}
+
+#close-menu-button img {
+    height: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#open-menu-button{
+    display: none;
+}
+
+#responsive-menu:target {
+    display: flex; 
+}
+
+@media(min-width: 1000px) {
+    #responsive-menu {
+        display: none !important;
+    }
 }
 
 @media(max-width: 1000px) {
     #menu-container {
-        height: 45px;
+        height: 35px;
         padding: 20px;
         width: calc(100% - 40px);
-        position: relative;
         align-items: center;
         box-shadow: #EDEDED 0 10px 10px;
         flex-direction: row;
-    }
-
-    #menu-logo {
-        height: 40px;
-        margin: auto 0;
-        margin-right: auto;
+        box-shadow:none;
+        position: fixed;
+        top: 0;
     }
 
     #menu-push {
-        display: none;
+        height: 75px;
+    }
+
+    #menu-logo {
+        height: 35px;
+        margin: auto 0;
+        margin-right: auto;
     }
 
     #menu-points-container {
@@ -105,11 +153,27 @@ a {
     }
 
     #profile-picture {
-        height: 40px;
+        height: 35px;
         margin-right: 20px;
     }
 
     #reponsive-menu-icon {
         display: unset
+    }
+
+    #open-menu-button {
+        display: unset;
+    }
+
+    #open-menu-button img {
+        display: unset;
+    }
+
+    #close-menu-button {
+        display: unset;
+    }
+
+    #close-menu-button img {
+        display: unset;
     }
 }
