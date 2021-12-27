@@ -12,12 +12,12 @@
     max-height: 100vh;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .boardStatusBlock {
     width: 19vw;
-    height: 75vh;
+    min-height: 75vh;
     padding-bottom: 1em;
 }
 
@@ -73,7 +73,7 @@
     margin: 0 10px;
     margin-top: 10px;
     word-wrap: break-word;
-    cursor: pointer;
+    cursor: grab;
     border: 2px solid #ebebeb !important;
     transition: border 225ms ease-in-out;
     box-shadow: unset !important;
@@ -134,6 +134,26 @@
 }
 
 .taskDeleteBtn:hover {
+    filter: brightness(0.5);
+    cursor: pointer;
+}
+
+.taskBackToBacklogBtn {
+    display: none;
+    align-items: center;
+    background: url(../assets/back.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 34%;
+    border: 5px solid transparent;
+}
+
+.dragItem:hover .taskBackToBacklogBtn {
+    display: flex;
+}
+
+.taskBackToBacklogBtn:hover {
     filter: brightness(0.5);
     cursor: pointer;
 }

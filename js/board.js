@@ -3,6 +3,20 @@ let helper;
 let currentDraggedElement;
 let currentTaskUrgencyColor;
 let currentTaskCategoryColor;
+let ragging = false;
+let language = 'german';
+let languages = {
+    'german': [{
+        'taskDelete': 'Aufgabe endgültig entfernen',
+        'taskBackToBacklog': 'Aufgabe in das Backlog verschieben',
+        'taskInformation': 'Klicken für mehr Informationen ein- und ausblenden',
+        'taskAssignedTo': 'Zugewiesen an: ',
+        'taskUrgency': 'Dringlichkeit: ',
+        'taskCategory': 'Kategorie: ',
+        'taskDescription': 'Beschreibung: '
+    }]
+};
+
 
 /**
  * function which is loaded at first and starts other functions
@@ -27,6 +41,7 @@ function allowDrop(ev) {
  */
 function startDragging(timeOfCreation) {
     currentDraggedElement = timeOfCreation;
+
 }
 
 /**
@@ -37,8 +52,18 @@ function startDragging(timeOfCreation) {
  */
 async function moveTo(targetCategory) {
     helper.updateStatus(currentDraggedElement, 'state', targetCategory);
-    sleep(300);
-    boardInit();
+    let task = loadedTasks.findIndex(task => task.timeOfCreation == currentDraggedElement)
+    task.state = targetCategory;
+    reloadColumns();
+}
+
+/**
+ * when a task is in category 'to-do' you are able to send it back to backlog
+ * @param {number} timeOfCreation - the time of creation, which is used as id, from the task which will be send to backlog 
+ */
+async function sendTaskToBacklog(timeOfCreation) {
+    helper.updateStatus(timeOfCreation, 'state', 'backlog');
+    reloadColumns();
 }
 
 /**
@@ -52,7 +77,14 @@ async function deleteTask(timeOfCreation) {
     boardInit();
 }
 
-function reloadSite() {
+/**
+ * function to reload all columns when a task has changed
+ */
+async function reloadColumns() {
+    loadTodos();
+    loadInProgress();
+    loadTesting();
+    loadDone();
 
 }
 
@@ -88,6 +120,16 @@ function removeHighlight() {
     document.getElementById('BlockDone').classList.remove('dragAreaHighlight');
 }
 
+//todo: if task deleted don not call this function
+/**
+ * toggles the display to none. 
+ * so the further informations can be shown or hide
+ * @param {number} timeOfCreation - the time of creation, which is used as id, from the task which will show more information
+ */
+function toggleHide(timeOfCreation) {
+    document.getElementById(timeOfCreation).classList.toggle('hide');
+}
+
 /**
  * generates a html element which contains the informations from a task
  * @param {array} task 
@@ -96,26 +138,48 @@ function removeHighlight() {
 function generateBoardTask(task) {
     let finishDate = reformatDate(task['dueDate']);
     let returnString = `
-    <div draggable="true" ondragstart="startDragging(${task['timeOfCreation']})" ondragend="removeHighlight()" class="dragItem box category-color-${task['category']}">
+    <div draggable="true" onClick="toggleHide(${task['timeOfCreation']})"
+     ondragstart="startDragging(${task['timeOfCreation']})" ondragend="removeHighlight()" 
+     class="dragItem box category-color-${task['category']}" title="${languages[language][0].taskInformation}">
                     <div class="fl-start">
     <div class="boardUrgency urgency-${task['urgency']}">
                     </div>
                     <div class="boardImg">
                     </div>
                     <div class="boardText">
-                        <div class="textName">${task['name']} </div>
                         <div class="textTitle">${task['title']}</div>
                         <div class="textTitle">${finishDate}</div>
+                        <div id="${task['timeOfCreation']}" class="hide">
+                        <p>${languages[language][0].taskAssignedTo}Hannelore</p>
+                        <p>${languages[language][0].taskUrgency}${task['urgency']}</p>
+                        <p>${languages[language][0].taskCategory}${task['category']}</p>
+                        <p>${languages[language][0].taskDescription}${task['description']}</p>
+                        </div>
                     </div>
                     </div>
                     `;
-    if (task.state == 'done') {
-        returnString += `<button onclick="deleteTask(${task['timeOfCreation']})" class="taskDeleteBtn"></button>`;
-    }
+    returnString += addButton(task);
     returnString += `</div>`;
     return returnString;
 }
 
+/**
+ * returns the html string from a button if the task state is 'done' or 'to-do'
+ * in case of 'to-do' returns a button to send the task back to backlog
+ * in case of 'done' returns a button to delete the task finally
+ * @param {array} task - single task 
+ * @returns 
+ */
+function addButton(task) {
+    let returnString = '';
+    if (task.state == 'done') {
+        returnString = `<button onclick="deleteTask(${task['timeOfCreation']})" class="taskDeleteBtn" title="${languages[language][0].taskDelete}"></button>`;
+    }
+    if (task.state == 'to-do') {
+        returnString = `<button onclick="sendTaskToBacklog(${task['timeOfCreation']})" class="taskBackToBacklogBtn" title="${languages[language][0].taskBackToBacklog}"></button>`;
+    }
+    return returnString;
+}
 
 /**
  * function to clear a specific block
@@ -184,6 +248,7 @@ async function loadServerData() {
     helper.allTasks.forEach(task => {
         loadedTasks.push(task);
     });
+    console.table(loadedTasks);
 }
 
 /**
