@@ -95,6 +95,9 @@ class Helper {
         this.uploadToServer();
     }
 
+    /**
+     *
+     */
     mailExists(mail) {
         console.log(this.allTasks)
         console.log(this.allUsers.find((user) => user.mail == mail))
