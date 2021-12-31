@@ -6,7 +6,7 @@ class Helper {
 
     }
 
-    async getDataFromServer() {
+    async getTasksFromServer() {
         await downloadFromServer();
         this.allTasks = backend.getItem('allTasks') || [];
     }
