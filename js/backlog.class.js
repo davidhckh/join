@@ -18,6 +18,8 @@ class Backlog {
         this.helper = new Helper();
 
         this.setup();
+
+        //this.helper.createNewUser('test', 'tes2t@test.de')
     }
 
     /**
@@ -63,7 +65,7 @@ class Backlog {
      * Add Item to board and upload to server + render after
      */
     addToBoard(timeOfCreation) {
-        const item = this.helper.filterIDs(this.helper.allTasks, timeOfCreation)[0];
+        const item = this.helper.filterTaskIDs(this.helper.allTasks, timeOfCreation)[0];
         const itemIndex = this.helper.allTasks.indexOf(item);
 
         this.helper.allTasks[itemIndex].state = 'to-do';

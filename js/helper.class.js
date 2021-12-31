@@ -1,22 +1,35 @@
 class Helper {
 
     allTasks = [];
+    allUsers = [];
 
     constructor() {
 
     }
 
-    async getTasksFromServer() {
+    async getDataFromServer() {
         await downloadFromServer();
-        this.allTasks = backend.getItem('allTasks') || [];
+
+        let data = backend.getItem('data');
+        console.log(data)
+        if(data) {
+            this.allTasks = data.allTasks;
+            this.allUsers = data.allUsers;
+        }
     }
 
     /**
-     * uploads the current version of array allTasks to the backend. they key is allTasks.
-     */
+    * uploads the current version of array allTasks and allUsers to the backend
+    */
     uploadToServer() {
-        backend.setItem('allTasks', this.allTasks);
+        backend.setItem('data', {
+            allTasks: this.allTasks,
+            allUsers: this.allUsers
+        });
     }
+
+
+    /**----------------------------------- Tasks ---------------------------------------------- */
 
     /**
      * 
@@ -25,7 +38,7 @@ class Helper {
      * @returns the task with the given id
      */
 
-    filterIDs(array, id) {
+    filterTaskIDs(array, id) {
         return array.filter(task => task.timeOfCreation == id);
     }
 
@@ -60,5 +73,34 @@ class Helper {
     deleteAllTasks() {
         backend.deleteItem('allTasks');
         this.allTasks = [];
+    }
+
+
+    /**----------------------------------- Users ---------------------------------------------- */
+
+    /**
+    * uploads the current version of array allUsers to the backend.
+    */
+    createNewUser(name, mail, image) {
+        if (!image) {
+            image = 'assets/empty-profile-picture.png';
+        };
+
+        this.allUsers.push(new User(
+            name,
+            mail,
+            image
+        ));
+
+        this.uploadToServer();
+    }
+
+    mailExists(mail) {
+        console.log(this.allTasks)
+        console.log(this.allUsers.find((user) => user.mail == mail))
+    }
+
+    getUserDetails(mail) {
+
     }
 }

@@ -17,10 +17,9 @@ async function addNewTask() {
     let dueDate = document.getElementById('taskDate');
     //  let assigned = document.getElementById('taskAssigned');  not working yet
 
-    await helper.getTasksFromServer()
+    await helper.getDataFromServer()
     helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value));
     helper.uploadToServer();
-    console.log(helper.allTasks);
     clearInputFields();
 
 }
