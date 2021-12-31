@@ -7,12 +7,13 @@ class Task {
     backlogPosition = true;
     timeOfCreation;
 
-    constructor(title, category, urgency, description, dueDate) {
+    constructor(title, category, urgency, description, dueDate, assignedTo) {
         this.title = title;
         this.category = category;
         this.description = description;
         this.dueDate = dueDate;
         this.urgency = urgency;
+        this.assignedTo = assignedTo
         this.setState();
         this.timeStamp();
     }

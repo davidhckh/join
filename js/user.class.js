@@ -3,11 +3,11 @@ class User {
         this.name = name,
             this.mail = mail,
 
-            this.setImage();
+            this.setImage(image);
     };
 
     setImage(image) {
-        if (image) {
+        if(image) {
             this.image = image
         } else {
             this.image = 'assets/empty-profile-picture.png';

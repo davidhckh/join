@@ -18,12 +18,6 @@ class Backlog {
         this.helper = new Helper();
 
         this.setup();
-
-        this.helper.createNewUser('test', 'tes2t@test.de')
-        this.helper.createNewUser('test', 'tes2dasdasdt@test.de')
-
-
-        console.log(this.helper)
     }
 
     /**
@@ -44,10 +38,10 @@ class Backlog {
                     <div class="urgency-color urgency-${task.urgency}"></div>
                     <span class="responsive-header">Assigned to:</span>
                     <div class="assigned-to-container row">
-                        <img class="assigned-to-image" src="assets/empty-profile-picture.png">
+                        <img class="assigned-to-image" src="${task.assignedTo.image}">
                         <div class="column assigned-to-details">
-                            <span class="assigned-to-name">Max Mustermann</span>
-                            <span class="assigned-to-mail">max.mustermann@google.de</span>
+                            <span class="assigned-to-name">${task.assignedTo.name}</span>
+                            <span class="assigned-to-mail">${task.assignedTo.mail}</span>
                         </div>
                     </div>
                     <span class="responsive-header">Category:</span>

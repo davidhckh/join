@@ -4,6 +4,7 @@
 setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
 
 let helper = new Helper();
+let selectedUser;
 
 /**
  * function reads the values of input and than pushes a new Task in tasks.
@@ -15,25 +16,27 @@ async function addNewTask() {
     let urgency = document.getElementById('taskUrgency');
     let description = document.getElementById('taskDescription');
     let dueDate = document.getElementById('taskDate');
-    //  let assigned = document.getElementById('taskAssigned');  not working yet
+    let assignedTo = selectedUser;
 
     await helper.getDataFromServer()
-    helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value));
+    helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
     helper.uploadToServer();
-    clearInputFields();
 
+    resetFields();
 }
 
 /**
  * function clears the input fields
  */
 
-function clearInputFields() {
+function resetFields() {
     document.getElementById('taskTitle').value = "";
-    document.getElementById('taskCategory').value = "";
-    document.getElementById('taskUrgency').value = "";
+    document.getElementById('taskCategory').selection = "None";
+    document.getElementById('taskUrgency').selection = "Low";
     document.getElementById('taskDescription').value = "";
     document.getElementById('taskDate').value = "";
+
+    setSelectedUser(0);
 }
 
 
@@ -68,9 +71,47 @@ function isFilledOut(frequenz) {
     }, frequenz);
 }
 
+/**
+ * Render users into Assign-To container
+ */
+function renderUsers() {
+    let renderContainer = document.getElementById('taskAssigned')
 
-function init() {
+    renderContainer.innerHTML = ''
+
+    for(let i = 0; i < helper.allUsers.length; i++) {
+        renderContainer.innerHTML += 
+        `<div id="assign-to-container-${i}" class="assign-to-container column center" onclick="setSelectedUser(${i})">
+            <img src="${helper.allUsers[i].image}">
+            <span>${helper.allUsers[i].name}</span>
+        </div>`
+    }
+}
+
+function setSelectedUser(index) {
+    clearSelectedUsers();
+
+    document.getElementById('assign-to-container-' + index).classList.add('selected-assign-to-container');
+
+    selectedUser = helper.allUsers[index]
+}
+
+function clearSelectedUsers() {
+    for(let i = 0; i < helper.allUsers.length; i++) {
+        document.getElementById('assign-to-container-' + i).classList.remove('selected-assign-to-container');
+    }
+}
+
+
+async function init() {
     let checkFrequenz = 50;
+
     includeHTML();
     isFilledOut(checkFrequenz);
+    
+    /**Get Users from server to setup assign-to container */
+    await helper.getDataFromServer();
+    renderUsers();
+
+    resetFields();
 }
