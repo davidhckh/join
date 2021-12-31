@@ -11,7 +11,7 @@ class Helper {
         await downloadFromServer();
 
         let data = backend.getItem('data');
-        console.log(data)
+
         if(data) {
             this.allTasks = data.allTasks;
             this.allUsers = data.allUsers;
@@ -81,29 +81,28 @@ class Helper {
     /**
     * uploads the current version of array allUsers to the backend.
     */
-    createNewUser(name, mail, image) {
-        if (!image) {
-            image = 'assets/empty-profile-picture.png';
-        };
+    async createNewUser(name, mail, image) {
+        await this.getDataFromServer();
 
-        this.allUsers.push(new User(
-            name,
-            mail,
-            image
-        ));
-
-        this.uploadToServer();
+        if(!this.mailExists(mail)) {
+            this.allUsers.push(new User(
+                name,
+                mail,
+                image
+            ));
+    
+            this.uploadToServer();
+        }
     }
 
     /**
-     * TBD
+     * Checks if mail exists to prevent duplicate users
      */
     mailExists(mail) {
-        console.log(this.allTasks)
-        console.log(this.allUsers.find((user) => user.mail == mail))
-    }
-
-    getUserDetails(mail) {
-
+        if(this.allUsers.find((user) => user.mail == mail)) {
+            return true;
+        } else {
+            return false;
+        };
     }
 }

@@ -19,7 +19,11 @@ class Backlog {
 
         this.setup();
 
-        //this.helper.createNewUser('test', 'tes2t@test.de')
+        this.helper.createNewUser('test', 'tes2t@test.de')
+        this.helper.createNewUser('test', 'tes2dasdasdt@test.de')
+
+
+        console.log(this.helper)
     }
 
     /**
