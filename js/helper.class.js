@@ -96,7 +96,7 @@ class Helper {
     }
 
     /**
-     *
+     * TBD
      */
     mailExists(mail) {
         console.log(this.allTasks)
