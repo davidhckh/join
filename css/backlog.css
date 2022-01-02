@@ -29,7 +29,7 @@ h5 {
     flex: 0.3;
 }
 
-#category-header {
+#due-date-header {
     flex: 0.15;
 }
 
@@ -51,11 +51,31 @@ h5 {
     position: relative;
     overflow: auto;
     cursor: pointer;
-    padding-right: 30px;
+    padding: 0;
+    border: 2px #EBEBEB solid
 }
 
-.entry-container:hover .add-to-board-container {
-    display: flex;
+.entry-container:hover {
+    border: 2px #00127F solid
+}
+
+.entry-top-container {
+    padding-right: 30px;
+    padding: 15px;
+}
+
+.expanded-entry-container {
+    padding: 30px 30px 75px 30px;
+    width: calc(100% - 60px);
+    background: #F6F6F6;
+}
+
+.expanded-category-container {
+    width: 150px;
+}
+
+.expanded-entry-container h5 {
+    margin: 0;
 }
  
 .urgency-color {
@@ -106,18 +126,21 @@ h5 {
 
 .add-to-board-container {
     background: #1f329e;
-    width: 30px;
-    height: 100%;
+    width: calc(100% - 20px);
     position: absolute;
-    top: 0;
-    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     font-weight: bold;
-    font-size: 22px;
-    display: none;
+    padding: 10px;
     z-index: 1;
+}
+
+.add-to-board-container:hover {
+    background: #2d43c5;
 }
 
 @media (max-width: 1000px ){

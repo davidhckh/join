@@ -29,42 +29,48 @@
         <!--Categories-->
         <div id="header-container" class="row">
             <h3 id="assigned-to-header">Assigned To</h3>
-            <h3 id="category-header">Category</h3>
+            <h3 id="due-date-header">Due Date</h3>
             <h3 id="details-header">Title</h3>
         </div>
 
         <!--Entries-->
         <div id="render-container">
+
             <!--Entry Example-->
-            <div class="entry-container box row">
-
-                <!--Urgency Color-->
-                <div class="urgency-color orange"></div>
-
-                <!--Assigned To Container-->
-                <span class="responsive-header">Assigned to:</span>
-                <div class="assigned-to-container row">
-                    <img class="assigned-to-image" src="assets/empty-profile-picture.png">
-
-                    <div class="column assigned-to-details">
-                        <span class="assigned-to-name">Max Mustermann</span>
-                        <span class="assigned-to-mail">max.mustermann@google.de</span>
+            <div class="entry-container box column" onclick="">
+                <div class="row entry-top-container">
+                    <div class="urgency-color urgency-low"></div>
+                    <span class="responsive-header">Assigned to:</span>
+                    <div class="assigned-to-container row">
+                        <img class="assigned-to-image" src="assets/dummies/dummy-0.png">
+                        <div class="column assigned-to-details">
+                            <span class="assigned-to-name">Aron</span>
+                            <span class="assigned-to-mail">aron@gmail.com</span>
+                        </div>
+                    </div>
+                    <span class="responsive-header">Due Date:</span>
+                    <div class="category-container">
+                        <span>6.1.2012</span>
+                    </div>
+                    <span class="responsive-header">Title:</span>
+                    <div class="details-container">
+                        <span>Brötchen backen</span>
                     </div>
                 </div>
 
-                <!--Category Container-->
-                <span class="responsive-header">Category:</span>
-                <div class="category-container">
-                    <span>Haushalt</span>
+                <div class="expanded-entry-container row hide">
+                    <div class="column expanded-category-container">
+                        <h5>Category:</h5>
+                        <span>Design</span>
+                    </div>
+                    <div class="column">
+                        <h5>Description:</h5>
+                        <span>Müll rausbringen, Mehl, Sahne</span>
+                    </div>
+                    <div class="add-to-board-container">Add To Board</div>
                 </div>
-
-                <!--Details Container-->
-                <span class="responsive-header">Title:</span>
-                <div class="details-container">
-                    <span>Müll rausbringen, Küche putzen</span>
-                </div>
-
             </div>
+
         </div>
 
     </div>
