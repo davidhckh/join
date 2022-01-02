@@ -6,18 +6,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/includeHTML.js"></script>
+    <script src="js/help.js"></script>
     <link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/help.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
     <title>Help - Join</title>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); helpInit()">
 
     <!--Menu-->
     <div w3-include-html="./templates/menu.html"></div>
+    <article class="helpArticle">
+        <section class="helpHeader">
+            <h1>Help</h1>
+            <h5>Learning Managment System Project</h5>
+        </section>
+        <section class="tab box">
+            <section class="helpButtons">
+                <button class="tablinks box active" onclick="openCategory(event, 'helpFirstSteps')">Erste Schritte</button>
+                <button class="tablinks box" onclick="openCategory(event, 'helpAddTask')">1. Add Task</button>
+                <button class="tablinks box" onclick="openCategory(event, 'helpBacklog')">2. Backlog</button>
+                <button class="tablinks box" onclick="openCategory(event, 'helpBoard')">3. Board</button>
+                <button class="tablinks box" onclick="openCategory(event, 'helpImpressum')">Impressum</button>
 
-    test
+            </section>
+
+            <section>
+                <div id="helpFirstSteps" class="tabcontent">
+                    <h3>Erste Schritte</h3>
+                    <p>Welcome to the join page of: Nils Spiller, David Heckhoff and Sebastian Funke.<br>This is a project management tool to plan tasks and assign them to people.</p>
+                </div>
+
+                <div id="helpAddTask" class="tabcontent">
+                    <h3>1. Add Task</h3>
+                    <img class="box" src="assets/helpImgs/addtask.PNG" alt="">
+                    <p>In the 'Addtask' Area you can add individual Tasks. <br> Enter Title, Category, Description, Due Date, Importance and assign the Task to a Person. <br> After all Fields have been filled in, the Task is created with the 'Create Task'
+                        Button.
+                    </p>
+                </div>
+
+                <div id="helpBacklog" class="tabcontent">
+                    <h3>2. Backlog</h3>
+                    <img class="box" src="assets/helpImgs/backlog.PNG" alt="">
+                    <p>The Tasks that have been created are clearly listed in the Backlog.<br> These Tasks have not yet started.<br>After clicking on the Task, it will be handed over to the Board.</p>
+                </div>
+
+                <div id="helpBoard" class="tabcontent">
+                    <h3>3. Board</h3>
+                    <img class="box" src="assets/helpImgs/board.PNG" alt="">
+                    <p>The Board consists of four Sections.<br> With the Mouse button pressed, each Task can be moved to a different Section.<br> Further Informations can be displayed by clicking on a Task.<br><br> In the 'todo' Section the Tasks that are
+                        to be processed next are listed.<br> If the Mouse is hovered over an Task in this Section, a Button appears that sends this Task back to the Backlog.<br><br> The 'in progress' Section lists Tasks that are currently being processed.<br><br>The
+                        'testing' Section lists Tasks that have been completed but are still being tested for completion.<br><br> The 'done' Section lists Tasks that have been successfully tested and thus fully processed.<br> In this Section a Button
+                        appears when hovering to permanently delete this Task.</p>
+                </div>
+
+                <div id="helpImpressum" class="tabcontent">
+                    <h3>Impressum</h3>
+                    <p>
+                        Angaben gemäß § 5 TMG <br> Nils Spiller <br>David Heckhoff <br>Sebastian Funke <br>Kontakt <br>E-Mail: contact@tzwoelfe.de <br> Redaktionell Verantwortlicher Betreiber <br>Verbraucherstreitbeilegung/Universalschlichtungsstelle
+                        <br>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. <br> <br> Haftung für Inhalte <br>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte
+                        auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach § 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu
+                        forschen, die auf eine rechtswidrige Tätigkeit hinweisen. <br> <br> Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung
+                        ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen. <br> <br>Haftung für Links <br> Unser
+                        Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige
+                        Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. <br>Eine
+                        permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen. <br>Urheberrecht
+                        <br> Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes
+                        bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. <br> Soweit die Inhalte auf dieser Seite nicht vom
+                        Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden
+                        Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen. <br>
+                    </p>
+                    <hr> Logos stammen u. A.von <a href="https://icons8.com">https://icons8.com</a>
+                </div>
+
+            </section>
+        </section>
+    </article>
 </body>
 
 </html>
