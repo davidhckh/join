@@ -51,13 +51,19 @@ class Backlog {
                                 <span class="assigned-to-mail">${task.assignedTo.mail}</span>
                             </div>
                         </div>
-                        <span class="responsive-header">Due Date:</span>
-                        <div class="category-container">
-                            <span>${this.capitalizeFirstLetter(task.dueDate)}</span>
-                        </div>
-                        <span class="responsive-header">Title:</span>
-                        <div class="details-container">
-                            <span>${this.capitalizeFirstLetter(task.title)}</span>
+                        <div class="row">
+                            <div class="column center due-date-container">
+                                <span class="responsive-header">Due Date:</span>
+                                <div>
+                                    <span>${this.capitalizeFirstLetter(task.dueDate)}</span>
+                                </div>
+                            </div>
+                            <div class="column center details-container">
+                                <span class="responsive-header">Title:</span>
+                                <div >
+                                    <span>${this.capitalizeFirstLetter(task.title)}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
