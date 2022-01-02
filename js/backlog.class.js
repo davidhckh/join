@@ -28,13 +28,15 @@ class Backlog {
         this.render();
     };
 
+    /**
+     * Filter tasks to only items with state === 'backlog'
+     */
     filterTasks() {
         this.backlogTasks = this.helper.allTasks.filter((task) => task.state === 'backlog');
     }
 
     render() {
         this.renderContainer.innerHTML = '';
-
 
         this.backlogTasks.forEach((task) => {
             this.renderContainer.insertAdjacentHTML('beforeend',
@@ -49,9 +51,9 @@ class Backlog {
                                 <span class="assigned-to-mail">${task.assignedTo.mail}</span>
                             </div>
                         </div>
-                        <span class="responsive-header">Category:</span>
+                        <span class="responsive-header">Due Date:</span>
                         <div class="category-container">
-                            <span>${this.capitalizeFirstLetter(task.category)}</span>
+                            <span>${this.capitalizeFirstLetter(task.dueDate)}</span>
                         </div>
                         <span class="responsive-header">Title:</span>
                         <div class="details-container">
@@ -62,11 +64,11 @@ class Backlog {
                     <div id="expanded-${this.backlogTasks.indexOf(task)}" class="expanded-entry-container row hide">
                         <div class="column expanded-category-container">
                             <h5>Category:</h5>
-                            <span>Design</span>
+                            <span>${this.capitalizeFirstLetter(task.category)}</span>
                         </div>
                     <div class="column">
                         <h5>Description:</h5>
-                        <span>Müll rausbringen, Mehl, Sahne</span>
+                        <span>${task.description}</span>
                     </div>
                     <div class="add-to-board-container" onclick="event.stopPropagation(); backlog.addToBoard(${task.timeOfCreation})">Add To Board</div>
                     </div>
@@ -75,28 +77,31 @@ class Backlog {
         })
     }
 
+    /**
+     * Check container visibility and expand or collapse container
+     */
     checkContainerVisibility(index) {
         if(document.getElementById('expanded-' + index).classList.contains('hide')) {
-            this.expandContainer(index)
+            this.expandContainer(index);
         } else {
-            this.collapseContainer(index)
-        }
+            this.collapseContainer(index);
+        };
     }
 
     expandContainer(index) {
-        this.collapseAllContainers()
+        this.collapseAllContainers();
 
-        document.getElementById('expanded-' + index).classList.remove('hide')
+        document.getElementById('expanded-' + index).classList.remove('hide');
     }
 
     collapseAllContainers() {
         for(let i = 0; i < this.backlogTasks.length; i++) {
-            this.collapseContainer(i)
-        }
+            this.collapseContainer(i);
+        };
     }
 
     collapseContainer(index) {
-        document.getElementById('expanded-' + index).classList.add('hide')
+        document.getElementById('expanded-' + index).classList.add('hide');
     }
 
     /**
