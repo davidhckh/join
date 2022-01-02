@@ -62,6 +62,7 @@ form{
     justify-content: flex-start;
     align-items: center;
     box-shadow: none !important;
+    
 }
 
 /**render container*/
@@ -88,6 +89,25 @@ form{
 
 .selected-assign-to-container img {
     border: 3px #102389 solid !important;
+}
+
+/*==== some changes to enable scrollable array ====*/
+.assigendTo-wrapper {
+    overflow-x:scroll;     
+    white-space: nowrap;
+   
+}
+
+
+
+.assignedContainer{
+    display: flex;
+    flex-direction: column;
+    min-width: 40%;
+    margin: 0 10px;
+    margin-bottom: 20px;
+    /*badly done, needs rework! */
+    margin-top: 37px;
 }
 
 
@@ -206,7 +226,7 @@ select:hover{
 */
 button{
     height: 50px;
-    width: 150px;
+    min-width: 40%;
     padding: 8px;
     font-size: 20px;
     color: white;
@@ -217,13 +237,13 @@ button{
 
 
 .buttonContainer{
-    position: absolute;
-    bottom: -3.5rem;
-    right: auto;
-    left: 25%;
+   
     display: flex;
     justify-content: space-between;
-    min-width: 40%;
+    margin: 0 10px;
+    margin-top: 20px;
+    
+    
 }
 
 button:disabled{
@@ -294,6 +314,10 @@ textarea:focus::placeholder{
     #contentAddTask{
         width: 95vw;
     }
+
+    .inputContainer{
+        max-width: 40%;
+    }
 }
 
 
@@ -311,10 +335,19 @@ textarea:focus::placeholder{
         width: 100%;
         margin-left: 2.5%;
         top: -60px;
+        padding: 0;
     }
 
     #contentAddTask{
         width: 95vw;
+    }
+
+    .inputContainer{
+        max-width: 40%;
+    }
+
+    .assignedContainer{
+        max-width: 40%;
     }
 }
 
@@ -328,8 +361,29 @@ textarea:focus::placeholder{
        min-width: 90%;
    }
 
+   .assignedContainer{
+    min-width: 90%;
+}
+
    form{
        height: 115vh !important;
        top: 100px;
+       margin-top: 25%;
    }
+}
+
+@media(max-width: 550px){
+    form{
+        margin-left: 0;
+    }
+}
+
+@media(max-width: 350px){
+    #contentAddTask{
+        width: 90vw;
+    }
+    form{
+       
+        margin-top: 35%;
+    }
 }

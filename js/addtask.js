@@ -5,9 +5,11 @@ setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
 
 let helper = new Helper();
 let selectedUser;
+let selectedIcon;
+let selectedArray = [];
 
 /**
- * function reads the values of input and than pushes a new Task in tasks.
+ * function reads the values of input and than pushes a new Task in the helpers allTasks Array.
  */
 
 async function addNewTask() {
@@ -16,7 +18,8 @@ async function addNewTask() {
     let urgency = document.getElementById('taskUrgency');
     let description = document.getElementById('taskDescription');
     let dueDate = document.getElementById('taskDate');
-    let assignedTo = selectedUser;
+  //  let assignedTo = selectedUser;
+  let assignedTo = selectedArray;
 
     await helper.getDataFromServer()
     helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
@@ -26,7 +29,7 @@ async function addNewTask() {
 }
 
 /**
- * function clears the input fields
+ * function clears the input fields and resets the selecedArray
  */
 
 function resetFields() {
@@ -36,7 +39,8 @@ function resetFields() {
     document.getElementById('taskDescription').value = "";
     document.getElementById('taskDate').value = "";
 
-    setSelectedUser(0);
+   selectedArray=[];
+   clearSelectedUsers();
 }
 
 
@@ -88,12 +92,27 @@ function renderUsers() {
     }
 }
 
+/**
+ * function pushes the clicked user into the array selected User, if the user is not already
+ * alredy selected. if so, it removes selected status of the  clicked user
+ * @param {int} index index of clicked users
+ */
 function setSelectedUser(index) {
-    clearSelectedUsers();
+ 
 
-    document.getElementById('assign-to-container-' + index).classList.add('selected-assign-to-container');
+    selectedUser = helper.allUsers[index];
+    selectedIcon = document.getElementById('assign-to-container-' + index);
+    if(!selectedArray.includes(selectedUser)){
+        selectedArray.push(selectedUser);
+        selectedIcon.classList.add('selected-assign-to-container');
+    }
+    else if(selectedArray.includes(selectedUser)) {
+        selectedIcon.classList.remove('selected-assign-to-container');
+        let finder = selectedArray.indexOf(selectedUser);
+        selectedArray.splice(finder,1);
+    }
+    
 
-    selectedUser = helper.allUsers[index]
 }
 
 function clearSelectedUsers() {
