@@ -16,6 +16,11 @@ class Backlog {
         this.helper = new Helper();
 
         this.setup();
+
+        // this.helper.createNewUser('Aron', 'aron@gmail.com', 'assets/dummies/dummy-0.png')
+        // this.helper.createNewUser('Bron', 'bron@gmail.com', 'assets/dummies/dummy-1.png')
+        // this.helper.createNewUser('Cron', 'cron@gmail.com', 'assets/dummies/dummy-2.png')
+        // this.helper.createNewUser('Dron', 'dron@gmail.com', 'assets/dummies/dummy-3.png')
     }
 
     /**
@@ -40,25 +45,21 @@ class Backlog {
 
         this.backlogTasks.forEach((task) => {
             this.renderContainer.insertAdjacentHTML('beforeend',
-                `<div class="entry-container box column" onclick="backlog.checkContainerVisibility(${this.backlogTasks.indexOf(task)})">
+                `<div class="entry-container box column category-color-${task.category}" onclick="backlog.checkContainerVisibility(${this.backlogTasks.indexOf(task)})">
                     <div class="row entry-top-container">
                         <div class="urgency-color urgency-${task.urgency}"></div>
                         <span class="responsive-header">Assigned to:</span>
                         <div class="assigned-to-container row">
-                            <img class="assigned-to-image" src="${task.assignedTo.image}">
-                            <div class="column assigned-to-details">
-                                <span class="assigned-to-name">${task.assignedTo.name}</span>
-                                <span class="assigned-to-mail">${task.assignedTo.mail}</span>
-                            </div>
+                            ${this.renderAssignedToContainer(task)}
                         </div>
-                        <div class="row">
-                            <div class="column center due-date-container">
+                        <div class="row sub-top-container">
+                            <div class="due-date-container">
                                 <span class="responsive-header">Due Date:</span>
                                 <div>
-                                    <span>${this.capitalizeFirstLetter(task.dueDate)}</span>
+                                    <span>${this.capitalizeFirstLetter(this.reformatDate(task.dueDate))}</span>
                                 </div>
                             </div>
-                            <div class="column center details-container">
+                            <div class="title-container">
                                 <span class="responsive-header">Title:</span>
                                 <div >
                                     <span>${this.capitalizeFirstLetter(task.title)}</span>
@@ -76,18 +77,38 @@ class Backlog {
                         <h5>Description:</h5>
                         <span>${task.description}</span>
                     </div>
-                    <div class="add-to-board-container" onclick="event.stopPropagation(); backlog.addToBoard(${task.timeOfCreation})">Add To Board</div>
+                    <div class="row entry-button-container">
+                        <a class="add-to-board-container center" onclick="event.stopPropagation(); backlog.addToBoard(${task.timeOfCreation})">Add To Board</a>
+                        <a class="delete-item-container center" onclick="event.stopPropagation(); backlog.deleteTask(${task.timeOfCreation});">
+                            <img src="assets/trash-icon.png">
+                        </a>
+                    </div>
                     </div>
                 </div>`
             )
         })
     }
 
+    renderAssignedToContainer(task) {
+        let content = '';
+
+        for(let i = 0; i < task.assignedTo.length; i ++) {
+            content += `
+            <div class="column center">
+                <img class="assigned-to-image" src="${task.assignedTo[i].image}">
+                <span class="assigned-to-name">${task.assignedTo[i].name}</span>
+            </div>
+            `;
+        } 
+
+        return content;
+    }
+
     /**
      * Check container visibility and expand or collapse container
      */
     checkContainerVisibility(index) {
-        if(document.getElementById('expanded-' + index).classList.contains('hide')) {
+        if (document.getElementById('expanded-' + index).classList.contains('hide')) {
             this.expandContainer(index);
         } else {
             this.collapseContainer(index);
@@ -101,7 +122,7 @@ class Backlog {
     }
 
     collapseAllContainers() {
-        for(let i = 0; i < this.backlogTasks.length; i++) {
+        for (let i = 0; i < this.backlogTasks.length; i++) {
             this.collapseContainer(i);
         };
     }
@@ -125,9 +146,38 @@ class Backlog {
     };
 
     /**
+     * Delete item permanently and upload to server + render after
+     */
+    deleteTask(timeOfCreation) {
+        const item = this.helper.filterTaskIDs(this.helper.allTasks, timeOfCreation)[0];
+        const itemIndex = this.helper.allTasks.indexOf(item);
+
+        this.helper.allTasks.splice(itemIndex, 1);
+
+        this.filterTasks();
+        this.render();
+        this.helper.uploadToServer();
+    }
+
+
+
+
+    
+    /**
      * Capitalize first letter to display from JSON
      */
     capitalizeFirstLetter(str) {
         return str[0].toUpperCase() + str.slice(1);
     };
+
+    /**
+     * function to change dateformat
+     * @param {string} dateStr - datestring in Format yyyy-mm-dd
+     * @returns datestring in format dd.mm.yy
+     */
+    reformatDate(dateStr) {
+        let dArr = dateStr.split("-");
+
+        return dArr[2] + "." + dArr[1] + "." + dArr[0].substring(2);
+    }
 };
