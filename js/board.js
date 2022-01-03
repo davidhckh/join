@@ -180,7 +180,7 @@ function generateBoardTask(task) {
 
 /**
  * reads the assigned names from the task and uses it to generate an html code
- * @param {string} task - a single task
+ * @param {array} task - a single task
  * @returns - html code with the names
  */
 function getAssignedTo(task) {
