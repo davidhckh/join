@@ -5,10 +5,18 @@
     opacity: 1 !important;
 }
 
+.boardArticle {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
 .boardContainer {
-    padding-top: 5vh;
+    /*padding-top: 5vh;*/
     padding-bottom: 2vh;
-    width: 96vw;
+    width: 100%;
     max-height: 100vh;
     display: flex;
     justify-content: space-evenly;
@@ -17,7 +25,7 @@
 
 .boardStatusBlock {
     width: 19vw;
-    min-height: 75vh;
+    min-height: 50vh;
     padding-bottom: 1em;
 }
 
@@ -26,6 +34,17 @@
 }
 
 @media (max-width: 1000px) {
+    .legendCategoryItem {
+        border-radius: 20px;
+        padding: 8px;
+        margin: 4px 16px !important;
+    }
+    .legend {
+        display: flex;
+        width: calc(75vw);
+        justify-content: space-around;
+        margin: 16px;
+    }
     .boardContainer {
         width: 100%;
         display: flex;
@@ -60,7 +79,6 @@
         word-wrap: break-word;
         overflow-wrap: break-word;
         word-break: break-all;
-        padding-right: 1em;
     }
 }
 
@@ -91,6 +109,7 @@
 
 .boardImg {
     min-width: 30px;
+    min-height: 30px;
     height: auto;
     background: url(../assets/draggable.png);
     background-size: contain;
@@ -101,12 +120,12 @@
 }
 
 .boardText {
+    width: 100%;
     display: flex;
     flex-direction: column;
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-all;
-    padding-right: 1em;
 }
 
 .textName {
@@ -119,18 +138,27 @@
 }
 
 .taskDeleteBtn {
-    display: none;
+    display: flex;
     align-items: center;
     background: url(../assets/icon\ minus.png);
     background-size: contain;
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
-    width: 34%;
+    min-width: 40px;
+    height: 40px;
     border: 5px solid transparent;
+    justify-self: flex-end;
 }
 
 .dragItem:hover .taskDeleteBtn {
     display: flex;
+}
+
+.taskTop {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
 }
 
 .taskDeleteBtn:hover {
@@ -139,14 +167,16 @@
 }
 
 .taskBackToBacklogBtn {
-    display: none;
+    display: flex;
     align-items: center;
     background: url(../assets/back.png);
     background-size: contain;
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
-    width: 34%;
+    min-width: 40px;
+    height: 40px;
     border: 5px solid transparent;
+    justify-self: flex-end;
 }
 
 .dragItem:hover .taskBackToBacklogBtn {
@@ -162,4 +192,42 @@
     display: flex;
     justify-content: start;
     width: 100%;
+}
+
+.boardDetails {
+    margin-top: 0;
+    margin-left: 0.4em;
+}
+
+.width-auto {
+    width: auto !important;
+}
+
+.taskTopTitle {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.legend {
+    display: flex;
+    min-width: 90%;
+    justify-content: space-evenly;
+    margin: 8px 16px 0 16px;
+    background-color: transparent !important;
+    flex-wrap: wrap;
+}
+
+.legendCategoryItem {
+    border-radius: 20px;
+    padding: 8px;
+    margin: 16px;
+}
+
+.legendItem {
+    border-bottom-left-radius: 20px !important;
+    border-top-left-radius: 20px !important;
+}
+
+.legendContainer {
+    margin-top: 2em;
 }

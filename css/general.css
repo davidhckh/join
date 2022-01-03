@@ -29,15 +29,15 @@ body {
 /**Category Colors*/
 
 .category-color-design {
-    background: lightgreen !important;
+    background: rgba(144, 238, 144, 0.5) !important;
 }
 
 .category-color-development {
-    background: lightcoral !important;
+    background: rgba(240, 128, 128, 0.5) !important;
 }
 
 .category-color-management {
-    background: lightblue !important;
+    background: rgba(173, 216, 230, 0.5) !important;
 }
 
 .category-color-none {

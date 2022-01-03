@@ -4,7 +4,7 @@ let currentDraggedElement;
 let currentTaskUrgencyColor;
 let currentTaskCategoryColor;
 let ragging = false;
-let language = 'german';
+let language = 'english';
 let languages = {
     'german': [{
         'taskDelete': 'Aufgabe endgültig entfernen',
@@ -14,6 +14,15 @@ let languages = {
         'taskUrgency': 'Dringlichkeit: ',
         'taskCategory': 'Kategorie: ',
         'taskDescription': 'Beschreibung: '
+    }],
+    'english': [{
+        'taskDelete': 'Permanently remove the task',
+        'taskBackToBacklog': 'Move task to backlog',
+        'taskInformation': 'Click to show or hide for more information',
+        'taskAssignedTo': 'Assigned to: ',
+        'taskUrgency': 'Urgency: ',
+        'taskCategory': 'Category: ',
+        'taskDescription': 'Description: '
     }]
 };
 
@@ -144,23 +153,42 @@ function generateBoardTask(task) {
                     <div class="fl-start">
     <div class="boardUrgency urgency-${task['urgency']}">
                     </div>
-                    <div class="boardImg">
-                    </div>
                     <div class="boardText">
-                        <div class="textTitle">${task['title']}</div>
-                        <div class="textTitle">${finishDate}</div>
-                        <div id="${task['timeOfCreation']}" class="hide">
-                        <p>${languages[language][0].taskAssignedTo}Hannelore</p>
-                        <p>${languages[language][0].taskUrgency}${task['urgency']}</p>
-                        <p>${languages[language][0].taskCategory}${task['category']}</p>
-                        <p>${languages[language][0].taskDescription}${task['description']}</p>
+                        <div class="taskTop">
+                            <div class="taskTopTitle">
+                                <div class="boardImg"> </div><div>
+                                <div class="textTitle">${task['title']}</div>
+                                <div class="textTitle">${finishDate}</div>
+                            </div>
+                        </div>
+                        `;
+    returnString += addButton(task);
+    returnString += `</div>
+                        <div id="${task['timeOfCreation']}" class="hide boardDetails">
+                            <p>${languages[language][0].taskAssignedTo}`
+    returnString += getAssignedTo(task);
+    returnString += `           </p>
+                            <p>${languages[language][0].taskUrgency}<br>${task['urgency']}</p>
+                            <p>${languages[language][0].taskCategory}<br>${task['category']}</p>
+                            <p>${languages[language][0].taskDescription}<br>${task['description']}</p>
                         </div>
                     </div>
                     </div>
-                    `;
-    returnString += addButton(task);
-    returnString += `</div>`;
+                    </div>`;
     return returnString;
+}
+
+/**
+ * reads the assigned names from the task and uses it to generate an html code
+ * @param {string} task - a single task
+ * @returns - html code with the names
+ */
+function getAssignedTo(task) {
+    let assignedTo = '';
+    task.assignedTo.forEach(ele => {
+        assignedTo += '<br>' + ele['name'];
+    })
+    return assignedTo;
 }
 
 /**
@@ -168,7 +196,7 @@ function generateBoardTask(task) {
  * in case of 'to-do' returns a button to send the task back to backlog
  * in case of 'done' returns a button to delete the task finally
  * @param {array} task - single task 
- * @returns 
+ * @returns - html code with the button or an empty string
  */
 function addButton(task) {
     let returnString = '';
