@@ -70,7 +70,7 @@ class Login {
             await this.helper.createNewUser(
                 this.nameInput.value,
                 this.mailInput.value,
-                this.imageSelector.getAttribute('src')
+                this.imageSelector.getAttribute('src'),
             )
 
         }
@@ -98,5 +98,20 @@ class Login {
         this.imageSelector.src = 'assets/profilePictures/' + number + '.png';
 
         this.closeImageSelector();
+    }
+
+    /**
+     * Login as guest
+     * set local storage to guest details
+     * and open index aftewards
+     */
+    guestLogin() {
+        localStorage.setItem('user', JSON.stringify({
+            image: 'assets/empty-profile-picture.png',
+            mail: 'none',
+            name: 'Guest'
+        }));
+
+        window.open("index.html", "_self");
     }
 }
