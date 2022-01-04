@@ -64,7 +64,20 @@ a {
 #profile-picture {
     border-radius: 50%;
     height: 60px;
-    border: 4px solid white;
+    border: 3px solid white;
+    padding: 3px;
+}
+
+/**Logout Button*/
+#logout-button {
+    font-size: 14px;
+    margin-top: 15px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+#logout-button:hover {
+    text-decoration: underline;
 }
 
 /**Responsive*/

@@ -72,7 +72,6 @@ body {
 
 
 /*Main-Box*/
-
 .box {
     background: white;
     border-radius: 10px;
@@ -81,7 +80,7 @@ body {
 
 
 /**Input Fields*/
-input, textarea {
+input, textarea, select {
     font-size: 16px;
     border-radius: 5px;
     border: 1px lightgray solid;
@@ -89,11 +88,11 @@ input, textarea {
     width: calc(100% - 14px);
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder, textarea::placeholder, select::placeholder {
     font-family: 'PT Sans', sans-serif;
 }
 
-input:focus, textarea:focus{
+input:focus, textarea:focus, select:focus{
     outline: 1px #1E3190 solid;
 }
 

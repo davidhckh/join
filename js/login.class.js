@@ -5,10 +5,10 @@ let login;
  * otherwise open index.html
  */
 window.addEventListener('load', () => {
-    if(window.location.pathname == '/login.html' && !localStorage.getItem('user')) {
+    if (window.location.pathname == '/login.html' && !localStorage.getItem('user')) {
         login = new Login();
-    } else if(window.location.pathname == '/login.html') {
-        window.open("index.html","_self");
+    } else if (window.location.pathname == '/login.html') {
+        window.open("index.html", "_self");
     }
 })
 
@@ -17,9 +17,21 @@ window.addEventListener('load', () => {
  */
 checkLogin();
 function checkLogin() {
-    if(window.location.pathname != '/login.html' && !localStorage.getItem('user')) {
-        window.open("login.html","_self");
+    if (window.location.pathname != '/login.html' && !localStorage.getItem('user')) {
+        window.open("login.html", "_self");
     }
+}
+
+/**
+ * Setup user profile picture in menu
+ */
+function setupMenuProfilePicture(picture) {
+    picture.src = JSON.parse(localStorage.getItem('user')).image;
+}
+
+function logout() {
+    localStorage.setItem('user', '');
+    window.open("login.html", "_self");
 }
 
 /**
@@ -54,7 +66,7 @@ class Login {
     async signUp() {
         await this.helper.getDataFromServer();
 
-        if(!this.emailIsTaken()) {
+        if (!this.helper.mailExists(this.mailInput.value)) {
             await this.helper.createNewUser(
                 this.nameInput.value,
                 this.mailInput.value,
@@ -65,18 +77,9 @@ class Login {
 
         localStorage.setItem('user', JSON.stringify(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)))
 
-        window.open("index.html","_self");
+        window.open("index.html", "_self");
     }
 
-    /**
-     * 
-     * @returns If email is already taken
-     */
-    emailIsTaken() {
-        if(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)) {
-            return true;
-        }
-    }
 
     openImageSelector() {
         this.signUpContainer.classList.add('hide');
@@ -87,13 +90,13 @@ class Login {
         this.signUpContainer.classList.remove('hide');
         this.imageSelectorContainer.classList.add('hide');
     }
-    
+
     /**
      * set image selector image and close image selector container
      */
     setProfilePicture(number) {
-        this.imageSelector.src = 'assets/profilePictures/' + number + '.png'
+        this.imageSelector.src = 'assets/profilePictures/' + number + '.png';
 
-        this.closeImageSelector()
+        this.closeImageSelector();
     }
 }
