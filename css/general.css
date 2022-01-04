@@ -41,7 +41,7 @@ body {
 }
 
 .category-color-none {
-    background: #F6F6F6 !important;
+    background: white !important;
 }
 
 
@@ -75,10 +75,46 @@ body {
 
 .box {
     background: white;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: #edededd8 0 10px 10px;
 }
 
+
+/**Input Fields*/
+input, textarea {
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px lightgray solid;
+    padding: 7px;
+    width: calc(100% - 14px);
+}
+
+input::placeholder, textarea::placeholder {
+    font-family: 'PT Sans', sans-serif;
+}
+
+input:focus, textarea:focus{
+    outline: 1px #1E3190 solid;
+}
+
+/**Buttons*/
+button {
+    background: #1E3190;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border: unset;
+}
+
+button:hover {
+    opacity: 0.96
+}
 
 /**Headings*/
 

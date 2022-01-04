@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Join</title>
+    <script src="js/login.class.js"></script>
+    <script src="js/helper.class.js"></script>
+    <script src="js/mini_backend.js"></script>
+    <script src="js/user.class.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
+</head>
+<body class="column">
+    <!--Logo-->
+    <img id="logo" src="assets/logo.png">
+
+    <!--Box-->
+    <div id="main-container">
+
+        <!--Sign Up Container-->
+        <div id="sign-up-container" class="center column">
+            <h2>Sign Up</h2>
+
+            <!--Profile Picture Selector-->
+            <img id="image-selector" src="assets/profilePictures/0.png" onclick="login.openImageSelector()">
+
+            <!--Sign Up Form-->
+            <form id="form" onsubmit="login.signUp(); event.preventDefault();">
+                <input id="name-input" placeholder="Name" maxlength="50" required>
+                <input id="mail-input" placeholder="E-Mail" type="email" maxlength="30" required>
+                <button id="sign-up-button">Sign Up</button>
+            </form>
+    
+            <!--Guest Login-->
+            <a id="guest-login-button">
+                <span>Login as guest</span>
+            </a>
+        </div>
+
+        <!--Image Selector Container-->
+        <div id="image-selector-container" class="hide center column">
+            <h3>Select a profile picture</h3>
+            <div class="row center">
+                <img src="assets/profilePictures/0.png" onclick="login.setProfilePicture(0)">
+                <img src="assets/profilePictures/1.png" onclick="login.setProfilePicture(1)">
+                <img src="assets/profilePictures/2.png" onclick="login.setProfilePicture(2)">
+            </div>
+            <div class="row center">
+                <img src="assets/profilePictures/3.png" onclick="login.setProfilePicture(3)">
+                <img src="assets/profilePictures/4.png" onclick="login.setProfilePicture(4)">
+                <img src="assets/profilePictures/5.png" onclick="login.setProfilePicture(5)">
+            </div>
+            <div class="row center">
+                <img src="assets/profilePictures/6.png" onclick="login.setProfilePicture(6)">
+                <img src="assets/profilePictures/7.png" onclick="login.setProfilePicture(7)">
+                <img src="assets/profilePictures/8.png" onclick="login.setProfilePicture(8)">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
