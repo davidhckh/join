@@ -6,6 +6,7 @@
 }
 
 .boardArticle {
+    margin-top: 110px;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -34,18 +35,8 @@
 }
 
 @media (max-width: 1000px) {
-    .legendCategoryItem {
-        border-radius: 20px;
-        padding: 8px;
-        margin: 4px 16px !important;
-    }
-    .legend {
-        display: flex;
-        width: calc(75vw);
-        justify-content: space-around;
-        margin: 16px;
-    }
     .boardContainer {
+        margin-top: 60px;
         width: 100%;
         display: flex;
         justify-content: flex-start;
@@ -72,13 +63,16 @@
         height: auto !important;
         min-width: 15px;
     }
-    .boardText {
+}
+
+@media (max-width:500px) {
+    .boardContainer {
+        margin-top: 120px;
+        width: 100%;
         display: flex;
+        justify-content: flex-start;
+        align-items: center;
         flex-direction: column;
-        justify-content: center;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        word-break: break-all;
     }
 }
 
@@ -133,10 +127,6 @@
     margin-bottom: 0.1em;
 }
 
-.textTitle {
-    font-size: medium;
-}
-
 .taskDeleteBtn {
     display: flex;
     align-items: center;
@@ -152,13 +142,6 @@
 
 .dragItem:hover .taskDeleteBtn {
     display: flex;
-}
-
-.taskTop {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 100%;
 }
 
 .taskDeleteBtn:hover {
@@ -188,46 +171,7 @@
     cursor: pointer;
 }
 
-.fl-start {
-    display: flex;
-    justify-content: start;
-    width: 100%;
-}
-
 .boardDetails {
     margin-top: 0;
     margin-left: 0.4em;
-}
-
-.width-auto {
-    width: auto !important;
-}
-
-.taskTopTitle {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.legend {
-    display: flex;
-    min-width: 90%;
-    justify-content: space-evenly;
-    margin: 8px 16px 0 16px;
-    background-color: transparent !important;
-    flex-wrap: wrap;
-}
-
-.legendCategoryItem {
-    border-radius: 20px;
-    padding: 8px;
-    margin: 16px;
-}
-
-.legendItem {
-    border-bottom-left-radius: 20px !important;
-    border-top-left-radius: 20px !important;
-}
-
-.legendContainer {
-    margin-top: 2em;
 }

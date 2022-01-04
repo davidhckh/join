@@ -15,9 +15,11 @@ window.addEventListener('load', () => {
 /**
  * Check if User is logged in. open login.html otherwise
  */
-checkLogin();
+//checkLogin();
+
 function checkLogin() {
-    if (window.location.pathname != '/login.html' && !localStorage.getItem('user')) {
+    let location = window.location.pathname.split('/');
+    if (location[location.length - 1] != 'login.html' && !localStorage.getItem('user')) {
         window.open("login.html", "_self");
     }
 }
