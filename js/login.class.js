@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
 /**
  * Check if User is logged in. open login.html otherwise
  */
-//checkLogin();
+checkLogin();
 
 function checkLogin() {
     let location = window.location.pathname.split('/');
