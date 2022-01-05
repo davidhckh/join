@@ -24,6 +24,10 @@ h5 {
     margin-bottom: 40px;
 }
 
+.legendBox {
+    position: unset !important;
+}
+
 /**Categories header*/
 #assigned-to-header {
     width: 263px;

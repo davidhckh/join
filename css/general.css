@@ -8,6 +8,7 @@ body {
     flex-direction: row;
     font-family: 'PT Sans', sans-serif;
     background-color: #F6F8FC;
+    overflow-x: hidden;
 }
 
 
