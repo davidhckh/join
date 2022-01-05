@@ -39,6 +39,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 
@@ -64,6 +65,9 @@
     padding: 2em 12px;
     border: 1px solid #ccc;
     border: none;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column;
 }
 
 .tabcontent {
@@ -72,16 +76,16 @@
 }
 
 .tabcontent img {
-    width: 100%;
+    width: 70%;
     height: auto;
-}
-
-.tabcontent a {
-    color: black;
 }
 
 .tabcontent a:hover {
     color: rgb(39, 46, 146);
+}
+
+.tablinks {
+    color: black;
 }
 
 
