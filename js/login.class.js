@@ -5,9 +5,10 @@ let login;
  * otherwise open index.html
  */
 window.addEventListener('load', () => {
-    if (window.location.pathname == '/login.html' && !localStorage.getItem('user')) {
+    let location = window.location.pathname.split('/');
+    if (location[location.length - 1] == 'login.html' && !localStorage.getItem('user')) {
         login = new Login();
-    } else if (window.location.pathname == '/login.html') {
+    } else if (location[location.length - 1] == 'login.html') {
         window.open("index.html", "_self");
     }
 })
