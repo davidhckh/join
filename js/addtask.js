@@ -27,7 +27,7 @@ async function addNewTask() {
     await helper.getDataFromServer()
     helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
     helper.uploadToServer();
-    popup.createPopUp();
+    //popup.createPopUp();
 
     resetFields();
 }

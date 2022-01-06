@@ -168,8 +168,8 @@ function generateBoardTask(task) {
                             <p>${languages[language][0].taskAssignedTo}`
     returnString += getAssignedTo(task);
     returnString += `           </p>
-                            <p>${languages[language][0].taskUrgency}<br>${task['urgency']}</p>
-                            <p>${languages[language][0].taskCategory}<br>${task['category']}</p>
+                            <p>${languages[language][0].taskUrgency}<br>${capitalizeFirstLetter(task['urgency'])}</p>
+                            <p>${languages[language][0].taskCategory}<br>${capitalizeFirstLetter(task['category'])}</p>
                             <p>${languages[language][0].taskDescription}<br>${task['description']}</p>
                         </div>
                     </div>
@@ -224,7 +224,7 @@ function clearBoard(blockName) {
 function loadTodos() {
     let tasks = loadedTasks.filter(t => t['state'] == 'to-do');
     clearBoard('BlockToDo');
-    tasks.forEach(function(task) {
+    tasks.forEach(function (task) {
         document.getElementById('BlockToDo').innerHTML += generateBoardTask(task);
     });
 }
@@ -236,7 +236,7 @@ function loadTodos() {
 function loadInProgress() {
     let tasks = loadedTasks.filter(t => t['state'] == 'inProgress');
     clearBoard('BlockInProgress');
-    tasks.forEach(function(task) {
+    tasks.forEach(function (task) {
         document.getElementById('BlockInProgress').innerHTML += generateBoardTask(task);
     });
 }
@@ -248,7 +248,7 @@ function loadInProgress() {
 function loadTesting() {
     let tasks = loadedTasks.filter(t => t['state'] == 'testing');
     clearBoard('BlockTesting');
-    tasks.forEach(function(task) {
+    tasks.forEach(function (task) {
         document.getElementById('BlockTesting').innerHTML += generateBoardTask(task);
     });
 }
@@ -260,7 +260,7 @@ function loadTesting() {
 function loadDone() {
     let tasks = loadedTasks.filter(t => t['state'] == 'done');
     clearBoard('BlockDone');
-    tasks.forEach(function(task) {
+    tasks.forEach(function (task) {
         document.getElementById('BlockDone').innerHTML += generateBoardTask(task);
     });
 }
@@ -288,3 +288,11 @@ function reformatDate(dateStr) {
 
     return dArr[2] + "." + dArr[1] + "." + dArr[0].substring(2);
 }
+
+
+/**
+ * Capitalize first letter to display from JSON
+ */
+function capitalizeFirstLetter(str) {
+    return str[0].toUpperCase() + str.slice(1);
+};

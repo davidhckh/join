@@ -5,6 +5,10 @@
     opacity: 1 !important;
 }
 
+.tab a {
+    color: blue !important;
+}
+
 
 /* Style the tab */
 

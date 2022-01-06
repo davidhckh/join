@@ -248,7 +248,8 @@ button{
 
 button:disabled{
     background-color: grey;
-    color:blue;
+    color:white;  
+    cursor: unset;
 }
 
 /*=================================================================*/
