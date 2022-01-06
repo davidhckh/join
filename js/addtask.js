@@ -1,6 +1,6 @@
 'use strict';
 
-let popup=new PopUp("task was moved to backlog!","10%","15%");
+let popup=new PopUp("Task was moved to backlog!","10%","15%");
 
 
 

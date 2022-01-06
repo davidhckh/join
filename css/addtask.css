@@ -300,13 +300,11 @@ textarea:focus::placeholder{
 */
 .pop-up{
     position: absolute;
-  /*  top: 10%;
-    right: 15%;*/
     z-index: 2;
     color:white;
     background-color:#102389;
-    width: 25px;
-    height: 25px;
+    width: 10px;
+    height: 10px;
     border-radius: 100%;
     transition: all 1s ease-out;
     text-align: center;

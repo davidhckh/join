@@ -245,3 +245,28 @@ h5 {
     border-bottom-left-radius: 20px !important;
     border-top-left-radius: 20px !important;
 }
+
+
+
+/*imprint language icons*/
+
+
+.languageIconWrap{
+    position: absolute;
+    top: 5%;
+    right: 0;
+    display: flex;  
+}
+
+.languageIcon{
+    
+    width:48px!important;
+    height:48px !important;
+    border-radius:50px;
+    padding: 0;
+    margin:0;
+    z-index: 5;
+}
+
+
+
