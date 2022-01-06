@@ -15,11 +15,13 @@
     <script src="js/includeHTML.js"></script>
     <link rel="stylesheet" href="css/general.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
+    <script src="js/popUp.class.js"></script>
     <script src="js/login.class.js"></script>
     <script src="js/mini_backend.js"></script>
     <script src="js/task.class.js"></script>
     <script src="js/helper.class.js"></script>
     <script src="js/addtask.js"></script>
+    
 </head>
 
 <body onload="init()">
@@ -96,7 +98,7 @@
             </div>
             <div id="buttonContainer" class="buttonContainer" class="">
 
-                <button id="buttonCancel" class="buttonCancel" onclick="clearInputFields()" type="button">Cancel</button>
+                <button id="buttonCancel" class="buttonCancel" onclick="clearInputFields()" type="button">Reset Task</button>
                 <button id="buttonCreate" class="" onclick="addNewTask()" type="button">Create Task</button>
             </div>
         </form>

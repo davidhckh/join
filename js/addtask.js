@@ -1,5 +1,8 @@
 'use strict';
 
+let popup=new PopUp("task was moved to backlog!","10%","15%");
+
+
 
 setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
 
@@ -24,6 +27,7 @@ async function addNewTask() {
     await helper.getDataFromServer()
     helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
     helper.uploadToServer();
+    popup.createPopUp();
 
     resetFields();
 }

@@ -293,6 +293,33 @@ textarea:focus::placeholder{
     
 }
 
+/*=================================================================*/
+
+/*
+    * popUp style
+*/
+.pop-up{
+    position: absolute;
+  /*  top: 10%;
+    right: 15%;*/
+    z-index: 2;
+    color:white;
+    background-color:#102389;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    transition: all 1s ease-out;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+.pop-up-animation{
+    background-color:green;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+}
 
 
 
@@ -387,3 +414,6 @@ textarea:focus::placeholder{
         margin-top: 35%;
     }
 }
+
+
+
