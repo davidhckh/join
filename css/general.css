@@ -150,6 +150,7 @@ h5 {
 /*LegendTemplate*/
 
 .legendBox {
+    transform: scale(0.7);
     position: absolute;
     top: 10px;
     left: 200px;
@@ -247,26 +248,20 @@ h5 {
 }
 
 
-
 /*imprint language icons*/
 
-
-.languageIconWrap{
+.languageIconWrap {
     position: absolute;
     top: 5%;
     right: 0;
-    display: flex;  
+    display: flex;
 }
 
-.languageIcon{
-    
-    width:48px!important;
-    height:48px !important;
-    border-radius:50px;
+.languageIcon {
+    width: 48px!important;
+    height: 48px !important;
+    border-radius: 50px;
     padding: 0;
-    margin:0;
+    margin: 0;
     z-index: 5;
 }
-
-
-

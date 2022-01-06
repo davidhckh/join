@@ -137,3 +137,11 @@
 .helpHeader h5 {
     margin-top: 0;
 }
+
+.icon8Link {
+    color: #1E3190;
+}
+
+.icon8Link:hover {
+    color: rgb(255, 0, 0) !important;
+}

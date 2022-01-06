@@ -1,5 +1,6 @@
 /** Makes Menu Selected Bar Visible (don't remove)*/
-#backlog-menu-point .menu-point-pre-bar{
+
+#backlog-menu-point .menu-point-pre-bar {
     display: unset !important;
     opacity: 1 !important;
 }
@@ -20,15 +21,13 @@
     padding: 15px;
 }
 
-h5 {
-    margin-bottom: 40px;
-}
-
 .legendBox {
     position: unset !important;
 }
 
+
 /**Categories header*/
+
 #assigned-to-header {
     width: 263px;
 }
@@ -37,7 +36,9 @@ h5 {
     width: 200px;
 }
 
+
 /**Entries*/
+
 .entry-container {
     position: relative;
     cursor: pointer;
@@ -80,7 +81,7 @@ h5 {
     font-size: 14px;
     display: none;
 }
- 
+
 .urgency-color {
     width: 8px;
     height: 100%;
@@ -121,6 +122,7 @@ h5 {
 
 
 /**Button Container*/
+
 .entry-button-container {
     position: absolute;
     bottom: 0;
@@ -154,46 +156,37 @@ h5 {
     background: rgb(138, 138, 138)
 }
 
-@media (max-width: 1000px ){
+@media (max-width: 1000px) {
     #main-container {
         padding: 50px 20px;
         max-width: calc(100% - 40px)
     }
-
     .entry-container {
         flex-direction: column !important;
     }
-
     .entry-top-container {
         padding: 0 30px 10px 30px;
         flex-direction: column !important;
     }
-
     #header-container {
         display: none
     }
-
     .responsive-header {
         display: unset;
     }
-
     .assigned-to-image {
         margin-left: 0;
     }
-
     .assigned-to-container {
         margin-top: 10px;
     }
-
     .assigned-to-name {
         margin-bottom: 5px;
     }
-
     .due-date-container {
         min-width: 120px;
         width: 120px;
     }
-
     .expanded-category-container {
         min-width: 120px;
         width: 120px;

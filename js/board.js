@@ -146,6 +146,8 @@ function toggleHide(timeOfCreation) {
  */
 function generateBoardTask(task) {
     let finishDate = reformatDate(task['dueDate']);
+    let urgency = capitalizeFirstLetter(task['urgency']);
+    let category = capitalizeFirstLetter(task['category']);
     let returnString = `
     <div draggable="true" onClick="toggleHide(${task['timeOfCreation']})"
      ondragstart="startDragging(${task['timeOfCreation']})" ondragend="removeHighlight()" 
@@ -165,12 +167,12 @@ function generateBoardTask(task) {
     returnString += addButton(task);
     returnString += `</div>
                         <div id="${task['timeOfCreation']}" class="hide boardDetails">
-                            <p>${languages[language][0].taskAssignedTo}`
+                            <p>${languages[language][0].taskAssignedTo}<b>`
     returnString += getAssignedTo(task);
-    returnString += `           </p>
-                            <p>${languages[language][0].taskUrgency}<br>${capitalizeFirstLetter(task['urgency'])}</p>
-                            <p>${languages[language][0].taskCategory}<br>${capitalizeFirstLetter(task['category'])}</p>
-                            <p>${languages[language][0].taskDescription}<br>${task['description']}</p>
+    returnString += `          </b> </p>
+                            <p>${languages[language][0].taskUrgency}<br><b>${urgency}</b></p>
+                            <p>${languages[language][0].taskCategory}<br><b>${category}</b></p>
+                            <p>${languages[language][0].taskDescription}<br><b>${task['description']}</b></p>
                         </div>
                     </div>
                     </div>
@@ -224,7 +226,7 @@ function clearBoard(blockName) {
 function loadTodos() {
     let tasks = loadedTasks.filter(t => t['state'] == 'to-do');
     clearBoard('BlockToDo');
-    tasks.forEach(function (task) {
+    tasks.forEach(function(task) {
         document.getElementById('BlockToDo').innerHTML += generateBoardTask(task);
     });
 }
@@ -236,7 +238,7 @@ function loadTodos() {
 function loadInProgress() {
     let tasks = loadedTasks.filter(t => t['state'] == 'inProgress');
     clearBoard('BlockInProgress');
-    tasks.forEach(function (task) {
+    tasks.forEach(function(task) {
         document.getElementById('BlockInProgress').innerHTML += generateBoardTask(task);
     });
 }
@@ -248,7 +250,7 @@ function loadInProgress() {
 function loadTesting() {
     let tasks = loadedTasks.filter(t => t['state'] == 'testing');
     clearBoard('BlockTesting');
-    tasks.forEach(function (task) {
+    tasks.forEach(function(task) {
         document.getElementById('BlockTesting').innerHTML += generateBoardTask(task);
     });
 }
@@ -260,7 +262,7 @@ function loadTesting() {
 function loadDone() {
     let tasks = loadedTasks.filter(t => t['state'] == 'done');
     clearBoard('BlockDone');
-    tasks.forEach(function (task) {
+    tasks.forEach(function(task) {
         document.getElementById('BlockDone').innerHTML += generateBoardTask(task);
     });
 }
@@ -289,10 +291,11 @@ function reformatDate(dateStr) {
     return dArr[2] + "." + dArr[1] + "." + dArr[0].substring(2);
 }
 
-
 /**
- * Capitalize first letter to display from JSON
+ * function to set the first letter to uppercase
+ * @param {string} string - input string
+ * @returns string - first letter uppercase
  */
-function capitalizeFirstLetter(str) {
-    return str[0].toUpperCase() + str.slice(1);
-};
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
