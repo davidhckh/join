@@ -1,66 +1,80 @@
-class PopUp{
+class PopUp {
     text;
     popUpContainer;
     content;
     distanceTop;
     distanceRight;
     
-    constructor(string,distanceTop,distanceRight){
-        this.text=string;
-        this.distanceTop=distanceTop;
-        this.distanceRight=distanceRight;
-       
-        
+    
+    lastAnimation=0;
+/**
+ * 
+ * @param {string} string text that will be displayed in pop up 
+ * @param {string} distanceTop "x%" x is percentual difference from top
+ * @param {string} distanceRight "x%" x is percentual difference from right
+ */
+    constructor(string, distanceTop, distanceRight) {
+        this.text = string;
+        this.distanceTop = distanceTop;
+        this.distanceRight = distanceRight;
+
+
     }
 
-    createPopUp(){
-       this.popUpContainer= document.createElement('div');
-      this.popUpContainer.classList.add('pop-up');
+    createPopUp() {
 
-      this.popUpContainer.style.top=this.distanceTop;
-      this.popUpContainer.style.right=this.distanceRight;
-     
-     //  this.content= document.createTextNode(`${this.text}`);
-     //  this.popUpContainer.appendChild(this.content);
-       document.body.appendChild(this.popUpContainer);
-      
-       // this.popUpContainer.classList.add('pop-up-animation');
-     
+        if(!this.isAnimating()){
+            this.lastAnimation=new Date().getTime();
+            
+            this.popUpContainer = document.createElement('div');
+            this.popUpContainer.classList.add('pop-up');
+    
+            this.popUpContainer.style.top = this.distanceTop;
+            this.popUpContainer.style.right = this.distanceRight;
+    
+            document.body.appendChild(this.popUpContainer);
+    
+    
+            this.phase1();
+            this.phase2();
+            this.phase3();
+        }
+
+       
         
-     this.phase1();
-     this.phase2();
-     this.phase3();
-
-   
-
-   
-
-
 
     }
 
     phase1() {
-        setTimeout(()=>{
+        setTimeout(() => {
             this.popUpContainer.classList.add('pop-up-animation');
-        },2000);
+        }, 200);
     }
 
-    phase2(){
-        setTimeout(()=>{
-            this.content= document.createTextNode(`${this.text}`);
+    phase2() {
+        setTimeout(() => {
+            this.content = document.createTextNode(`${this.text}`);
             this.popUpContainer.appendChild(this.content);
-        },3000);
+        }, 1200);
     }
 
-    phase3(){
-        setTimeout(()=>{
+    phase3() {
+        setTimeout(() => {
             this.popUpContainer.classList.remove('pop-up-animation');
             this.popUpContainer.removeChild(this.content);
-        },6000);
-    
-        setTimeout(()=>{
-            this.popUpContainer.classList.add('hide');
-        },6500);
+        }, 2200);
+
+        setTimeout(() => {
+           document.body.removeChild(this.popUpContainer);
+        }, 3200);
+    }
+    /**
+     * 
+     * @returns boolean : true if animation is running, false otherwise
+     */
+    isAnimating() {
+        if(new Date().getTime()-this.lastAnimation<3200){return true;}
+        else{return false;}
     }
 
 }
