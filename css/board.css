@@ -182,3 +182,19 @@
     align-content: center;
     padding-bottom: 8px;
 }
+
+.taskTop {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.textTitle {
+    font-size: medium;
+}
+
+.taskTopTitle {
+    display: flex;
+    justify-content: flex-start;
+}

@@ -248,6 +248,11 @@ let englishPrivacy = `<hr><h2> Privacy Policy </h2>
 <p> </p> <p> <em> The data protection declaration was created with the help of activeMind AG, the experts for <a href = "https://www.activemind.de/datenschutz/datenschutzbeauftragter/" target = "_ blank" rel = "noopener"> external data protection officer </a> (Version # 2020-09-30). </em> </p>
 `;
 
+/**
+ * function to display the category which is clicked on
+ * @param {event} evt 
+ * @param {string} category 
+ */
 function openCategory(evt, category) {
     // Declare all variables
     var i, tabcontent, tablinks;
@@ -270,27 +275,35 @@ function openCategory(evt, category) {
 
 }
 
+/**
+ * first function which is be loaded
+ * call function to display first category
+ */
 function helpInit() {
     document.getElementById('helpFirstSteps').style.display = "block";
 }
 
 /**
- * english-german imprint
+ * shows the english imprint
  */
-
-
 function showEnglishImprint() {
     let imprint = document.getElementById('imprintWrap');
     imprint.innerHTML = "";
     imprint.innerHTML = englishImpressum + englishImprint + englishPrivacy;
 }
 
+/**
+ * shows the german imprint
+ */
 function showGermanImprint() {
     let imprint = document.getElementById('imprintWrap');
     imprint.innerHTML = "";
     imprint.innerHTML = germanImpressum + germanImprint + germanPrivacy;
 }
 
+/**
+ * toggles the classes of the images to show which language is active
+ */
 function toggleLanguageIcon() {
     document.getElementById('languageIconEnglish').classList.toggle('languageIconActive');
     document.getElementById('languageIconGerman').classList.toggle('languageIconActive');

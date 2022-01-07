@@ -147,107 +147,6 @@ h5 {
 }
 
 
-/*LegendTemplate*/
-
-.legendBox {
-    transform: scale(0.7);
-    position: absolute;
-    top: 10px;
-    left: 200px;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.width-auto {
-    width: auto !important;
-}
-
-.textTitle {
-    font-size: medium;
-}
-
-.fl-start {
-    display: flex;
-    justify-content: start;
-    width: 100%;
-}
-
-.taskTopTitle {
-    display: flex;
-    justify-content: flex-start;
-}
-
-@media (max-width: 1000px) {
-    .legendBox {
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .legendCategoryItem {
-        border-radius: 20px;
-        padding: 8px;
-        margin: 4px 16px !important;
-    }
-    .legend {
-        display: flex;
-        width: calc(75vw);
-        justify-content: space-around;
-        margin: 16px;
-    }
-    .legendText {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        word-break: break-all;
-    }
-    .legendUrgency {
-        min-height: 100%;
-        height: auto !important;
-        min-width: 15px;
-    }
-}
-
-.legendUrgency {
-    min-width: 15px;
-    height: 100%;
-}
-
-.taskTop {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 100%;
-}
-
-.legend {
-    display: flex;
-    min-width: 90%;
-    justify-content: space-evenly;
-    margin: 8px 16px 0 16px;
-    background-color: transparent !important;
-    flex-wrap: wrap;
-}
-
-.legendCategoryItem {
-    border-radius: 20px;
-    padding: 8px;
-    margin: 16px;
-}
-
-.legendItem {
-    border-bottom-left-radius: 20px !important;
-    border-top-left-radius: 20px !important;
-}
-
-
 /*imprint language icons*/
 
 .languageIconWrap {
@@ -285,4 +184,10 @@ h5 {
         position: unset !important;
         justify-content: flex-end;
     }
+}
+
+.fl-start {
+    display: flex !important;
+    justify-content: start;
+    width: 100%;
 }

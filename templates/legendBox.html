@@ -1,6 +1,14 @@
+<head>
+    <link rel="stylesheet" href="css/legend.css">
+</head>
+
 <div class="legendBox">
+
     <div class="box legendContainer">
-        <section class="legend">
+        <section class="legendBtnSection">
+            <button id="legendBtn" onclick="testclick()">Show Help</button>
+        </section>
+        <section id="legendTopSection" class="legend hide">
 
             <div class="fl-start width-auto">
                 <div class="legendUrgency urgency-high legendItem">
@@ -46,7 +54,7 @@
 
         </section>
 
-        <section class="legend">
+        <section id="legendBottomSection" class="legend hide">
             <div class="category-color-management legendCategoryItem">
                 <div class="fl-start">
                     <div class="textTitle">Category: Management</div>
