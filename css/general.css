@@ -251,10 +251,11 @@ h5 {
 /*imprint language icons*/
 
 .languageIconWrap {
-    position: absolute;
-    top: 5%;
-    right: 0;
     display: flex;
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    justify-content: flex-end;
 }
 
 .languageIcon {
@@ -264,4 +265,24 @@ h5 {
     padding: 0;
     margin: 0;
     z-index: 5;
+    border: 2px solid transparent;
+    cursor: pointer;
+    filter: grayscale(1);
+}
+
+.languageIcon:hover {
+    border: 2px solid #1E3190;
+    filter: brightness(0.7);
+}
+
+.languageIconActive {
+    filter: grayscale(0);
+}
+
+@media(max-width:700px) {
+    .languageIconWrap {
+        display: flex;
+        position: unset !important;
+        justify-content: flex-end;
+    }
 }

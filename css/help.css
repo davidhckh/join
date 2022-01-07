@@ -72,6 +72,7 @@
     justify-content: center !important;
     align-items: center !important;
     flex-direction: column;
+    word-break: break-all;
 }
 
 .tabcontent {
