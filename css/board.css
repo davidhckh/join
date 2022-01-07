@@ -175,3 +175,10 @@
     margin-top: 0;
     margin-left: 0.4em;
 }
+
+.moveToBtns {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    padding-bottom: 8px;
+}

@@ -50,20 +50,40 @@ function allowDrop(ev) {
  */
 function startDragging(timeOfCreation) {
     currentDraggedElement = timeOfCreation;
-
 }
 
 /**
  * called when the element is dropped
  * changes the category of the task that was moved
  * and call the init function to update the site
- * @param {string} targetCategory - 
+ * @param {string} targetCategory
  */
 async function moveTo(targetCategory) {
     helper.updateStatus(currentDraggedElement, 'state', targetCategory);
     let task = loadedTasks.findIndex(task => task.timeOfCreation == currentDraggedElement)
     task.state = targetCategory;
     reloadColumns();
+}
+
+/**
+ * changes the category of the task that was clicked on
+ * and call the init function to update the site
+ * @param {number} id 
+ * @param {string} targetCategory 
+ */
+async function btnMoveTo(id, targetCategory) {
+    helper.updateStatus(id, 'state', targetCategory);
+    let task = loadedTasks.findIndex(task => task.timeOfCreation == id)
+    task.state = targetCategory;
+    reloadColumns();
+}
+
+/**
+ * hides the send to button of the task in which it is already
+ * @param {array} task 
+ */
+function hideMoveBtn(task) {
+    document.getElementById(task.state + task['timeOfCreation']).classList.add('hide');
 }
 
 /**
@@ -94,7 +114,6 @@ async function reloadColumns() {
     loadInProgress();
     loadTesting();
     loadDone();
-
 }
 
 /**
@@ -173,7 +192,14 @@ function generateBoardTask(task) {
                             <p>${languages[language][0].taskUrgency}<br><b>${urgency}</b></p>
                             <p>${languages[language][0].taskCategory}<br><b>${category}</b></p>
                             <p>${languages[language][0].taskDescription}<br><b>${task['description']}</b></p>
-                        </div>
+                            <p>Send Task to:</p>
+                            <div class="moveToBtns">
+                            <button id="to-do${task['timeOfCreation']}" onclick="btnMoveTo(${task['timeOfCreation']},'to-do')" class="taskmoveToBtn" title="To Do">To Do</button>
+                            <button id="inProgress${task['timeOfCreation']}" onclick="btnMoveTo(${task['timeOfCreation']},'inProgress')" class="taskmoveToBtn" title="In Progress">In Progress</button>
+                            <button id="testing${task['timeOfCreation']}" onclick="btnMoveTo(${task['timeOfCreation']},'testing')" class="taskmoveToBtn" title="Testing">Testing</button>
+                            <button id="done${task['timeOfCreation']}" onclick="btnMoveTo(${task['timeOfCreation']},'done')" class="taskmoveToBtn" title="Done">Done</button>
+                            </div>
+                            </div>
                     </div>
                     </div>
                     </div>`;
@@ -228,6 +254,7 @@ function loadTodos() {
     clearBoard('BlockToDo');
     tasks.forEach(function(task) {
         document.getElementById('BlockToDo').innerHTML += generateBoardTask(task);
+        hideMoveBtn(task);
     });
 }
 
@@ -240,6 +267,7 @@ function loadInProgress() {
     clearBoard('BlockInProgress');
     tasks.forEach(function(task) {
         document.getElementById('BlockInProgress').innerHTML += generateBoardTask(task);
+        hideMoveBtn(task);
     });
 }
 
@@ -252,6 +280,7 @@ function loadTesting() {
     clearBoard('BlockTesting');
     tasks.forEach(function(task) {
         document.getElementById('BlockTesting').innerHTML += generateBoardTask(task);
+        hideMoveBtn(task);
     });
 }
 
@@ -264,6 +293,7 @@ function loadDone() {
     clearBoard('BlockDone');
     tasks.forEach(function(task) {
         document.getElementById('BlockDone').innerHTML += generateBoardTask(task);
+        hideMoveBtn(task);
     });
 }
 
@@ -287,7 +317,6 @@ async function loadServerData() {
  */
 function reformatDate(dateStr) {
     let dArr = dateStr.split("-");
-
     return dArr[2] + "." + dArr[1] + "." + dArr[0].substring(2);
 }
 
