@@ -24,16 +24,18 @@
 
         <!--Sign Up Container-->
         <div id="sign-up-container" class="center column">
-            <h2>Sign Up</h2>
+            <h2 id="header">Sign Up</h2>
 
             <!--Profile Picture Selector-->
             <img id="image-selector" src="assets/profilePictures/0.png" onclick="login.openImageSelector()">
 
             <!--Sign Up Form-->
-            <form id="form" onsubmit="login.signUp(); event.preventDefault();">
+            <form id="form" onsubmit="login.formFilledOut(); event.preventDefault();">
                 <input id="name-input" placeholder="Name" maxlength="50" required>
                 <input id="mail-input" placeholder="E-Mail" type="email" maxlength="30" required>
+                <span id="mail-error" class="hide">This email is already taken. Log in <a onclick="login.loginLabelClick()">here</a> instead.</span>
                 <button id="sign-up-button">Sign Up</button>
+                <span id="open-login-label" class="center" onclick="login.loginLabelClick()">Already registered? Log in instead.</span>
             </form>
 
             <!--Guest Login-->

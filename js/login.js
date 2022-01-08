@@ -42,7 +42,8 @@ function logout() {
  */
 class Login {
     constructor() {
-        this.helper = new Helper;
+        this.helper = new Helper();
+        this.mode = 'signup'
 
         setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
 
@@ -58,17 +59,31 @@ class Login {
         this.signUpButton = document.getElementById('sign-up-button');
         this.guestButton = document.getElementById('guest-login-button');
         this.form = document.getElementById('form');
+        this.mailError = document.getElementById('mail-error');
+        this.header = document.getElementById('header');
+        this.openLoginLabel = document.getElementById('open-login-label');
+    }
+
+    /**
+     * On form button click
+     */
+    async formFilledOut() {
+        await this.helper.getDataFromServer();
+
+        if (this.mode == 'signup') {
+            this.signUp();
+        } else {
+            this.login();
+        }
     }
 
     /**
      * create new user if email is not taken
-     * if email is alrady taken login with existing user and
+     * if email is already taken, show error message
      * 
      * open index.html afterwards
      */
     async signUp() {
-        await this.helper.getDataFromServer();
-
         if (!this.helper.mailExists(this.mailInput.value)) {
             await this.helper.createNewUser(
                 this.nameInput.value,
@@ -76,11 +91,27 @@ class Login {
                 this.imageSelector.getAttribute('src'),
             )
 
+            localStorage.setItem('user', JSON.stringify(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)));
+
+            window.open("index.html", "_self");
+
+        } else {
+            this.mailError.classList.remove('hide');
         }
+    }
 
-        localStorage.setItem('user', JSON.stringify(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)))
+    /**
+     * Check if mail exists if so, log in
+     * show error otherwise
+     */
+    login() {
+        if (this.helper.mailExists(this.mailInput.value)) {
+            localStorage.setItem('user', JSON.stringify(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)));
 
-        window.open("index.html", "_self");
+            window.open("index.html", "_self");
+        } else {
+            this.mailError.classList.remove('hide');
+        }
     }
 
 
@@ -116,5 +147,45 @@ class Login {
         }));
 
         window.open("index.html", "_self");
+    }
+
+    loginLabelClick() {
+        if (this.mode == 'signup') {
+            this.openLogin();
+        } else {
+            this.openSignUp();
+        }
+    }
+
+    /**
+     * Change all elements to login form
+     */
+    openLogin() {
+        this.mode = 'login';
+
+        this.imageSelector.classList.add('hide');
+        this.nameInput.classList.add('hide');
+        this.nameInput.required = false;
+        this.signUpButton.innerHTML = 'Log In';
+        this.header.innerHTML = 'Log In';
+        this.openLoginLabel.innerHTML = 'Sign up';
+        this.mailError.innerHTML = `This email doesn't exist. Sign up <a onclick="login.loginLabelClick()">here</a> instead.`;
+        this.mailError.classList.add('hide');
+    }
+
+    /**
+     * Change all elements for sign up form
+     */
+    openSignUp() {
+        this.mode = 'signup';
+
+        this.imageSelector.classList.remove('hide');
+        this.nameInput.classList.remove('hide');
+        this.nameInput.required = true;
+        this.signUpButton.innerHTML = 'Sign Up';
+        this.header.innerHTML = 'Sign Up';
+        this.mailError.innerHTML = 'This email is already taken. Log in <a onclick="login.loginLabelClick()">here</a> instead.';
+        this.openLoginLabel.innerHTML = 'Already registered? Log in instead.';
+        this.mailError.classList.add('hide');
     }
 }

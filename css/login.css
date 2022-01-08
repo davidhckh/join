@@ -17,9 +17,33 @@ body {
     width: 260px;
 }
 
+form {
+    width: 100%;
+}
+
 /**Inputs*/
 input {
     margin: 10px 0;
+}
+
+#login-input {
+    margin-bottom: 0;
+}
+
+#mail-error {
+    position: relative;
+    top: -10px;
+    left: 4px;
+    font-size: 12px;
+    color: rgb(255, 91, 91);
+}
+
+#mail-error a {
+    cursor: pointer;
+}
+
+#mail-error a {
+    text-decoration: underline;
 }
 
 /**Image Selector*/
@@ -66,10 +90,21 @@ button {
     margin-top: 20px;
 }
 
+#open-login-label {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#open-login-label:hover {
+    opacity: 0.5;
+}
+
 #guest-login-button {
     margin-top: 20px;
     font-size: 14px;
-    text-decoration: underline;
     opacity: 0.7;
     cursor: pointer;
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-let popup=new PopUp("Task was moved to backlog!","10%","15%");
+let popup = new PopUp("Task was moved to backlog!", "10%", "15%");
 
 
 
@@ -21,13 +21,13 @@ async function addNewTask() {
     let urgency = document.getElementById('taskUrgency');
     let description = document.getElementById('taskDescription');
     let dueDate = document.getElementById('taskDate');
-  //  let assignedTo = selectedUser;
-  let assignedTo = selectedArray;
+    //  let assignedTo = selectedUser;
+    let assignedTo = selectedArray;
 
     await helper.getDataFromServer()
     helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
     helper.uploadToServer();
-    //popup.createPopUp();
+    popup.createPopUp();
 
     resetFields();
 }
@@ -43,8 +43,8 @@ function resetFields() {
     document.getElementById('taskDescription').value = "";
     document.getElementById('taskDate').value = "";
 
-   selectedArray=[];
-   clearSelectedUsers();
+    selectedArray = [];
+    clearSelectedUsers();
 }
 
 
@@ -87,9 +87,9 @@ function renderUsers() {
 
     renderContainer.innerHTML = ''
 
-    for(let i = 0; i < helper.allUsers.length; i++) {
-        renderContainer.innerHTML += 
-        `<div id="assign-to-container-${i}" class="assign-to-container column center" onclick="setSelectedUser(${i})">
+    for (let i = 0; i < helper.allUsers.length; i++) {
+        renderContainer.innerHTML +=
+            `<div id="assign-to-container-${i}" class="assign-to-container column center" onclick="setSelectedUser(${i})">
             <img src="${helper.allUsers[i].image}">
             <span>${helper.allUsers[i].name}</span>
         </div>`
@@ -102,25 +102,25 @@ function renderUsers() {
  * @param {int} index index of clicked users
  */
 function setSelectedUser(index) {
- 
+
 
     selectedUser = helper.allUsers[index];
     selectedIcon = document.getElementById('assign-to-container-' + index);
-    if(!selectedArray.includes(selectedUser)){
+    if (!selectedArray.includes(selectedUser)) {
         selectedArray.push(selectedUser);
         selectedIcon.classList.add('selected-assign-to-container');
     }
-    else if(selectedArray.includes(selectedUser)) {
+    else if (selectedArray.includes(selectedUser)) {
         selectedIcon.classList.remove('selected-assign-to-container');
         let finder = selectedArray.indexOf(selectedUser);
-        selectedArray.splice(finder,1);
+        selectedArray.splice(finder, 1);
     }
-    
+
 
 }
 
 function clearSelectedUsers() {
-    for(let i = 0; i < helper.allUsers.length; i++) {
+    for (let i = 0; i < helper.allUsers.length; i++) {
         document.getElementById('assign-to-container-' + i).classList.remove('selected-assign-to-container');
     }
 }
@@ -131,7 +131,7 @@ async function init() {
 
     includeHTML();
     isFilledOut(checkFrequenz);
-    
+
     /**Get Users from server to setup assign-to container */
     await helper.getDataFromServer();
     renderUsers();
