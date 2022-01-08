@@ -68,6 +68,13 @@ a {
     padding: 3px;
 }
 
+/**Username*/
+#user-name {
+    font-size: 18px;
+    margin: 10px 0;
+    color: white;
+}
+
 /**Logout Button*/
 #logout-button {
     font-size: 14px;
@@ -191,6 +198,10 @@ a {
     #profile-picture {
         height: 35px;
         margin-right: 20px;
+    }
+
+    #user-name {
+        display: none;
     }
 
     #reponsive-menu-icon {

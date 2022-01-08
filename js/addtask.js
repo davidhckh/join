@@ -129,7 +129,7 @@ function clearSelectedUsers() {
 async function init() {
     let checkFrequenz = 50;
 
-    includeHTML();
+    includeHTML(setupMenuUserDetails());
     isFilledOut(checkFrequenz);
 
     /**Get Users from server to setup assign-to container */

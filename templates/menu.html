@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/menu.css">
 <link rel="stylesheet" href="css/general.css">
+<script type="text/javascript">console.log('hisdfasdasdsdf')</script>
 
 <div id="menu-push"></div>
 <div id="menu-container">
@@ -37,8 +38,12 @@
         </a>
     </div>
 
-    <!--User Profile Picture-->
-    <img id="profile-picture" src="assets/empty-profile-picture.png" class="asdd" onload="setupMenuProfilePicture(this)">
+    <div class="column center">
+        <!--User Profile Picture-->
+        <img id="profile-picture" class="menu-profile-picture" src="assets/empty-profile-picture.png">
+
+        <span id="user-name"></span>
+    </div>
 
     <!--Logut Button-->
     <a id="logout-button" onclick="logout()">Logout</a>

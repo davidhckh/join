@@ -26,10 +26,13 @@ function checkLogin() {
 }
 
 /**
- * Setup user profile picture in menu
+ * Setup user details (profile picture and name) in menu
  */
-function setupMenuProfilePicture(picture) {
-    picture.src = JSON.parse(localStorage.getItem('user')).image;
+function setupMenuUserDetails() {
+    setTimeout(() => {
+        document.getElementById('profile-picture').src = JSON.parse(localStorage.getItem('user')).image;
+        document.getElementById('user-name').innerHTML = JSON.parse(localStorage.getItem('user')).name;  
+    }, 50);
 }
 
 function logout() {
