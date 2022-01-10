@@ -4,6 +4,10 @@ class PopUp {
     content;
     distanceTop;
     distanceRight;
+    phase1Duration;
+    phase2Duration;
+    phase3Duration;
+    completeAnimationTime;
     
     
     lastAnimation=0;
@@ -13,10 +17,14 @@ class PopUp {
  * @param {string} distanceTop "x%" x is percentual difference from top
  * @param {string} distanceRight "x%" x is percentual difference from right
  */
-    constructor(string, distanceTop, distanceRight) {
+    constructor(string, distanceTop, distanceRight,phase1Duration, phase2Duration, phase3Duration,completeAnimationTime) {
         this.text = string;
         this.distanceTop = distanceTop;
         this.distanceRight = distanceRight;
+        this.phase1Duration = phase1Duration;
+        this.phase2Duration = phase2Duration;
+        this.phase3Duration = phase3Duration;
+        this.completeAnimationTime=completeAnimationTime;
 
 
     }
@@ -48,25 +56,25 @@ class PopUp {
     phase1() {
         setTimeout(() => {
             this.popUpContainer.classList.add('pop-up-animation');
-        }, 200);
+        }, this.phase1Duration*1000);
     }
 
     phase2() {
         setTimeout(() => {
             this.content = document.createTextNode(`${this.text}`);
             this.popUpContainer.appendChild(this.content);
-        }, 1200);
+        }, this.phase2Duration*1000);
     }
 
     phase3() {
         setTimeout(() => {
             this.popUpContainer.classList.remove('pop-up-animation');
             this.popUpContainer.removeChild(this.content);
-        }, 2200);
+        }, this.phase3Duration*1000);
 
         setTimeout(() => {
            document.body.removeChild(this.popUpContainer);
-        }, 3200);
+        }, this.completeAnimationTime*1000);
     }
     /**
      * 
