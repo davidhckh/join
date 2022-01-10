@@ -16,6 +16,10 @@ class PopUp {
  * @param {string} string text that will be displayed in pop up 
  * @param {string} distanceTop "x%" x is percentual difference from top
  * @param {string} distanceRight "x%" x is percentual difference from right
+ * @param {integer} phase1Duration time in seconds that it take from showing the popUp to starting the transform
+ * @param {integer} phase2Duration time in seconds that it take to show the popUp text
+ * @param {integer} phase1Duration time in seconds that it take to start the retransfrom of popUp 
+ * @param {integer} completeAnimationTime time in seconds that the whole animation lasts
  */
     constructor(string, distanceTop, distanceRight,phase1Duration, phase2Duration, phase3Duration,completeAnimationTime) {
         this.text = string;
