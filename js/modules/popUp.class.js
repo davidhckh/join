@@ -85,7 +85,7 @@ class PopUp {
      * @returns boolean : true if animation is running, false otherwise
      */
     isAnimating() {
-        if(new Date().getTime()-this.lastAnimation<3200){return true;}
+        if(new Date().getTime()-this.lastAnimation<this.completeAnimationTime*1000){return true;}
         else{return false;}
     }
 
