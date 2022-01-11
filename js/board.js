@@ -116,7 +116,6 @@ async function sendTaskToBacklog(timeOfCreation) {
  */
 async function deleteTask(timeOfCreation) {
     helper.deleteOneTask(timeOfCreation);
-    sleep(300);
     boardInit();
 }
 
