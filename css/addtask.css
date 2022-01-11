@@ -316,7 +316,7 @@ textarea:focus::placeholder {
     position: absolute;
     z-index: 2;
     color: white;
-    padding: 4px;
+    padding: 8px;
     border-radius: 2px;
     background-color: transparent;
 
