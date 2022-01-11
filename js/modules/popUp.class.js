@@ -4,82 +4,33 @@ class PopUp {
     content;
     distanceTop;
     distanceRight;
-    phase1Duration;
-    phase2Duration;
-    phase3Duration;
     completeAnimationTime;
     
-    
+    fadeInDuration;
+    fadeOutDuration;
     lastAnimation=0;
 /**
  * 
  * @param {string} string text that will be displayed in pop up 
  * @param {string} distanceTop "x%" x is percentual difference from top
  * @param {string} distanceRight "x%" x is percentual difference from right
- * @param {integer} phase1Duration time in seconds that it take from showing the popUp to starting the transform
- * @param {integer} phase2Duration time in seconds that it take to show the popUp text
- * @param {integer} phase1Duration time in seconds that it take to start the retransfrom of popUp 
+ * @param {integer} fadeInDuration time in seconds that it take from showing the popUp to starting the transform
+ * @param {integer} fadeOutDuration time in seconds that it take to show the popUp text
  * @param {integer} completeAnimationTime time in seconds that the whole animation lasts
  */
-    constructor(string, distanceTop, distanceRight,phase1Duration, phase2Duration, phase3Duration,completeAnimationTime) {
+    constructor(string, distanceTop, distanceRight,fadeInDuration, fadeOutDuration,completeAnimationTime) {
         this.text = string;
         this.distanceTop = distanceTop;
         this.distanceRight = distanceRight;
-        this.phase1Duration = phase1Duration;
-        this.phase2Duration = phase2Duration;
-        this.phase3Duration = phase3Duration;
-        this.completeAnimationTime=completeAnimationTime;
-
-
-    }
-
-    createPopUp() {
-
-        if(!this.isAnimating()){
-            this.lastAnimation=new Date().getTime();
-            
-            this.popUpContainer = document.createElement('div');
-            this.popUpContainer.classList.add('pop-up');
-    
-            this.popUpContainer.style.top = this.distanceTop;
-            this.popUpContainer.style.right = this.distanceRight;
-    
-            document.body.appendChild(this.popUpContainer);
-    
-    
-            this.phase1();
-            this.phase2();
-            this.phase3();
-        }
-
+        this.fadeInDuration = fadeInDuration;
+        this.fadeOutDuration = fadeOutDuration;
+        this.completeAnimationTime= completeAnimationTime;
        
-        
+
 
     }
 
-    phase1() {
-        setTimeout(() => {
-            this.popUpContainer.classList.add('pop-up-animation');
-        }, this.phase1Duration*1000);
-    }
-
-    phase2() {
-        setTimeout(() => {
-            this.content = document.createTextNode(`${this.text}`);
-            this.popUpContainer.appendChild(this.content);
-        }, this.phase2Duration*1000);
-    }
-
-    phase3() {
-        setTimeout(() => {
-            this.popUpContainer.classList.remove('pop-up-animation');
-            this.popUpContainer.removeChild(this.content);
-        }, this.phase3Duration*1000);
-
-        setTimeout(() => {
-           document.body.removeChild(this.popUpContainer);
-        }, this.completeAnimationTime*1000);
-    }
+  
     /**
      * 
      * @returns boolean : true if animation is running, false otherwise
@@ -87,6 +38,50 @@ class PopUp {
     isAnimating() {
         if(new Date().getTime()-this.lastAnimation<this.completeAnimationTime*1000){return true;}
         else{return false;}
+    }
+
+
+    show() {
+
+        if(!this.isAnimating()){
+            this.lastAnimation=new Date().getTime();
+            this.popUpWrapper = document.createElement('div');
+        
+            this.popUpContainer = document.createElement('span');
+            this.popUpWrapper.appendChild(this.popUpContainer);
+            this.popUpContainer.innerHTML="";
+            this.popUpContainer.innerHTML=`${this.text}`;
+                this.popUpContainer.classList.add('pop-up');
+        
+                this.popUpContainer.style.top = this.distanceTop;
+                this.popUpContainer.style.right = this.distanceRight;
+        
+                document.body.appendChild(this.popUpWrapper);
+                this.fadeInAndOut();
+        }
+       
+    }
+
+    fadeInAndOut() {
+        setTimeout(() => {
+         
+            this.popUpContainer.classList.add('pop-up-animation');
+        }, this.fadeInDuration*1000);
+
+        setTimeout(() => {
+            this.popUpContainer.classList.remove('pop-up-animation');
+           
+           // document.body.removeChild(this.popUpContainer);
+
+           // document.body.removeChild(this.popUpWrapper);
+        }, this.fadeOutDuration*1000);
+
+
+        setTimeout(() => {
+           
+
+            document.body.removeChild(this.popUpWrapper);
+        }, this.completeAnimationTime*1000);
     }
 
 }

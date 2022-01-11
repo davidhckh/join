@@ -10,18 +10,18 @@
     * generel container and content-wrap style
 */
 
-#contentAddTask{
+#contentAddTask {
     height: 100vh;
     width: 100vw;
     margin: 0;
     display: flex;
     flex-direction: row;
-    font-family: 'PT Sans', sans-serif; 
+    font-family: 'PT Sans', sans-serif;
     background-color: #F6F8FC;
     position: relative;
 }
 
-header{
+header {
     position: absolute;
     left: 7.5%;
     top: 2rem;
@@ -31,7 +31,7 @@ h1, h5 {
     margin: 0
 }
 
-.inputContainer{
+.inputContainer {
     display: flex;
     flex-direction: column;
     min-width: 40%;
@@ -40,7 +40,7 @@ h1, h5 {
     margin-bottom: 20px;
 }
 
-form{
+form {
     position: relative;
     width: 85%;
     display: flex;
@@ -48,7 +48,7 @@ form{
     padding: 20px;
 }
 
-.spaceBetween{
+.spaceBetween {
     justify-content: space-between;
     align-items: center;
 }
@@ -57,12 +57,12 @@ form{
 * assign to containers
 */
 
-.taskImgCon{
+.taskImgCon {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     box-shadow: none !important;
-    
+
 }
 
 /**render container*/
@@ -93,14 +93,14 @@ form{
 
 /*==== some changes to enable scrollable array ====*/
 .assigendTo-wrapper {
-    overflow-x:scroll;     
+    overflow-x: scroll;
     white-space: nowrap;
-   
+
 }
 
 
 
-.assignedContainer{
+.assignedContainer {
     display: flex;
     flex-direction: column;
     min-width: 40%;
@@ -118,19 +118,19 @@ form{
  * input and labels styles
 */
 
-label{
+label {
     font-weight: bold;
     color: #102389;
     margin-bottom: 5px;
 }
 
 
-input{
-    border: none;  
+input {
+    border: none;
 
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    padding: 0 20px; 
+    padding: 0 20px;
 
     outline: none;
     transition: all 0.1s ease-out;
@@ -141,23 +141,23 @@ input{
 }
 
 
-input::placeholder{
-    color: rgba(0 ,0, 0,0.8);
+input::placeholder {
+    color: rgba(0, 0, 0, 0.8);
     transition: color 0.3s ease-in-out;
-    
+
 }
 
-input:focus::placeholder{
+input:focus::placeholder {
     color: transparent;
 }
 
-input:focus{
+input:focus {
     border: 2px solid #102389 !important;
     border-radius: 2rem;
     box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
 }
 
-input::-webkit-calendar-picker-indicator{
+input::-webkit-calendar-picker-indicator {
     height: 30px;
     width: 30px;
     object-fit: cover;
@@ -174,26 +174,30 @@ select {
     font-size: 18px;
     transition: all 0.1s ease-out;
     font-family: 'PT Sans', sans-serif;
-    padding: 0 20px; 
+    padding: 0 20px;
     outline: none;
     height: 50px;
     box-shadow: unset !important;
     border: 2px solid #ebebeb !important;
-    
-   
+
+
     min-width: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    /* Some browsers will not display the caret when using calc, so we put the fallback first */ 
-    background: url("../assets/chevron .png") white no-repeat 98.5% !important; /* !important used for overriding all other customisations */
-    background: url("../assets/chevron .png") white no-repeat calc(100% - 5px) !important; /* Better placement regardless of input width */
-  }
-  
-  /*For IE*/
-  select::-ms-expand { display: none; }
+    /* Some browsers will not display the caret when using calc, so we put the fallback first */
+    background: url("../assets/chevron .png") white no-repeat 98.5% !important;
+    /* !important used for overriding all other customisations */
+    background: url("../assets/chevron .png") white no-repeat calc(100% - 5px) !important;
+    /* Better placement regardless of input width */
+}
 
-  select:focus{
+/*For IE*/
+select::-ms-expand {
+    display: none;
+}
+
+select:focus {
     border: 2px solid #102389 !important;
     border-radius: 2rem;
     box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
@@ -204,19 +208,19 @@ select {
 
 
 
-select::placeholder{
-    color: rgba(0 ,0, 0,0.8);
+select::placeholder {
+    color: rgba(0, 0, 0, 0.8);
     transition: color 0.3s ease-in-out;
-    
+
 }
 
-select:focus::placeholder{
+select:focus::placeholder {
     color: transparent;
-    
+
 }
 
-select:hover{
-    cursor:pointer;
+select:hover {
+    cursor: pointer;
 }
 
 /*=================================================================*/
@@ -224,7 +228,7 @@ select:hover{
 /*
     * button styles
 */
-button{
+button {
     height: 50px;
     min-width: 40%;
     padding: 8px;
@@ -236,19 +240,19 @@ button{
 }
 
 
-.buttonContainer{
-   
+.buttonContainer {
+
     display: flex;
     justify-content: space-between;
     margin: 0 10px;
     margin-top: 20px;
-    
-    
+
+
 }
 
-button:disabled{
+button:disabled {
     background-color: grey;
-    color:white;  
+    color: white;
     cursor: unset;
 }
 
@@ -259,23 +263,23 @@ button:disabled{
 */
 
 
-textarea{
-    padding: 0 20px; 
-    border: transparent;  
+textarea {
+    padding: 0 20px;
+    border: transparent;
     font-size: 18px;
     transition: all 0.3s linear;
     font-family: 'PT Sans', sans-serif;
     outline: none;
-    resize:none;
+    resize: none;
     box-shadow: none !important;
-    padding: 13px 17px; 
+    padding: 13px 17px;
     border: 2px solid #ebebeb !important;
 }
 
 
 
 
-textarea:focus{
+textarea:focus {
     border: 2px solid #102389 !important;
     border-radius: 2rem;
     box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
@@ -283,15 +287,15 @@ textarea:focus{
 
 
 
-textarea::placeholder{
-    color: rgba(0 ,0, 0,0.8);
+textarea::placeholder {
+    color: rgba(0, 0, 0, 0.8);
     transition: color 0.3s ease-in-out;
-    
+
 }
 
-textarea:focus::placeholder{
+textarea:focus::placeholder {
     color: transparent;
-    
+
 }
 
 /*=================================================================*/
@@ -299,26 +303,30 @@ textarea:focus::placeholder{
 /*
     * popUp style
 */
-.pop-up{
+
+
+.pop-up-animation {
+    background-color: #102389 !important;
+    width: unset;
+    height: unset;
+    /*  border-radius: 2px;*/
+}
+
+.pop-up {
     position: absolute;
     z-index: 2;
-    color:white;
-    background-color:#102389;
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    transition: all 1s ease-out;
+    color: white;
+    padding: 4px;
+    border-radius: 2px;
+    background-color: transparent;
+
+    transition: all 0.5s ease-out;
     text-align: center;
-    vertical-align: middle;
+
     font-size: 18px;
 }
 
-.pop-up-animation{
-    background-color:green;
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
-}
+
 
 
 
@@ -334,14 +342,15 @@ textarea:focus::placeholder{
 
 
 @media(max-width: 1100px) {
-    .buttonContainer{
+    .buttonContainer {
         min-width: 50%;
     }
-    #contentAddTask{
+
+    #contentAddTask {
         width: 95vw;
     }
 
-    .inputContainer{
+    .inputContainer {
         max-width: 40%;
     }
 }
@@ -350,69 +359,67 @@ textarea:focus::placeholder{
 @media(max-width: 720px) {
 
     header {
-        top:0;
+        top: 0;
     }
 
-    .buttonContainer{
+    .buttonContainer {
         min-width: 50%;
     }
 
-    form{
+    form {
         width: 100%;
         margin-left: 2.5%;
         top: -60px;
         padding: 0;
     }
 
-    #contentAddTask{
+    #contentAddTask {
         width: 95vw;
     }
 
-    .inputContainer{
+    .inputContainer {
         max-width: 40%;
     }
 
-    .assignedContainer{
+    .assignedContainer {
         max-width: 40%;
     }
 }
 
 @media(max-width: 550px) {
-    
-   .mediaCol{
-       flex-direction:column !important;
-   }
 
-   .inputContainer{
-       min-width: 90%;
-   }
+    .mediaCol {
+        flex-direction: column !important;
+    }
 
-   .assignedContainer{
-    min-width: 90%;
+    .inputContainer {
+        min-width: 90%;
+    }
+
+    .assignedContainer {
+        min-width: 90%;
+    }
+
+    form {
+        height: 115vh !important;
+        top: 100px;
+        margin-top: 25%;
+    }
 }
 
-   form{
-       height: 115vh !important;
-       top: 100px;
-       margin-top: 25%;
-   }
-}
-
-@media(max-width: 550px){
-    form{
+@media(max-width: 550px) {
+    form {
         margin-left: 0;
     }
 }
 
-@media(max-width: 350px){
-    #contentAddTask{
+@media(max-width: 350px) {
+    #contentAddTask {
         width: 90vw;
     }
-    form{
-       
+
+    form {
+
         margin-top: 35%;
     }
 }
-
-
-

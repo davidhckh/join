@@ -1,6 +1,6 @@
 'use strict';
 
-let popup = new PopUp("Task was moved to backlog!", "10%", "15%",0.2,1.2,2.2,3.2);
+let popup = new PopUp("Task was moved to backlog!", "10%", "15%",0.2,1.2,2.2);
 
 
 
@@ -27,9 +27,13 @@ async function addNewTask() {
     await helper.getDataFromServer()
     helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
     helper.uploadToServer();
-    popup.createPopUp();
 
-    resetFields();
+    if (title.value && category.value && urgency.value && description.value && dueDate.value) {
+        popup.show();
+    }
+    
+
+   // resetFields();
 }
 
 /**
@@ -127,10 +131,10 @@ function clearSelectedUsers() {
 
 
 async function init() {
-    let checkFrequenz = 50;
+    //let checkFrequenz = 50;
 
     includeHTML(setupMenuUserDetails());
-    isFilledOut(checkFrequenz);
+   // isFilledOut(checkFrequenz);
 
     /**Get Users from server to setup assign-to container */
     await helper.getDataFromServer();

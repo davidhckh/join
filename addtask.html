@@ -39,17 +39,17 @@
             <h5>Learning Managment System Project</h5>
         </header>
 
-        <form action="get" class="box">
+        <form action="get" class="box" onsubmit="myFunction()">
             <!-- first row -->
 
             <div class="row spaceBetween mediaCol">
                 <div class="inputContainer">
                     <label for="taskTitle">Title</label>
-                    <input class="box" id="taskTitle" type="text" value="" placeholder="Define a title">
+                    <input required="required" class="box" id="taskTitle" type="text" value="" placeholder="Define a title">
                 </div>
                 <div class="inputContainer">
                     <label for="taskDate">Due Date</label>
-                    <input class="box" id="taskDate" type="date" value="" placeholder="Define a title">
+                    <input required="required" class="box" id="taskDate" type="date" value="" placeholder="Define a title">
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="row spaceBetween mediaCol">
                 <div class="inputContainer">
                     <label for="taskCategory">Category</label>
-                    <select class="box" id="taskCategory" type="text" value="" placeholder="choose a category">
+                    <select required="required" class="box" id="taskCategory" type="text" value="" placeholder="choose a category">
                         <option value="none">None</option>
                         <option value="management">Management</option>
                         <option value="development">Development</option>
@@ -68,7 +68,7 @@
 
                 <div class="inputContainer">
                     <label for="taskUrgency">Urgency</label>
-                    <select class="box" id="taskUrgency" type="text" value="">
+                    <select required="required" class="box" id="taskUrgency" type="text" value="">
                         <option value="low">Low</option>
                         <option value="middle">Middle</option>
                         <option value="high">High</option>
@@ -80,7 +80,7 @@
             <div class="row spaceBetween mediaCol">
                 <div class="inputContainer">
                     <label for="taskDescription">Description</label>
-                    <textarea name="description" id="taskDescription" cols="30" rows="10" class="box" placeholder="Add a description"></textarea>
+                    <textarea required="required" name="description" id="taskDescription" cols="30" rows="10" class="box" placeholder="Add a description"></textarea>
                 </div>
 
                 <div class="assignedContainer box">
@@ -98,8 +98,8 @@
             </div>
             <div id="buttonContainer" class="buttonContainer" class="">
 
-                <button id="buttonCancel" class="buttonCancel" onclick="resetFields()" type="button">Reset Task</button>
-                <button id="buttonCreate" class="" onclick="addNewTask()" type="button">Create Task</button>
+                <button type="submit" id="buttonCancel" class="buttonCancel" onclick="resetFields()" type="button">Reset Task</button>
+                <button type="submit" id="buttonCreate" class="" onclick="addNewTask()" type="button">Create Task</button>
             </div>
         </form>
 
