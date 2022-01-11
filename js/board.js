@@ -1,5 +1,6 @@
 let loadedTasks = [];
 let helper;
+let popup;
 let currentDraggedElement;
 let currentTaskUrgencyColor;
 let currentTaskCategoryColor;
@@ -41,6 +42,7 @@ async function boardInit() {
 
 function allowDrop(ev) {
     ev.preventDefault();
+
 }
 
 /**
@@ -62,7 +64,9 @@ async function moveTo(targetCategory) {
     helper.updateStatus(currentDraggedElement, 'state', targetCategory);
     let task = loadedTasks.findIndex(task => task.timeOfCreation == currentDraggedElement)
     task.state = targetCategory;
+    showPopup(targetCategory);
     reloadColumns();
+
 }
 
 /**
@@ -75,7 +79,17 @@ async function btnMoveTo(id, targetCategory) {
     helper.updateStatus(id, 'state', targetCategory);
     let task = loadedTasks.findIndex(task => task.timeOfCreation == id)
     task.state = targetCategory;
+    showPopup(targetCategory);
     reloadColumns();
+}
+
+/**
+ * shows a popup when a task is moved to another category
+ * @param {string} targetCategory 
+ */
+function showPopup(targetCategory) {
+    popup = new PopUp('Task is moved to ' + targetCategory, '10%', '35%', 0.2, 1.2, 2.2);
+    popup.show();
 }
 
 /**

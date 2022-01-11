@@ -191,3 +191,30 @@ h5 {
     justify-content: start;
     width: 100%;
 }
+
+
+/*=================================================================*/
+
+
+/*
+    * popUp style
+*/
+
+.pop-up-animation {
+    background-color: #102389 !important;
+    width: unset;
+    height: unset;
+    /*  border-radius: 2px;*/
+}
+
+.pop-up {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    padding: 8px;
+    border-radius: 2px;
+    background-color: transparent;
+    transition: all 0.5s ease-out;
+    text-align: center;
+    font-size: 18px;
+}

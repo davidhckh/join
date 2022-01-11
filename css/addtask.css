@@ -1,10 +1,13 @@
 /** Makes Menu Selected Bar Visible (don't remove)*/
+
 #addtask-menu-point .menu-point-pre-bar {
     display: unset !important;
     opacity: 1 !important;
 }
 
+
 /*=================================================================*/
+
 
 /*
     * generel container and content-wrap style
@@ -27,7 +30,8 @@ header {
     top: 2rem;
 }
 
-h1, h5 {
+h1,
+h5 {
     margin: 0
 }
 
@@ -53,6 +57,7 @@ form {
     align-items: center;
 }
 
+
 /*
 * assign to containers
 */
@@ -62,10 +67,11 @@ form {
     justify-content: flex-start;
     align-items: center;
     box-shadow: none !important;
-
 }
 
+
 /**render container*/
+
 .assign-to-container {
     margin: 3px;
     padding: 3px;
@@ -91,14 +97,13 @@ form {
     border: 3px #102389 solid !important;
 }
 
+
 /*==== some changes to enable scrollable array ====*/
+
 .assigendTo-wrapper {
     overflow-x: scroll;
     white-space: nowrap;
-
 }
-
-
 
 .assignedContainer {
     display: flex;
@@ -111,8 +116,8 @@ form {
 }
 
 
-
 /*=================================================================*/
+
 
 /*
  * input and labels styles
@@ -124,27 +129,21 @@ label {
     margin-bottom: 5px;
 }
 
-
 input {
     border: none;
-
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
     padding: 0 20px;
-
     outline: none;
     transition: all 0.1s ease-out;
-
     box-shadow: unset !important;
     border: 2px solid #ebebeb !important;
     height: 50px;
 }
 
-
 input::placeholder {
     color: rgba(0, 0, 0, 0.8);
     transition: color 0.3s ease-in-out;
-
 }
 
 input:focus::placeholder {
@@ -163,7 +162,9 @@ input::-webkit-calendar-picker-indicator {
     object-fit: cover;
 }
 
+
 /*=================================================================*/
+
 
 /*
     * selcect styles
@@ -179,8 +180,6 @@ select {
     height: 50px;
     box-shadow: unset !important;
     border: 2px solid #ebebeb !important;
-
-
     min-width: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -192,7 +191,9 @@ select {
     /* Better placement regardless of input width */
 }
 
+
 /*For IE*/
+
 select::-ms-expand {
     display: none;
 }
@@ -206,28 +207,27 @@ select:focus {
     border-bottom-right-radius: 0;
 }
 
-
-
 select::placeholder {
     color: rgba(0, 0, 0, 0.8);
     transition: color 0.3s ease-in-out;
-
 }
 
 select:focus::placeholder {
     color: transparent;
-
 }
 
 select:hover {
     cursor: pointer;
 }
 
+
 /*=================================================================*/
+
 
 /*
     * button styles
 */
+
 button {
     height: 50px;
     min-width: 40%;
@@ -239,15 +239,11 @@ button {
     border: none;
 }
 
-
 .buttonContainer {
-
     display: flex;
     justify-content: space-between;
     margin: 0 10px;
     margin-top: 20px;
-
-
 }
 
 button:disabled {
@@ -256,12 +252,13 @@ button:disabled {
     cursor: unset;
 }
 
+
 /*=================================================================*/
+
 
 /*
     * textarea style
 */
-
 
 textarea {
     padding: 0 20px;
@@ -276,130 +273,81 @@ textarea {
     border: 2px solid #ebebeb !important;
 }
 
-
-
-
 textarea:focus {
     border: 2px solid #102389 !important;
     border-radius: 2rem;
     box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
 }
 
-
-
 textarea::placeholder {
     color: rgba(0, 0, 0, 0.8);
     transition: color 0.3s ease-in-out;
-
 }
 
 textarea:focus::placeholder {
     color: transparent;
-
-}
-
-/*=================================================================*/
-
-/*
-    * popUp style
-*/
-
-
-.pop-up-animation {
-    background-color: #102389 !important;
-    width: unset;
-    height: unset;
-    /*  border-radius: 2px;*/
-}
-
-.pop-up {
-    position: absolute;
-    z-index: 2;
-    color: white;
-    padding: 8px;
-    border-radius: 2px;
-    background-color: transparent;
-
-    transition: all 0.5s ease-out;
-    text-align: center;
-
-    font-size: 18px;
 }
 
 
-
-
+/*=================================================================*/
 
 
 /*=================================================================*/
+
+
 /*=================================================================*/
-/*=================================================================*/
+
 
 /*
     * MEDIA QUERIES
 */
 
-
-
 @media(max-width: 1100px) {
     .buttonContainer {
         min-width: 50%;
     }
-
     #contentAddTask {
         width: 95vw;
     }
-
     .inputContainer {
         max-width: 40%;
     }
 }
 
-
 @media(max-width: 720px) {
-
     header {
         top: 0;
     }
-
     .buttonContainer {
         min-width: 50%;
     }
-
     form {
         width: 100%;
         margin-left: 2.5%;
         top: -60px;
         padding: 0;
     }
-
     #contentAddTask {
         width: 95vw;
     }
-
     .inputContainer {
         max-width: 40%;
     }
-
     .assignedContainer {
         max-width: 40%;
     }
 }
 
 @media(max-width: 550px) {
-
     .mediaCol {
         flex-direction: column !important;
     }
-
     .inputContainer {
         min-width: 90%;
     }
-
     .assignedContainer {
         min-width: 90%;
     }
-
     form {
         height: 115vh !important;
         top: 100px;
@@ -417,9 +365,7 @@ textarea:focus::placeholder {
     #contentAddTask {
         width: 90vw;
     }
-
     form {
-
         margin-top: 35%;
     }
 }
