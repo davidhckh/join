@@ -39,8 +39,9 @@ async function addNewTask() {
         popup.show();
         helper.allTasks.push(new Task(elements[0], elements[1], elements[2], elements[3], elements[4], assignedTo));
         helper.uploadToServer();
+        resetFields();
     }
-    resetFields();
+    
 }
 /**
  * function clears the input fields and resets the selecedArray
