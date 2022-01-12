@@ -1,7 +1,6 @@
 class PopUp {
     text;
     popUpContainer;
-    content;
     distanceTop;
     distanceRight;
     completeAnimationTime;
@@ -25,11 +24,7 @@ class PopUp {
         this.fadeInDuration = fadeInDuration;
         this.fadeOutDuration = fadeOutDuration;
         this.completeAnimationTime = completeAnimationTime;
-
-
-
     }
-
 
     /**
      * 
@@ -39,7 +34,10 @@ class PopUp {
         if (new Date().getTime() - this.lastAnimation < this.completeAnimationTime * 1000) { return true; } else { return false; }
     }
 
-
+/**
+ * if called and if no popUp already animating, new pop up will be created in the DOM.
+ * then the animation will be started.
+ */
     show() {
 
         if (!this.isAnimating()) {
@@ -60,7 +58,9 @@ class PopUp {
         }
 
     }
-
+/**
+ * adds and removes animation, after completeAnimationTime run out, it removess the popUp DOM element
+ */
     fadeInAndOut() {
         setTimeout(() => {
 
@@ -69,16 +69,9 @@ class PopUp {
 
         setTimeout(() => {
             this.popUpContainer.classList.remove('pop-up-animation');
-
-            // document.body.removeChild(this.popUpContainer);
-
-            // document.body.removeChild(this.popUpWrapper);
         }, this.fadeOutDuration * 1000);
 
-
         setTimeout(() => {
-
-
             document.body.removeChild(this.popUpWrapper);
         }, this.completeAnimationTime * 1000);
     }

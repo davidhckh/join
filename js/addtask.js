@@ -1,9 +1,6 @@
 'use strict';
 
-let popup = new PopUp("Task was moved to backlog!", "10%", "15%",0.2,2.2,3.2);
-
-
-
+let popup = new PopUp("Task was moved to backlog!", "10%", "15%", 0.2, 2.2, 3.2);
 setURL('http://gruppe-142.developerakademie.net/smallest_backend_ever');
 
 let helper = new Helper();
@@ -11,36 +8,40 @@ let selectedUser;
 let selectedIcon;
 let selectedArray = [];
 
-
 /**
- * function reads the values of input and than pushes a new Task in the helpers allTasks Array.
+ * creates array with the values of input fields
+ * @returns {array} array with the values of the input elements
  */
-
+function defineElements() {
+    let elements = [];
+    elements[0] = document.getElementById('taskTitle').value;
+    elements[1] = document.getElementById('taskCategory').value;
+    elements[2] = document.getElementById('taskUrgency').value;
+    elements[3] = document.getElementById('taskDescription').value;
+    elements[4] = document.getElementById('taskDate').value;
+    return elements;
+}
+/**
+ * function grabs all input elements and adds addEventListener to prevent default behaviour of 
+ * the form tag. it calls the data from server. if all form elemnts are filled out
+ * a new task is pushed into allTasks and moved to backlog.
+ */
 async function addNewTask() {
-    let title = document.getElementById('taskTitle');
-    let category = document.getElementById('taskCategory');
-    let urgency = document.getElementById('taskUrgency');
-    let description = document.getElementById('taskDescription');
-    let dueDate = document.getElementById('taskDate');
-    let assignedTo = selectedArray;
 
-    document.getElementById('taskForm').addEventListener('submit', function(evt){
-        evt.preventDefault();})
-   
-    await helper.getDataFromServer()
-    
-    //popup.show();
+    let elements = defineElements();
+    let assignedTo = selectedArray;
+    document.getElementById('taskForm').addEventListener('submit', function (evt) {
+        evt.preventDefault();
+    })
+
+    await helper.getDataFromServer();
     if (formIsFilled()) {
         popup.show();
-        helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
+        helper.allTasks.push(new Task(elements[0], elements[1], elements[2], elements[3], elements[4], assignedTo));
         helper.uploadToServer();
     }
-     resetFields();
+    resetFields();
 }
-
-
-
-
 /**
  * function clears the input fields and resets the selecedArray
  */
@@ -54,21 +55,19 @@ function resetFields() {
     selectedArray = [];
     clearSelectedUsers();
 }
-
+/**
+ * checks if all relevant input fields are filled
+ * @returns {bolean} true if all input fields are filled, else false
+ */
 function formIsFilled() {
-    let title = document.getElementById('taskTitle').value;
-    let category = document.getElementById('taskCategory').value;
-    let urgency = document.getElementById('taskUrgency').value;
-    let description = document.getElementById('taskDescription').value;
-    let dueDate = document.getElementById('taskDate').value;
-    if (!title=="" && !category=="" && !urgency=="" && !description=="" && !dueDate==0) {
-       
+    let elements = defineElements();
+    if (!elements[0] == "" && !elements[1] == "" && !elements[2] == "" && !elements[3] == "" && !elements[4] == 0) {
+
         return true;
     }
-    else {return false;}
+    else { return false; }
 
 }
-
 /**
  * Render users into Assign-To container
  */
@@ -85,7 +84,6 @@ function renderUsers() {
         </div>`
     }
 }
-
 /**
  * function pushes the clicked user into the array selected User, if the user is not already
  * alredy selected. if so, it removes selected status of the  clicked user
@@ -110,9 +108,9 @@ function clearSelectedUsers() {
         document.getElementById('assign-to-container-' + i).classList.remove('selected-assign-to-container');
     }
 }
-
-
-
+/**
+ * initializes the page set up
+ */
 async function init() {
 
     includeHTML(setupMenuUserDetails());
