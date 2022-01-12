@@ -33,14 +33,21 @@
             <form id="form" onsubmit="login.formFilledOut(); event.preventDefault();">
                 <input id="name-input" placeholder="Name" maxlength="50" required>
                 <input id="mail-input" placeholder="E-Mail" type="email" maxlength="30" required>
-                <span id="mail-error" class="hide">This email is already taken. Log in <a onclick="login.loginLabelClick()">here</a> instead.</span>
+                <span id="mail-error" class="hide">This email is already taken. Log in <a
+                        onclick="login.loginLabelClick()">here</a> instead.</span>
                 <button id="sign-up-button">Sign Up</button>
-                <span id="open-login-label" class="center" onclick="login.loginLabelClick()">Already registered? Log in instead.</span>
+                <span id="open-login-label" class="center" onclick="login.loginLabelClick()">Already registered? Log in
+                    instead.</span>
             </form>
 
             <!--Guest Login-->
             <a id="guest-login-button" onclick="login.guestLogin()">Login as guest</a>
+        </div>
 
+        <!--Register Success Container-->
+        <div id="register-success-container" class="center column hide">
+            <span>Registration complete!</span>
+            <button onclick="login.closeLogin()">Continue</button>
         </div>
 
         <!--Image Selector Container-->

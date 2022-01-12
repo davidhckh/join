@@ -31,7 +31,7 @@ function checkLogin() {
 function setupMenuUserDetails() {
     setTimeout(() => {
         document.getElementById('profile-picture').src = JSON.parse(localStorage.getItem('user')).image;
-        document.getElementById('user-name').innerHTML = JSON.parse(localStorage.getItem('user')).name;  
+        document.getElementById('user-name').innerHTML = JSON.parse(localStorage.getItem('user')).name;
     }, 50);
 }
 
@@ -65,6 +65,7 @@ class Login {
         this.mailError = document.getElementById('mail-error');
         this.header = document.getElementById('header');
         this.openLoginLabel = document.getElementById('open-login-label');
+        this.registerSuccessContainer = document.getElementById('register-success-container');
     }
 
     /**
@@ -87,20 +88,29 @@ class Login {
      * open index.html afterwards
      */
     async signUp() {
-        if (!this.helper.mailExists(this.mailInput.value)) {
-            await this.helper.createNewUser(
-                this.nameInput.value,
-                this.mailInput.value,
-                this.imageSelector.getAttribute('src'),
-            )
-
-            localStorage.setItem('user', JSON.stringify(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)));
-
-            window.open("index.html", "_self");
-
-        } else {
+        if (this.helper.mailExists(this.mailInput.value)) {
             this.mailError.classList.remove('hide');
+            return;
         }
+
+        await this.helper.createNewUser(
+            this.nameInput.value,
+            this.mailInput.value,
+            this.imageSelector.getAttribute('src'),
+        );
+
+        localStorage.setItem('user', JSON.stringify(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)));
+
+        this.showRegistrationCompletion();
+    }
+
+    showRegistrationCompletion() {
+        this.signUpContainer.classList.add('hide');
+        this.registerSuccessContainer.classList.remove('hide');
+    }
+
+    closeLogin() {
+        window.open("index.html", "_self");
     }
 
     /**
