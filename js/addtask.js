@@ -28,11 +28,12 @@ async function addNewTask() {
         evt.preventDefault();})
    
     await helper.getDataFromServer()
-    helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
-    helper.uploadToServer();
+    
     //popup.show();
     if (formIsFilled()) {
         popup.show();
+        helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
+        helper.uploadToServer();
     }
      resetFields();
 }
