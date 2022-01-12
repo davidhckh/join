@@ -1,6 +1,7 @@
 let loadedTasks = [];
 let helper;
 let popup;
+let allowChange = false;
 let currentDraggedElement;
 let currentTaskUrgencyColor;
 let currentTaskCategoryColor;
@@ -27,7 +28,6 @@ let languages = {
     }]
 };
 
-
 /**
  * function which is loaded at first and starts other functions
  */
@@ -42,7 +42,6 @@ async function boardInit() {
 
 function allowDrop(ev) {
     ev.preventDefault();
-
 }
 
 /**
@@ -64,9 +63,7 @@ async function moveTo(targetCategory) {
     helper.updateStatus(currentDraggedElement, 'state', targetCategory);
     let task = loadedTasks.findIndex(task => task.timeOfCreation == currentDraggedElement)
     task.state = targetCategory;
-    showPopup(targetCategory);
     reloadColumns();
-
 }
 
 /**
@@ -79,7 +76,6 @@ async function btnMoveTo(id, targetCategory) {
     helper.updateStatus(id, 'state', targetCategory);
     let task = loadedTasks.findIndex(task => task.timeOfCreation == id)
     task.state = targetCategory;
-    showPopup(targetCategory);
     reloadColumns();
 }
 
@@ -87,8 +83,8 @@ async function btnMoveTo(id, targetCategory) {
  * shows a popup when a task is moved to another category
  * @param {string} targetCategory 
  */
-function showPopup(targetCategory) {
-    popup = new PopUp('Task is moved to ' + targetCategory, '10%', '35%', 0.2, 1.2, 2.2);
+function showPopup(message) {
+    popup = new PopUp('Task is ' + message, '10%', '35%', 0.2, 1.2, 2.2);
     popup.show();
 }
 
@@ -106,16 +102,21 @@ function hideMoveBtn(task) {
  */
 async function sendTaskToBacklog(timeOfCreation) {
     helper.updateStatus(timeOfCreation, 'state', 'backlog');
+    allowChange = false;
     reloadColumns();
+    showPopup('send to Backlog');
 }
 
 /**
  * when a task is in category 'done' you are able to delete it with this
  * function
+ * sets allowChange to false, so it will be not allowed to show further informations
  * @param {number} timeOfCreation - the time of creation, which is used as id, from the task which will be deleted
  */
 async function deleteTask(timeOfCreation) {
+    allowChange = false;
     helper.deleteOneTask(timeOfCreation);
+    showPopup('deleted');
     boardInit();
 }
 
@@ -127,18 +128,6 @@ async function reloadColumns() {
     loadInProgress();
     loadTesting();
     loadDone();
-}
-
-/**
- * function to let javascript wait a specific time out
- * @param {number} milliseconds - time in ms to sleep
- */
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-        currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
 }
 
 /**
@@ -161,14 +150,17 @@ function removeHighlight() {
     document.getElementById('BlockDone').classList.remove('dragAreaHighlight');
 }
 
-//todo: if task deleted don not call this function
 /**
  * toggles the display to none. 
  * so the further informations can be shown or hide
+ * when it is allowed to show info
  * @param {number} timeOfCreation - the time of creation, which is used as id, from the task which will show more information
  */
 function toggleHide(timeOfCreation) {
-    document.getElementById(timeOfCreation).classList.toggle('hide');
+    if (allowChange) {
+        document.getElementById(timeOfCreation).classList.toggle('hide');
+    }
+    allowChange = true;
 }
 
 /**
