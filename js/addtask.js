@@ -11,6 +11,7 @@ let selectedUser;
 let selectedIcon;
 let selectedArray = [];
 
+
 /**
  * function reads the values of input and than pushes a new Task in the helpers allTasks Array.
  */
@@ -21,25 +22,27 @@ async function addNewTask() {
     let urgency = document.getElementById('taskUrgency');
     let description = document.getElementById('taskDescription');
     let dueDate = document.getElementById('taskDate');
-    //  let assignedTo = selectedUser;
     let assignedTo = selectedArray;
 
+    document.getElementById('taskForm').addEventListener('submit', function(evt){
+        evt.preventDefault();})
+   
     await helper.getDataFromServer()
     helper.allTasks.push(new Task(title.value, category.value, urgency.value, description.value, dueDate.value, assignedTo));
     helper.uploadToServer();
-
-    if (title.value && category.value && urgency.value && description.value && dueDate.value) {
+    //popup.show();
+    if (formIsFilled()) {
         popup.show();
     }
-    
-
-   // resetFields();
+     resetFields();
 }
+
+
+
 
 /**
  * function clears the input fields and resets the selecedArray
  */
-
 function resetFields() {
     document.getElementById('taskTitle').value = "";
     document.getElementById('taskCategory').selection = "None";
@@ -51,36 +54,18 @@ function resetFields() {
     clearSelectedUsers();
 }
 
+function formIsFilled() {
+    let title = document.getElementById('taskTitle').value;
+    let category = document.getElementById('taskCategory').value;
+    let urgency = document.getElementById('taskUrgency').value;
+    let description = document.getElementById('taskDescription').value;
+    let dueDate = document.getElementById('taskDate').value;
+    if (!title=="" && !category=="" && !urgency=="" && !description=="" && !dueDate==0) {
+       
+        return true;
+    }
+    else {return false;}
 
-
-
-/**
- * functions checks every frequenz miliseconds if the form was filled out (!!!!NO VALIDATION YET!!!!)
- * 
- * @param {int} frequenz - amount of checks per 1000 seconds
- */
-
-function isFilledOut(frequenz) {
-    setInterval(() => {
-        let buttonCreate = document.getElementById('buttonCreate');
-        let buttonCancel = document.getElementById('buttonCancel')
-
-        let title = document.getElementById('taskTitle').value;
-        let category = document.getElementById('taskCategory').value;
-        let urgency = document.getElementById('taskUrgency').value;
-        let description = document.getElementById('taskDescription').value;
-        let dueDate = document.getElementById('taskDate').value;
-
-        if (title && category && urgency && description && dueDate) {
-            buttonCreate.removeAttribute('disabled');
-            buttonCancel.removeAttribute('disabled');
-        } else {
-            buttonCreate.setAttribute('disabled', 'disabled');
-            buttonCancel.setAttribute('disabled', 'disabled');
-        }
-
-
-    }, frequenz);
 }
 
 /**
@@ -106,8 +91,6 @@ function renderUsers() {
  * @param {int} index index of clicked users
  */
 function setSelectedUser(index) {
-
-
     selectedUser = helper.allUsers[index];
     selectedIcon = document.getElementById('assign-to-container-' + index);
     if (!selectedArray.includes(selectedUser)) {
@@ -119,8 +102,6 @@ function setSelectedUser(index) {
         let finder = selectedArray.indexOf(selectedUser);
         selectedArray.splice(finder, 1);
     }
-
-
 }
 
 function clearSelectedUsers() {
@@ -130,11 +111,10 @@ function clearSelectedUsers() {
 }
 
 
+
 async function init() {
-    //let checkFrequenz = 50;
 
     includeHTML(setupMenuUserDetails());
-   // isFilledOut(checkFrequenz);
 
     /**Get Users from server to setup assign-to container */
     await helper.getDataFromServer();
