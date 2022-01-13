@@ -34,8 +34,9 @@ async function addNewTask() {
         evt.preventDefault();
     })
 
-    await helper.getDataFromServer();
+    
     if (formIsFilled()) {
+        await helper.getDataFromServer();
         popup.show();
         helper.allTasks.push(new Task(elements[0], elements[1], elements[2], elements[3], elements[4], assignedTo));
         helper.uploadToServer();
