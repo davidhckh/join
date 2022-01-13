@@ -369,3 +369,14 @@ textarea:focus::placeholder {
         margin-top: 35%;
     }
 }
+
+@media(max-width: 310px) {
+   #buttonContainer{
+    display: flex;
+    flex-direction: column-reverse;
+   }
+
+   #buttonCreate {
+       margin-bottom: 5%;
+   }
+}
