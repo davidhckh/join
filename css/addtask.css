@@ -78,7 +78,8 @@ form {
     border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
-    color: gray
+    color: gray;
+    
 }
 
 .assign-to-container:hover {
@@ -109,10 +110,12 @@ form {
     display: flex;
     flex-direction: column;
     min-width: 40%;
+    max-width: 40%;
     margin: 0 10px;
     margin-bottom: 20px;
     /*badly done, needs rework! */
     margin-top: 37px;
+    
 }
 
 
