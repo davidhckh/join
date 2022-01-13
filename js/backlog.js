@@ -5,14 +5,20 @@ let renderContainer;
 let backlogTasks = [];
 
 async function setup() {
+    /**Define render container */
     renderContainer = document.getElementById('render-container');
 
+    /**get data from server */
     await helper.getDataFromServer();
 
+    /**continue setup */
     filterTasks();
     render();
 }
 
+/**
+ * This functions filters all task to all tasks which state is === 'backlog'
+ */
 function filterTasks() {
     backlogTasks = helper.allTasks.filter((task) => task.state === 'backlog');
 }
@@ -66,6 +72,11 @@ function render() {
     })
 }
 
+/**
+ * This functions returns a renderable Assigned-To-Container for each backlog item
+ * @param {*} task - The task you want to render the container for
+ * @returns - A renderable assign-to-container
+ */
 function renderAssignedToContainer(task) {
     let content = '';
 
@@ -82,8 +93,9 @@ function renderAssignedToContainer(task) {
 }
 
 /**
-* Check container visibility and expand or collapse container
-*/
+ * This function checks the visiblity of a expanded container switches it
+ * @param {*} index - The index (in allTask array)
+ */
 function checkContainerVisibility(index) {
     if (document.getElementById('expanded-' + index).classList.contains('hide')) {
         this.expandContainer(index);
@@ -92,28 +104,37 @@ function checkContainerVisibility(index) {
     };
 }
 
+/**
+ * This functions expands a container with the given index
+ * @param {*} index - The index you want to expand
+ */
 function expandContainer(index) {
     collapseAllContainers();
 
     document.getElementById('expanded-' + index).classList.remove('hide');
 }
 
+/**
+ * This function collapses all containers
+ */
 function collapseAllContainers() {
     for (let i = 0; i < backlogTasks.length; i++) {
         collapseContainer(i);
     };
 }
 
+/**
+ * This functions collapses a container with the given index
+ * @param {*} index - The index you want to collapse
+ */
 function collapseContainer(index) {
     document.getElementById('expanded-' + index).classList.add('hide');
 }
 
 
-
-
-
 /**
- * Add Item to board and upload to server + render after
+ * This function send a task from backlog to the board by updating its status
+ * @param {*} timeOfCreation - the time of creation of the task you want to update
  */
 function addToBoard(timeOfCreation) {
     const item = helper.filterTaskIDs(helper.allTasks, timeOfCreation)[0];
@@ -127,7 +148,8 @@ function addToBoard(timeOfCreation) {
 };
 
 /**
- * Delete item permanently and upload to server + render after
+ * This function permanently deletes a task
+ * @param {*} timeOfCreation - the time of creation of the task you want to delete
  */
 function deleteTask(timeOfCreation) {
     const item = helper.filterTaskIDs(helper.allTasks, timeOfCreation)[0];
@@ -141,12 +163,11 @@ function deleteTask(timeOfCreation) {
 }
 
 
-
-
-
-
-
-
+/**
+ * Capitialize the first letter of a given string
+ * @param {*} str - The string you want to capitalize the first letter from
+ * @returns - The string with a capitlized first letter
+ */
 function capitalizeFirstLetter(str) {
     return str[0].toUpperCase() + str.slice(1);
 };

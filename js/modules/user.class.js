@@ -7,7 +7,10 @@ class User {
     };
 
     /**
-     * set image if available otherwise set image to empty-profile-picture
+     * This function sets the user's profile picture,
+     * if empty it's set to empty-profile-picture.png
+     * 
+     * @param {*} image  - The image you want to use
      */
     setImage(image) {
         if (image) {

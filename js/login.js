@@ -42,6 +42,7 @@ function logout() {
 
 /**
  * init login.html
+ * if login is open
  */
 class Login {
     constructor() {
@@ -69,7 +70,8 @@ class Login {
     }
 
     /**
-     * On form button click
+     * This function performs after the form is submitted
+     * Signs up or logs in after
      */
     async formFilledOut() {
         await this.helper.getDataFromServer();
@@ -82,7 +84,7 @@ class Login {
     }
 
     /**
-     * create new user if email is not taken
+     * Create new user if email is not taken
      * if email is already taken, show error message
      * 
      * open index.html afterwards
@@ -104,11 +106,18 @@ class Login {
         this.showRegistrationCompletion();
     }
 
+    /**
+     * This function show the registration completion container
+     * with 'Continue' button
+     */
     showRegistrationCompletion() {
         this.signUpContainer.classList.add('hide');
         this.registerSuccessContainer.classList.remove('hide');
     }
 
+    /**
+     * Close login and open the board
+     */
     closeLogin() {
         window.open("index.html", "_self");
     }
@@ -127,7 +136,6 @@ class Login {
         }
     }
 
-
     openImageSelector() {
         this.signUpContainer.classList.add('hide');
         this.imageSelectorContainer.classList.remove('hide');
@@ -138,8 +146,10 @@ class Login {
         this.imageSelectorContainer.classList.add('hide');
     }
 
+
     /**
-     * set image selector image and close image selector container
+     * Updates image selector's image to the selected image, after a selection
+     * @param {*} number - The images number the image should be set to
      */
     setProfilePicture(number) {
         this.imageSelector.src = 'assets/profilePictures/' + number + '.png';
@@ -162,6 +172,10 @@ class Login {
         window.open("index.html", "_self");
     }
 
+    /**
+     * Open login or signup container
+     * depending on current location
+     */
     loginLabelClick() {
         if (this.mode == 'signup') {
             this.openLogin();
