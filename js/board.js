@@ -84,7 +84,7 @@ async function btnMoveTo(id, targetCategory) {
  * @param {string} targetCategory 
  */
 function showPopup(message) {
-    popup = new PopUp('Task is ' + message, '10%', '35%', 0.2, 1.2, 2.2);
+    popup = new PopUp(message, '3%', '3%', 0.2, 2.2, 8);
     popup.show();
 }
 
@@ -104,7 +104,7 @@ async function sendTaskToBacklog(timeOfCreation) {
     helper.updateStatus(timeOfCreation, 'state', 'backlog');
     allowChange = false;
     reloadColumns();
-    showPopup('send to Backlog');
+    showPopup('Task moved to backlog');
 }
 
 /**
@@ -116,7 +116,7 @@ async function sendTaskToBacklog(timeOfCreation) {
 async function deleteTask(timeOfCreation) {
     allowChange = false;
     helper.deleteOneTask(timeOfCreation);
-    showPopup('deleted');
+    showPopup('Task deleted');
     boardInit();
 }
 

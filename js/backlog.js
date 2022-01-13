@@ -4,6 +4,9 @@ let helper = new Helper();
 let renderContainer;
 let backlogTasks = [];
 
+let movePopup = new PopUp('Task moved to board', '3%', '3%', 0.2, 2.2, 8);
+let deletePopup = new PopUp('Task permanently deleted', '3%', '3%', 0.2, 2.2, 8);
+
 async function setup() {
     /**Define render container */
     renderContainer = document.getElementById('render-container');
@@ -142,6 +145,8 @@ function addToBoard(timeOfCreation) {
 
     helper.allTasks[itemIndex].state = 'to-do';
 
+    movePopup.show();
+
     filterTasks();
     render();
     helper.uploadToServer();
@@ -156,6 +161,8 @@ function deleteTask(timeOfCreation) {
     const itemIndex = helper.allTasks.indexOf(item);
 
     helper.allTasks.splice(itemIndex, 1);
+
+    deletePopup.show();
 
     filterTasks();
     render();
