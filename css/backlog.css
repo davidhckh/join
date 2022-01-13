@@ -44,11 +44,10 @@
     cursor: pointer;
     padding: 0;
     overflow-x: hidden;
-    border: 2px solid #ebebeb;
 }
 
 .entry-container:hover {
-    border: 2px #00127F solid;
+    outline: 2px #00127F solid;
 }
 
 .entry-top-container {
@@ -69,13 +68,13 @@
 .entry-container h5 {
     margin: 0;
     color: black !important;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 .responsive-header {
     margin: 0;
     color: black;
-    opacity: 0.5;
+    opacity: 0.4;
     margin-top: 15px;
     font-weight: bold;
     font-size: 14px;

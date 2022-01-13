@@ -22,34 +22,41 @@
 
     <!--Menu-->
     <div w3-include-html="./templates/menu.html"></div>
-    <div w3-include-html="./templates/legendBox.html"></div>
 
-    <article class="boardArticle">
+    <div id="main" class="column">
+        <div w3-include-html="./templates/legendBox.html"></div>
 
-        <section class="boardContainer">
-            <div class="boardColumn center column">
-                <h3>TO DO</h3>
-                <div id="BlockToDo" class="boardStatusBlock column box" ondrop="moveTo('to-do')" ondragover="allowDrop(event); addHighlight('BlockToDo')" ondragleave="removeHighlight()">
-                </div>
-            </div>
-            <div class="boardColumn center column">
-                <h3>IN PROGRESS</h3>
-                <div id="BlockInProgress" class="boardStatusBlock column box " ondrop="moveTo('inProgress')" ondragover="allowDrop(event); addHighlight('BlockInProgress')" ondragleave="removeHighlight()">
-                </div>
-            </div>
-            <div class="boardColumn center column">
-                <h3>TESTING</h3>
-                <div id="BlockTesting" class="boardStatusBlock column box " ondrop="moveTo('testing')" ondragover="allowDrop(event); addHighlight('BlockTesting')" ondragleave="removeHighlight()">
-                </div>
-            </div>
-            <div class="boardColumn center column">
-                <h3>DONE</h3>
-                <div id="BlockDone" class="boardStatusBlock column box " ondrop="moveTo('done')" ondragover="allowDrop(event); addHighlight('BlockDone')" ondragleave="removeHighlight()">
+        <article class="boardArticle">
 
+            <section class="boardContainer">
+                <div class="boardColumn center column">
+                    <h3>TO DO</h3>
+                    <div id="BlockToDo" class="boardStatusBlock column box" ondrop="moveTo('to-do')"
+                        ondragover="allowDrop(event); addHighlight('BlockToDo')" ondragleave="removeHighlight()">
+                    </div>
                 </div>
-            </div>
-        </section>
-    </article>
+                <div class="boardColumn center column">
+                    <h3>IN PROGRESS</h3>
+                    <div id="BlockInProgress" class="boardStatusBlock column box " ondrop="moveTo('inProgress')"
+                        ondragover="allowDrop(event); addHighlight('BlockInProgress')" ondragleave="removeHighlight()">
+                    </div>
+                </div>
+                <div class="boardColumn center column">
+                    <h3>TESTING</h3>
+                    <div id="BlockTesting" class="boardStatusBlock column box " ondrop="moveTo('testing')"
+                        ondragover="allowDrop(event); addHighlight('BlockTesting')" ondragleave="removeHighlight()">
+                    </div>
+                </div>
+                <div class="boardColumn center column">
+                    <h3>DONE</h3>
+                    <div id="BlockDone" class="boardStatusBlock column box " ondrop="moveTo('done')"
+                        ondragover="allowDrop(event); addHighlight('BlockDone')" ondragleave="removeHighlight()">
+
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
 </body>
 
 </html>

@@ -89,8 +89,8 @@ select {
     font-size: 16px;
     border-radius: 5px;
     border: 1px lightgray solid;
-    padding: 7px;
-    width: calc(100% - 14px);
+    padding: 12px;
+    width: calc(100% - 24px);
 }
 
 input::placeholder,
@@ -123,7 +123,7 @@ button {
 }
 
 button:hover {
-    opacity: 0.96
+    opacity: 0.9
 }
 
 
@@ -204,15 +204,14 @@ h5 {
     background-color: #102389 !important;
     width: unset;
     height: unset;
-    /*  border-radius: 2px;*/
 }
 
 .pop-up {
     position: absolute;
     z-index: 2;
     color: white;
-    padding: 8px;
-    border-radius: 2px;
+    border-radius: 5px;
+    padding: 10px 15px;
     background-color: transparent;
     transition: all 0.5s ease-out;
     text-align: center;

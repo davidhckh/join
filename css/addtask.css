@@ -14,21 +14,15 @@
 */
 
 #contentAddTask {
-    height: 100vh;
+    height: calc(100vh - 100px);
     width: 100vw;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    font-family: 'PT Sans', sans-serif;
-    background-color: #F6F8FC;
-    position: relative;
+    padding: 50px;
 }
 
-header {
-    position: absolute;
-    left: 7.5%;
-    top: 2rem;
+#content-container {
+    height: 100%;
 }
+
 
 h1,
 h5 {
@@ -46,7 +40,7 @@ h5 {
 
 form {
     position: relative;
-    width: 85%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -102,8 +96,10 @@ form {
 /*==== some changes to enable scrollable array ====*/
 
 .assigendTo-wrapper {
-    overflow-x: scroll;
+    overflow-x:auto;
     white-space: nowrap;
+    border-radius: 5px;
+    border: 1px lightgray solid;    
 }
 
 .assignedContainer {
@@ -113,9 +109,7 @@ form {
     max-width: 40%;
     margin: 0 10px;
     margin-bottom: 20px;
-    /*badly done, needs rework! */
-    margin-top: 37px;
-    
+    box-shadow: unset !important;
 }
 
 
@@ -133,36 +127,17 @@ label {
 }
 
 input {
-    border: none;
     font-family: 'PT Sans', sans-serif;
-    font-size: 18px;
-    padding: 0 20px;
-    outline: none;
-    transition: all 0.1s ease-out;
     box-shadow: unset !important;
-    border: 2px solid #ebebeb !important;
-    height: 50px;
-}
-
-input::placeholder {
-    color: rgba(0, 0, 0, 0.8);
-    transition: color 0.3s ease-in-out;
-}
-
-input:focus::placeholder {
-    color: transparent;
-}
-
-input:focus {
-    border: 2px solid #102389 !important;
-    border-radius: 2rem;
-    box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
 }
 
 input::-webkit-calendar-picker-indicator {
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     object-fit: cover;
+    opacity: 0.5;
+    position: absolute;
+    right: 40px;
 }
 
 
@@ -176,13 +151,9 @@ input::-webkit-calendar-picker-indicator {
 select {
     border: transparent;
     font-size: 18px;
-    transition: all 0.1s ease-out;
     font-family: 'PT Sans', sans-serif;
-    padding: 0 20px;
     outline: none;
-    height: 50px;
     box-shadow: unset !important;
-    border: 2px solid #ebebeb !important;
     min-width: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -202,21 +173,7 @@ select::-ms-expand {
 }
 
 select:focus {
-    border: 2px solid #102389 !important;
-    border-radius: 2rem;
-    box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
     cursor: pointer;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-select::placeholder {
-    color: rgba(0, 0, 0, 0.8);
-    transition: color 0.3s ease-in-out;
-}
-
-select:focus::placeholder {
-    color: transparent;
 }
 
 select:hover {
@@ -232,14 +189,10 @@ select:hover {
 */
 
 button {
-    height: 50px;
     min-width: 40%;
-    padding: 8px;
-    font-size: 20px;
     color: white;
-    background-color: #102389;
-    border-radius: 20px;
-    border: none;
+    font-size: 16px;
+    padding: 13px !important;
 }
 
 .buttonContainer {
@@ -249,10 +202,8 @@ button {
     margin-top: 20px;
 }
 
-button:disabled {
-    background-color: grey;
-    color: white;
-    cursor: unset;
+#buttonCancel {
+    background: gray;
 }
 
 
@@ -264,31 +215,10 @@ button:disabled {
 */
 
 textarea {
-    padding: 0 20px;
-    border: transparent;
-    font-size: 18px;
-    transition: all 0.3s linear;
     font-family: 'PT Sans', sans-serif;
-    outline: none;
     resize: none;
     box-shadow: none !important;
-    padding: 13px 17px;
-    border: 2px solid #ebebeb !important;
-}
 
-textarea:focus {
-    border: 2px solid #102389 !important;
-    border-radius: 2rem;
-    box-shadow: 0 0 1px 1px #fefefe, 10px 10px 8px 1px #010101;
-}
-
-textarea::placeholder {
-    color: rgba(0, 0, 0, 0.8);
-    transition: color 0.3s ease-in-out;
-}
-
-textarea:focus::placeholder {
-    color: transparent;
 }
 
 
@@ -304,82 +234,27 @@ textarea:focus::placeholder {
 /*
     * MEDIA QUERIES
 */
+@media (max-width: 1000px) {
 
-@media(max-width: 1100px) {
-    .buttonContainer {
-        min-width: 50%;
-    }
-    #contentAddTask {
-        width: 95vw;
-    }
-    .inputContainer {
-        max-width: 40%;
-    }
-}
-
-@media(max-width: 720px) {
     header {
-        top: 0;
+        margin-bottom: 30px;
     }
-    .buttonContainer {
-        min-width: 50%;
-    }
-    form {
-        width: 100%;
-        margin-left: 2.5%;
-        top: -60px;
-        padding: 0;
-    }
-    #contentAddTask {
-        width: 95vw;
-    }
-    .inputContainer {
-        max-width: 40%;
-    }
-    .assignedContainer {
-        max-width: 40%;
-    }
-}
 
-@media(max-width: 550px) {
+    .inputContainer {
+        width: 100% !important;
+    }
+
+    #contentAddTask {
+        padding: 50px 20px;
+        max-width: calc(100% - 40px);
+        height: fit-content;
+    }
+
     .mediaCol {
         flex-direction: column !important;
     }
-    .inputContainer {
-        min-width: 90%;
-    }
+
     .assignedContainer {
-        min-width: 90%;
+        min-width: 100% ;
     }
-    form {
-        height: 115vh !important;
-        top: 100px;
-        margin-top: 25%;
-    }
-}
-
-@media(max-width: 550px) {
-    form {
-        margin-left: 0;
-    }
-}
-
-@media(max-width: 350px) {
-    #contentAddTask {
-        width: 90vw;
-    }
-    form {
-        margin-top: 35%;
-    }
-}
-
-@media(max-width: 310px) {
-   #buttonContainer{
-    display: flex;
-    flex-direction: column-reverse;
-   }
-
-   #buttonCreate {
-       margin-bottom: 5%;
-   }
 }

@@ -184,20 +184,24 @@ function generateBoardTask(task) {
                             <div class="taskTopTitle">
                                 <div class="boardImg"> </div><div>
                                 <div class="textTitle">${task['title']}</div>
-                                <div class="textTitle">${finishDate}</div>
+                                <div class="textDate">${finishDate}</div>
                             </div>
                         </div>
                         `;
     returnString += addButton(task);
     returnString += `</div>
                         <div id="${task['timeOfCreation']}" class="hide boardDetails">
-                            <p>${languages[language][0].taskAssignedTo}<b>`
+                            <h5>${languages[language][0].taskAssignedTo}</h5><p>`
     returnString += getAssignedTo(task);
-    returnString += `          </b> </p>
-                            <p>${languages[language][0].taskUrgency}<br><b>${urgency}</b></p>
-                            <p>${languages[language][0].taskCategory}<br><b>${category}</b></p>
-                            <p>${languages[language][0].taskDescription}<br><b>${task['description']}</b></p>
-                            <p>Send Task to:</p>
+    returnString += `          </p>
+                            <br>
+                            <h5>${languages[language][0].taskUrgency}</h5><p>${urgency}</p>
+                            <br>
+                            <h5>${languages[language][0].taskCategory}</h5><p>${category}</p>
+                            <br>
+                            <h5>${languages[language][0].taskDescription}</h5><p>${task['description']}</p>
+                            <br>
+                            <h5>Move task to:</h5>
                             <div class="moveToBtns">
                             <button id="to-do${task['timeOfCreation']}" onclick="btnMoveTo(${task['timeOfCreation']},'to-do')" class="taskmoveToBtn" title="To Do">To Do</button>
                             <button id="inProgress${task['timeOfCreation']}" onclick="btnMoveTo(${task['timeOfCreation']},'inProgress')" class="taskmoveToBtn" title="In Progress">In Progress</button>
@@ -219,7 +223,7 @@ function generateBoardTask(task) {
 function getAssignedTo(task) {
     let assignedTo = '';
     task.assignedTo.forEach(ele => {
-        assignedTo += '<br>' + ele['name'];
+        assignedTo += ele['name'] + '<br>';
     })
     return assignedTo;
 }

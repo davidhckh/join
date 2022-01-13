@@ -5,8 +5,12 @@
     opacity: 1 !important;
 }
 
-.tab a {
-    color: blue !important;
+h1 {
+    margin: 0;
+}
+
+#contentContainer {
+    height: 100%;
 }
 
 
@@ -14,16 +18,13 @@
 
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    height: 100%;
-    width: 90%;
-    max-width: calc(100% - 100px);
     padding: 1.5em;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: calc(100% - 3em);
+    margin-top: 30px;
 }
 
 
@@ -36,7 +37,6 @@
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
-    transition: 0.3s;
 }
 
 .helpButtons {
@@ -91,6 +91,7 @@
 
 .tablinks {
     color: black;
+    box-shadow: unset !important;
 }
 
 
@@ -107,22 +108,9 @@
 
 .helpArticle {
     overflow: hidden;
-    height: 100%;
-    width: 90%;
-    max-width: calc(100% - 100px);
-    padding: 1.5em;
-    margin: 1em 1.5em;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
-.helpHeader {
-    padding-left: 0;
-    margin-left: 0;
-    max-width: calc(100% - 100px);
-    width: 90%;
+    height: calc(100vh - 100px);
+    width: 100%;
+    padding: 50px;
 }
 
 .helpHeader h1 {
@@ -145,4 +133,14 @@
 
 .icon8Link:hover {
     color: rgb(255, 0, 0) !important;
+}
+
+/**Responsive*/
+
+@media (max-width: 1000px) {
+    .helpArticle {
+        padding: 50px 20px;
+        max-width: calc(100% - 40px);
+        height: unset;
+    }
 }
