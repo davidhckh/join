@@ -32,7 +32,7 @@ function setupMenuUserDetails() {
     setTimeout(() => {
         document.getElementById('profile-picture').src = JSON.parse(localStorage.getItem('user')).image;
         document.getElementById('user-name').innerHTML = JSON.parse(localStorage.getItem('user')).name;
-    }, 50);
+    }, 200);
 }
 
 function logout() {

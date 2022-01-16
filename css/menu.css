@@ -12,7 +12,7 @@
     flex-direction: column;
     position: fixed;
     box-shadow: #EDEDED 10px 0 10px;
-    z-index: 2;
+    z-index: 10;
 }
 
 a {
