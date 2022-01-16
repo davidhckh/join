@@ -16,7 +16,6 @@ body {
     border-radius: 10px;
     width: 260px;
     position: relative;
-    overflow: hidden;
 }
 
 form {
@@ -121,4 +120,29 @@ button {
 #register-success-container span {
     margin-top: 15px;
     margin-bottom: 30px;
+}
+
+@media(max-height: 500px) {
+    #sign-up-container {
+        flex-direction: row;
+    }
+
+    #main-container {
+        width: 400px;
+    }
+
+    #logo {
+        display: none;
+    }
+
+    #responsive-left-container {
+        margin: 0 30px;
+    }
+
+    #guest-login-button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

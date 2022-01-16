@@ -193,8 +193,8 @@ class Login {
         this.imageSelector.classList.add('hide');
         this.nameInput.classList.add('hide');
         this.nameInput.required = false;
-        this.signUpButton.innerHTML = 'Log In';
-        this.header.innerHTML = 'Log In';
+        this.signUpButton.innerHTML = 'Login';
+        this.header.innerHTML = 'Login';
         this.openLoginLabel.innerHTML = 'Sign up';
         this.mailError.innerHTML = `This email doesn't exist. Sign up <a onclick="login.loginLabelClick()">here</a> instead.`;
         this.mailError.classList.add('hide');

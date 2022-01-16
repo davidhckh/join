@@ -24,10 +24,12 @@
 
         <!--Sign Up Container-->
         <div id="sign-up-container" class="center column">
-            <h2 id="header">Sign Up</h2>
+            <div class="column" id="responsive-left-container">
+                <h2 id="header">Sign Up</h2>
 
-            <!--Profile Picture Selector-->
-            <img id="image-selector" src="assets/profilePictures/0.png" onclick="login.openImageSelector()">
+                <!--Profile Picture Selector-->
+                <img id="image-selector" src="assets/profilePictures/0.png" onclick="login.openImageSelector()">
+            </div>
 
             <!--Sign Up Form-->
             <form id="form" onsubmit="login.formFilledOut(); event.preventDefault();">
@@ -38,10 +40,10 @@
                 <button id="sign-up-button">Sign Up</button>
                 <span id="open-login-label" class="center" onclick="login.loginLabelClick()">Already registered? Log in
                     instead.</span>
-            </form>
 
-            <!--Guest Login-->
-            <a id="guest-login-button" onclick="login.guestLogin()">Login as guest</a>
+                <!--Guest Login-->
+                <a id="guest-login-button" onclick="login.guestLogin()">Login as guest</a>
+            </form>
         </div>
 
         <!--Register Success Container-->
