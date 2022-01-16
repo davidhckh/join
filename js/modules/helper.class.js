@@ -12,7 +12,7 @@ class Helper {
 
         let data = backend.getItem('data');
 
-        if(data) {
+        if (data) {
             this.allTasks = data.allTasks;
             this.allUsers = data.allUsers;
         }
@@ -75,27 +75,33 @@ class Helper {
     /**----------------------------------- Users ---------------------------------------------- */
 
     /**
-    * uploads the current version of array allUsers to the backend.
-    */
-    async createNewUser(name, mail, image) {
+     * uploads the current version of array allUsers to the backend.
+     * @param {*} name - name of the user
+     * @param {*} mail - mail of the user
+     * @param {*} image - image of the user
+     * @param {*} password - password of the user
+     */
+    async createNewUser(name, mail, image, password) {
         await this.getDataFromServer();
 
-        if(!this.mailExists(mail)) {
+        if (!this.mailExists(mail)) {
             this.allUsers.push(new User(
                 name,
                 mail,
-                image
+                image,
+                password
             ));
-    
+
             this.uploadToServer();
         }
     }
 
     /**
      * Checks if mail exists to prevent duplicate users
+     * @param {*} mail - The mail that needs to be checked
      */
     mailExists(mail) {
-        if(this.allUsers.find((user) => user.mail == mail)) {
+        if (this.allUsers.find((user) => user.mail == mail)) {
             return true;
         } else {
             return false;

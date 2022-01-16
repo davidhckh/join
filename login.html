@@ -24,19 +24,28 @@
 
         <!--Sign Up Container-->
         <div id="sign-up-container" class="center column">
-            <div class="column" id="responsive-left-container">
+            <div class="column center" id="responsive-left-container">
                 <h2 id="header">Sign Up</h2>
 
                 <!--Profile Picture Selector-->
                 <img id="image-selector" src="assets/profilePictures/0.png" onclick="login.openImageSelector()">
             </div>
 
-            <!--Sign Up Form-->
+            <!--Sign Up & Login Form-->
             <form id="form" onsubmit="login.formFilledOut(); event.preventDefault();">
                 <input id="name-input" placeholder="Name" maxlength="50" required>
                 <input id="mail-input" placeholder="E-Mail" type="email" maxlength="30" required>
-                <span id="mail-error" class="hide">This email is already taken. Log in <a
-                        onclick="login.loginLabelClick()">here</a> instead.</span>
+                <span id="mail-error" class="error-message hide">This email is already taken. Log in <a
+                    onclick="login.loginLabelClick()">here</a> instead.</span>
+                <div id="password-container">
+                    <input id="password-input" placeholder="Password" type="password" minlength="4" maxlength="30" required>
+                    <div id="password-warning-icon">
+                        <div id="password-warning-container">
+                            This project is made for practice and doesn't have a proper storage of passwords.<br>Please be aware of what password you use.
+                        </div>
+                    </div>
+                </div>
+                <span id="password-error" class="error-message hide">Password is incorrect.</span>
                 <button id="sign-up-button">Sign Up</button>
                 <span id="open-login-label" class="center" onclick="login.loginLabelClick()">Already registered? Log in
                     instead.</span>

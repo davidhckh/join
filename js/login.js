@@ -60,6 +60,8 @@ class Login {
         this.imageSelectorContainer = document.getElementById('image-selector-container');
         this.nameInput = document.getElementById('name-input');
         this.mailInput = document.getElementById('mail-input');
+        this.passwordInput = document.getElementById('password-input');
+        this.passwordError = document.getElementById('password-error');
         this.signUpButton = document.getElementById('sign-up-button');
         this.guestButton = document.getElementById('guest-login-button');
         this.form = document.getElementById('form');
@@ -99,6 +101,7 @@ class Login {
             this.nameInput.value,
             this.mailInput.value,
             this.imageSelector.getAttribute('src'),
+            this.passwordInput.value,
         );
 
         localStorage.setItem('user', JSON.stringify(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)));
@@ -123,14 +126,19 @@ class Login {
     }
 
     /**
-     * Check if mail exists if so, log in
+     * Check if mail exists and if password is correct, if so, open index.html
      * show error otherwise
      */
     login() {
         if (this.helper.mailExists(this.mailInput.value)) {
-            localStorage.setItem('user', JSON.stringify(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)));
+            const password = this.helper.allUsers.find((user) => user.mail == this.mailInput.value).password
+            if (password == this.passwordInput.value) {
+                localStorage.setItem('user', JSON.stringify(this.helper.allUsers.find((user) => user.mail === this.mailInput.value)));
 
-            window.open("index.html", "_self");
+                window.open("index.html", "_self");
+            } else {
+                this.passwordError.classList.remove('hide');
+            }
         } else {
             this.mailError.classList.remove('hide');
         }
@@ -198,6 +206,7 @@ class Login {
         this.openLoginLabel.innerHTML = 'Sign up';
         this.mailError.innerHTML = `This email doesn't exist. Sign up <a onclick="login.loginLabelClick()">here</a> instead.`;
         this.mailError.classList.add('hide');
+        this.passwordError.classList.add('hide');
     }
 
     /**
@@ -214,5 +223,6 @@ class Login {
         this.mailError.innerHTML = 'This email is already taken. Log in <a onclick="login.loginLabelClick()">here</a> instead.';
         this.openLoginLabel.innerHTML = 'Already registered? Log in instead.';
         this.mailError.classList.add('hide');
+        this.passwordError.classList.add('hide');
     }
 }

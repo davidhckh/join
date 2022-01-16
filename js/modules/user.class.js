@@ -1,7 +1,8 @@
 class User {
-    constructor(name, mail, image) {
+    constructor(name, mail, image, password) {
         this.name = name;
         this.mail = mail;
+        this.password = password;
 
         this.setImage(image);
     };
