@@ -1,3 +1,3 @@
 # Join
 
-- [Live](https://join-iota.vercel.app/)
+- [Live](https://join.david-hckh.com/)
